@@ -1,0 +1,11 @@
+/* pages/publicmanagement/undoback/undoback.wxss */
+
+page{
+  max-width: 750rpx;
+}
+
+.btn{
+  margin-top: 240rpx;
+  color: #FFFFFF;
+  background: #2A98BD;
+}

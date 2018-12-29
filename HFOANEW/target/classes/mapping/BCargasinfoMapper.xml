@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.car.BCargasinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.car.BCargasinfo" >
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CarID" property="carid" jdbcType="INTEGER" />
+    <result column="CardBalance" property="cardbalance" jdbcType="REAL" />
+    <result column="ExecuteTime" property="executetime" jdbcType="VARCHAR" />
+    <result column="ChangeValue" property="changevalue" jdbcType="REAL" />
+    <result column="ChangeType" property="changetype" jdbcType="VARCHAR" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="CarUrl" property="carUrl" jdbcType="VARCHAR" />
+    <result column="CarType" property="carType" jdbcType="VARCHAR" />
+    <result column="CarNum" property="carNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CarID, CardBalance, ExecuteTime, ChangeValue, ChangeType, Remark,CarUrl,CarType,CarNum
+  </sql>
+  <insert id="insertSelective" parameterType="com.hfoa.entity.car.BCargasinfo" >
+    insert into b_cargasinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="carid != null" >
+        CarID,
+      </if>
+      <if test="cardbalance != null" >
+        CardBalance,
+      </if>
+      <if test="executetime != null" >
+        ExecuteTime,
+      </if>
+      <if test="changevalue != null" >
+        ChangeValue,
+      </if>
+      <if test="changetype != null" >
+        ChangeType,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="carUrl != null" >
+        CarUrl,
+      </if>
+      <if test="carType != null" >
+        CarType,
+      </if>
+      <if test="carNum != null" >
+        CarNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="cardbalance != null" >
+        #{cardbalance,jdbcType=REAL},
+      </if>
+      <if test="executetime != null" >
+        #{executetime,jdbcType=VARCHAR},
+      </if>
+      <if test="changevalue != null" >
+        #{changevalue,jdbcType=REAL},
+      </if>
+      <if test="changetype != null" >
+        #{changetype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="carUrl != null" >
+        #{carUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carNum != null" >
+        #{carNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="com.hfoa.entity.car.BCargasinfo" >
+    update b_cargasinfo
+    <set >
+      <if test="id != null" >
+        ID = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="carid != null" >
+        CarID = #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="cardbalance != null" >
+        CardBalance = #{cardbalance,jdbcType=REAL},
+      </if>
+      <if test="executetime != null" >
+        ExecuteTime = #{executetime,jdbcType=VARCHAR},
+      </if>
+      <if test="changevalue != null" >
+        ChangeValue = #{changevalue,jdbcType=REAL},
+      </if>
+      <if test="changetype != null" >
+        ChangeType = #{changetype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="carUrl != null" >
+        CarUrl = #{carUrl,jdbcType=VARCHAR},
+      </if>
+       <if test="carType != null" >
+        CarType = #{carType,jdbcType=VARCHAR},
+      </if>
+       <if test="carNum != null" >
+        CarNum = #{carNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

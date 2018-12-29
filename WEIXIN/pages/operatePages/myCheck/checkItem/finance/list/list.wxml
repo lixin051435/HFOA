@@ -1,0 +1,76 @@
+<!--pages/operatePages/myCheck/checkItem/finance/list/list.wxml-->
+
+
+
+<view class="pending">
+  <view wx:for="{{list}}" wx:key="key" wx:for-item="item">
+    <view id="{{index}}">
+      <template data="{{item}}" is="item"></template>
+    </view>
+  </view>
+</view>
+
+<template name="item">
+  <!-- 财务审批的招待 -->
+  <block wx:if="{{item.title == '业务招待'}}">
+    <template is="entertain" data="{{item}}"></template>
+  </block>
+  <!-- 财务审批的私车 -->
+  <block wx:elif="{{item.title == '差旅费'}}">
+    <template is="travel" data="{{item}}"></template>
+  </block>
+ 
+</template>
+
+<!-- 财务审批的私车 -->
+<template name="finance_private">
+  <view class="pendingItem clearfix" hover-class="pressed_view" bindtap="toFinanceDetailList">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_info">
+      <view class="user_name">{{item.applyMan}}</view>
+      <view class="user_applytype">的私车公用</view>
+    </view>
+    <view class="check_info">
+      <view class="detail_info">
+        <view>申请时间：</view>
+        <view>{{item.applyTime}}</view>
+      </view>
+      <view class="detail_info">
+        <view>条数：</view>
+        <view>{{item.department}}</view>
+      </view>
+      <view class="detail_info">
+        <view>金额：</view>
+        <view>{{item.department}}</view>
+      </view>
+      <view class="detail_info">
+        <view class="status">{{item.approveState}}</view>
+      </view>
+    </view>
+    <view class="arrow_right"></view>
+  </view>
+</template>
+<!-- 财务审批的招待 -->
+<template name="finance_entertain">
+  <view class="pendingItem clearfix" hover-class="pressed_view" bindtap="toFinanceDetail" >
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_info">
+      <view class="user_name">{{item.applyMan}}</view>
+      <view class="user_applytype">的业务招待</view>
+    </view>
+    <view class="check_info">
+      <view class="detail_info">
+        <view>审批编号：</view>
+        <view>{{item.applyTime}}</view>
+      </view>
+      <view class="detail_info">
+        <view>登记人：</view>
+        <view>{{item.department}}</view>
+      </view>
+      <view class="detail_info">
+        <view class="status">{{item.approveState}}</view>
+      </view>
+    </view>
+    <view class="arrow_right"></view>
+  </view>
+</template>

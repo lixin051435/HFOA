@@ -1,0 +1,36 @@
+<!--pages/modulePages/public/borrowDetail/borrowDetail.wxml-->
+<view>
+
+  <!-- 顶部车辆信息 -->
+  <view class="border_top_bottom">
+    <image class="public_icon" src="{{carUrl}}" />
+    <view class="public_info">{{carType}} {{carNum}}</view>
+  </view>
+
+  <button wx:if="{{showSubmit}}" class="btn btn_bottom" hover-class="pressed_btn" bindtap="toPublicApply">申请公车</button>
+
+  <!-- 没有数据 -->
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+
+  <!-- 有数据 -->
+  <view class="list">
+    <view wx:if="{{!noData}}" wx:for="{{borrowList}}" wx:key="key" wx:for-item="item">
+      <view class="item clearfix" bindtap="toApplyInfo" data-index="{{item.id}}">
+        <image class="user_icon" src="{{icon}}"></image>
+        <view class="detail_info">
+          <view class="applyMan">{{item.applyMan}}</view>
+          <view class="status">{{item.state}}</view>
+          <view class="note inline_block">预借时间：</view>
+          <view class="note inline_block">{{item.beginTimePlan}}</view>
+          <view class="note inline_block">预还时间：</view>
+          <view class="note inline_block">{{item.endTimePlan}}</view>
+        </view>
+        <view class="destination">目的地</view>
+        <view class="color_blue">{{item.endPlace}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,88 @@
+{
+  "pages": [
+    "pages/mainPages/menu/menu",
+    "pages/mainPages/mine/mine",
+
+    "pages/mainPages/informList/informList",
+    "pages/mainPages/informItem/informItem",
+    "pages/mainPages/bindingInfo/bindingInfo",
+
+    "pages/modulePages/seal/sealApply/sealApply",
+    "pages/modulePages/vacation/vacationApply/vacationApply",
+    "pages/modulePages/public/publicStatus/publicStatus",
+    "pages/modulePages/public/borrowDetail/borrowDetail",
+    "pages/modulePages/public/publicApply/publicApply",
+    "pages/modulePages/public/publicApplyed/publicApplyed",
+    "pages/modulePages/travel/travelApply/travelApply",
+    "pages/modulePages/private/privateApply/privateApply",
+    "pages/modulePages/entertain/entertainApply/entertainApply",
+
+    "pages/operatePages/myApply/applyList/applyList",
+    "pages/operatePages/myApply/adaptable/entertain/entertain",
+    "pages/operatePages/myApply/adaptable/private/private",
+    "pages/operatePages/myApply/adaptable/public/public",
+    "pages/operatePages/myApply/adaptable/seal/seal",
+    "pages/operatePages/myApply/adaptable/travel/travel",
+    "pages/operatePages/myApply/adaptable/vacation/vacation",
+    "pages/operatePages/myApply/adaptable/after/after",
+    "pages/operatePages/myApply/confirmVacation/confirmVacation",
+
+    "pages/operatePages/myCheck/checkList/checkList",
+    "pages/operatePages/myCheck/checkItem/entertainItem/entertainItem",
+    "pages/operatePages/myCheck/checkItem/privateItem/privateItem",
+    "pages/operatePages/myCheck/checkItem/publicItem/publicItem",
+    "pages/operatePages/myCheck/checkItem/sealItem/sealItem",
+    "pages/operatePages/myCheck/checkItem/travelItem/travelItem",
+    "pages/operatePages/myCheck/checkItem/vacationItem/vacationItem",
+    "pages/operatePages/myCheck/checkItem/finance/entertainItem/entertainItem",
+    "pages/operatePages/myCheck/checkItem/finance/sublist/sublist",
+
+    "pages/operatePages/myCarbonCopy/carbonCopyList/carbonCopyList",
+
+    "pages/operatePages/publicHandle/publicList/publicList",
+    "pages/operatePages/publicHandle/publicOut/publicOut",
+    "pages/operatePages/publicHandle/publicIn/publicIn",
+
+    "pages/operatePages/sealHandle/sealList/sealList",
+    "pages/operatePages/sealHandle/useSeal/useSeal",
+
+    "pages/operatePages/financeHandle/financeHandle",
+
+    "pages/publicPages/applyback/applyback",
+    "pages/publicPages/checkback/checkback",
+    "pages/publicPages/undoback/undoback",
+    "pages/publicPages/approveback/approveback",
+
+    "pages/operatePages/searchDetail/entertain/entertain",
+    "pages/operatePages/searchDetail/private/private",
+    "pages/operatePages/searchDetail/public/public",
+    "pages/operatePages/searchDetail/seal/seal",
+    "pages/operatePages/searchDetail/travel/travel",
+    "pages/operatePages/searchDetail/vacation/vacation",
+    "pages/operatePages/searchDetail/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#37383B",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [{
+        "pagePath": "pages/mainPages/menu/menu",
+        "text": "HFGA",
+        "iconPath": "./images/首页-正常.png",
+        "selectedIconPath": "./images/首页-选中.png"
+      },
+      {
+        "pagePath": "pages/mainPages/mine/mine",
+        "text": "我的",
+        "iconPath": "./images/我的-正常.png",
+        "selectedIconPath": "./images/我的-选中.png"
+      }
+    ],
+    "backgroundColor": "#ffffff",
+    "color": "#37383B",
+    "selectedColor": "#2A98BD"
+  }
+}

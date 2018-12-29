@@ -1,0 +1,147 @@
+<!-- 业务招待事后登记 -->
+<view>
+	<form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+		<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+		<view class="weui-cells">
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">审批编号</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="number" bindinput="inputedit" data-obj="info" data-item="number" value="{{info.number}}"
+					 disabled="true" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-label">开票日期</view>
+				<picker mode="date" name="invoiceDate" value="{{info.invoiceDate}}" data-obj="info" data-item="invoiceDate"
+				 bindchange="setTime" class='mpicker'>
+					<view class='mview' style="color:#37383B;" >{{info.invoiceDate}}</view>
+				</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">开票内容</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="invoiceContent" bindinput="inputedit" data-obj="info" data-item="invoiceContent"
+					 value="{{info.invoiceContent}}" placeholder-style="color:#B2B2B2" placeholder='请填写开票内容' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">发票金额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="invoiceSum" bindinput="inputedit" data-obj="info" data-item="invoiceSum"
+					 value="{{info.invoiceSum}}" placeholder-style="color:#B2B2B2" placeholder='请填写发票金额(元)' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">发票张数</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="invoiceNum" bindinput="inputedit" data-obj="info" data-item="invoiceNum"
+					 value="{{info.invoiceNum}}" placeholder-style="color:#B2B2B2" placeholder='请填写发票数量(张)' />
+				</view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">开票单位</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="invoiceUnit" bindinput="inputedit" data-obj="info" data-item="invoiceUnit" value="{{info.invoiceUnit}}"
+					 placeholder-style="color:#B2B2B2" placeholder='请输入开票单位' />
+				</view>
+				<!-- 遮罩层-当用户点击遮罩层时隐藏匹配框 -->
+        <view class="company_mask" wx:if="{{isShowCompanyMask}}" bindtap="hideCompanyMask"></view>
+        <!-- 匹配框 -->
+        <scroll-view scroll-y="true" class="scrollview" wx:if="{{showInputView}}">
+          <view wx:for="{{bindSource}}" wx:key="key">
+            <view class="itemview" data-value="{{item}}" bindtap="setEntertainObject">{{item}}</view>
+          </view>
+        </scroll-view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">登 记 人</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="registerMan" bindinput="inputedit" data-obj="info" data-item="registerMan" value="{{info.registerMan}}"
+					 placeholder-style="color:#B2B2B2" placeholder='请输入登记人' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">备    注</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="remark" bindinput="inputedit" data-obj="info" data-item="remark" value="{{info.remark}}"
+					 placeholder-style="color:#B2B2B2" placeholder='请输入备注' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">发 票 号</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="text" class="weui-input" name="invoiceNumber" bindinput="inputedit" data-obj="info" data-item="invoiceNumber"
+					 value="{{info.invoiceNumber}}" placeholder-style="color:#B2B2B2" placeholder='请输入发票号' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">酒水金额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="wineSum" bindinput="inputedit" data-obj="info" data-item="wineSum"
+					 value="{{info.wineSum}}" placeholder-style="color:#B2B2B2" placeholder='请输入酒水金额(元)' />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">总 金 额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="enterSum" bindinput="inputedit" data-obj="info" data-item="enterSum"
+					 value="{{info.enterSum}}" placeholder-style="color:#B2B2B2" placeholder='不必填写此项' disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">人均金额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="personSum" bindinput="inputedit" data-obj="info" data-item="personSum"
+					 value="{{info.personSum}}" disabled="{{true}}" />
+				</view>
+			</view>
+		</view>
+		<button formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+	</form>
+</view>

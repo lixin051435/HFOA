@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.pageTitle{
+	background-color: #033475;
+	color: white;
+}
+.pageTitle h1{
+	font-size: large; 
+	text-shadow: none;
+}

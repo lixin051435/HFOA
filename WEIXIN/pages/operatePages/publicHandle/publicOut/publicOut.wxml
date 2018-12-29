@@ -1,0 +1,87 @@
+<!-- pages/operatePages/myCheck/publicOut/publicOut.wxml -->
+<!-- 公车出库 -->
+<view class="check_info">
+  <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{user_icon}}"></image>
+    <view class="user_name">{{item.applyMan}}</view>
+    <view class="apply_type">{{item.title}}</view>
+    <!-- <view class="status">{{item.state}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{item.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">车牌型号：</view>
+      <view class="content">{{item.carType}} {{item.carCode}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">驾 驶 人：</text>
+      </view>
+      <view class="content">{{item.driver}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出发地点：</view>
+      <view class="content">{{item.beginPlace}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">目的地点：</view>
+      <view class="content">{{item.endPlace}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">同行人数：</view>
+      <view class="content">{{item.compareManNum}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">预借时间：</view>
+      <view class="content">{{item.beginTimePlan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">预还时间：</view>
+      <view class="content">{{item.endTimePlan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">用车事由：</view>
+      <view class="content">{{item.useCarReason}}</view>
+    </view>
+  </view>
+  <!-- 出库信息 -->
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出库时间</view>
+        </view>
+        <picker mode="multiSelector" name="borrowOutTime" value="{{borrowOutTime}}" bindchange="bindBorrowOutTime" range="{{borrowOutTimeArray}}">
+          <view style="color: #37383B;">
+            {{borrowOutTimeArray[0][borrowOutTime[0]]}}-{{borrowOutTimeArray[1][borrowOutTime[1]]}}-{{borrowOutTimeArray[2][borrowOutTime[2]]}}
+            {{borrowOutTimeArray[3][borrowOutTime[3]]}}:{{borrowOutTimeArray[4][borrowOutTime[4]]}}:{{borrowOutTimeArray[5][borrowOutTime[5]]}}
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出库里程</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="digit" class="weui-input" name="lengthBegin" value="{{lengthBegin}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出库留言</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="remarks" value="{{remarks}}" placeholder-style="color:#B2B2B2" placeholder="请输入留言" />
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{showSubmit}}" formType="submit" class="btn btn_bottom">出库</button>
+  </form>
+</view>

@@ -1,0 +1,156 @@
+/* pages/travelmanagement/travelApply/travelApply.wxss */
+
+page {
+  background-color: #F1EFF6;
+  max-width: 750rpx;
+}
+
+.mradio {
+  margin-left: 40rpx;
+  transform: scale(0.8);
+}
+
+.mradio1 {
+  margin-left: 5rpx;
+  transform: scale(0.7);
+}
+
+.mlabel {
+  font-size: 28rpx;
+  margin: 0;
+}
+
+.mpicker {
+  width: 440rpx;
+}
+
+.leftPlace {
+  width: 170rpx;
+  margin-right: 20rpx;
+}
+
+.rightPlace {
+  width: 170rpx;
+  margin-right: -20rpx;
+}
+
+.minput {
+  margin-left: 7rpx;
+}
+
+.mview1 {
+  padding-left: 0px;
+}
+
+/* checkbox .wx-checkbox-input {
+  border-radius: 11px;
+  height: 20px;
+  width: 20px;
+} */
+
+/* checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 14px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 32rpx;
+  height: 28.5px;
+  width: 28px;
+  background-color: #2A98BD;
+  color: white;
+  margin-top: -1rpx;
+} */
+
+.forItemBorder:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 96%;
+  height: 2rpx;
+  background-color: #d9d9d9;
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.3;
+}
+
+.ddd {
+  width: 180rpx;
+  margin-left: 50rpx;
+  float: left;
+}
+
+.modal-dialog {
+  position: fixed;
+  top: 450rpx;
+  left: 126rpx;
+  width: 480rpx;
+  height: 445rpx;
+  z-index: 99;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: #2A98BD 4rpx 4rpx 20rpx 6rpx, #2A98BD -4rpx -4rpx 20rpx 6rpx;
+}
+
+.modal-content {
+  margin-top: 36rpx;
+  width: 480rpx;
+  height: 270rpx;
+  overflow: auto;
+}
+
+.checkbox {
+  margin-left: 36rpx;
+  margin-bottom: 4rpx;
+  display: block;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.checked_label {
+  display: inline-block;
+  text-align: center;
+}
+
+.modal-footer {
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx;
+}
+
+.btn-cancel {
+  margin-top: 26rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  padding: 0;
+  display: inline-block;
+  width: 180rpx;
+  height: 90rpx;
+  text-align: center;
+}
+
+.btn-confirm {
+  margin-top: 26rpx;
+  padding: 0;
+  display: inline-block;
+  width: 180rpx;
+  height: 90rpx;
+  text-align: center;
+}
+/* 试验类型 */
+.testname{
+  font-size: 26rpx;
+}
+.testBox{
+  width:220rpx;
+  margin-left: 5rpx;
+  float: left;
+}

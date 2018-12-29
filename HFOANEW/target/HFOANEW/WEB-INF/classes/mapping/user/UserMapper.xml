@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.user.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.user.UserEntity" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Code" property="code" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="RealName" property="realname" jdbcType="VARCHAR" />
+    <result column="UserFrom" property="userfrom" jdbcType="VARCHAR" />
+    <result column="WorkCategory" property="workcategory" jdbcType="VARCHAR" />
+    <result column="CompanyId" property="companyid" jdbcType="INTEGER" />
+    <result column="CompanyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="DepartmentId" property="departmentid" jdbcType="INTEGER" />
+    <result column="DepartmentName" property="departmentname" jdbcType="VARCHAR" />
+    <result column="WorkgroupId" property="workgroupid" jdbcType="VARCHAR" />
+    <result column="WorkgroupName" property="workgroupname" jdbcType="VARCHAR" />
+    <result column="Gender" property="gender" jdbcType="VARCHAR" />
+    <result column="Mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="Telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="OfficeAddr" property="officeaddr" jdbcType="VARCHAR" />
+    <result column="Birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="Duty" property="duty" jdbcType="VARCHAR" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="UserPassword" property="userpassword" jdbcType="VARCHAR" />
+    <result column="ChangePasswordDate" property="changepassworddate" jdbcType="VARCHAR" />
+    <result column="QICQ" property="qicq" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Lang" property="lang" jdbcType="VARCHAR" />
+    <result column="Theme" property="theme" jdbcType="VARCHAR" />
+    <result column="AllowStartTime" property="allowstarttime" jdbcType="VARCHAR" />
+    <result column="AllowEndTime" property="allowendtime" jdbcType="VARCHAR" />
+    <result column="LockStartDate" property="lockstartdate" jdbcType="VARCHAR" />
+    <result column="LockEndDate" property="lockenddate" jdbcType="VARCHAR" />
+    <result column="FirstVisit" property="firstvisit" jdbcType="VARCHAR" />
+    <result column="PreviousVisit" property="previousvisit" jdbcType="VARCHAR" />
+    <result column="LastVisit" property="lastvisit" jdbcType="VARCHAR" />
+    <result column="CreateOn" property="createon" jdbcType="VARCHAR" />
+    <result column="IsStaff" property="isstaff" jdbcType="VARCHAR" />
+    <result column="AuditStatus" property="auditstatus" jdbcType="VARCHAR" />
+    <result column="IsVisible" property="isvisible" jdbcType="VARCHAR" />
+    <result column="UserOnLine" property="useronline" jdbcType="VARCHAR" />
+    <result column="IPAddress" property="ipaddress" jdbcType="VARCHAR" />
+    <result column="MACAddress" property="macaddress" jdbcType="VARCHAR" />
+    <result column="HomeAddress" property="homeaddress" jdbcType="VARCHAR" />
+    <result column="OpenId" property="openid" jdbcType="VARCHAR" />
+    <result column="Question" property="question" jdbcType="VARCHAR" />
+    <result column="AnswerQuestion" property="answerquestion" jdbcType="VARCHAR" />
+    <result column="UserAddress" property="useraddress" jdbcType="VARCHAR" />
+    <result column="DeleteMark" property="deletemark" jdbcType="VARCHAR" />
+    <result column="Enabled" property="enabled" jdbcType="VARCHAR" />
+    <result column="SortCode" property="sortcode" jdbcType="VARCHAR" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="LogOnCount" property="logoncount" jdbcType="VARCHAR" />
+    <result column="CreateUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifiedOn" property="modifiedon" jdbcType="VARCHAR" />
+    <result column="ModifyUserId" property="modifyuserid" jdbcType="VARCHAR" />
+    <result column="ModifiedBy" property="modifiedby" jdbcType="VARCHAR" />
+    <result column="Leadername" property="leadername" jdbcType="VARCHAR" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Code, UserName, RealName, UserFrom, WorkCategory, CompanyId, CompanyName, DepartmentId, 
+    DepartmentName, WorkgroupId, WorkgroupName, Gender, Mobile, Telephone, OfficeAddr, 
+    Birthday, Duty, Title, UserPassword, ChangePasswordDate, QICQ, Email, Lang, Theme, 
+    AllowStartTime, AllowEndTime, LockStartDate, LockEndDate, FirstVisit, PreviousVisit, 
+    LastVisit, CreateOn, IsStaff, AuditStatus, IsVisible, UserOnLine, IPAddress, MACAddress, 
+    HomeAddress, OpenId, Question, AnswerQuestion, UserAddress, DeleteMark, Enabled, 
+    SortCode, Description, LogOnCount, CreateUserId, CreateBy, ModifiedOn, ModifyUserId, 
+    ModifiedBy, Leadername, Status
+  </sql>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.hfoa.entity.user.UserEntity">
+    insert into u_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="realname != null" >
+        RealName,
+      </if>
+      <if test="userfrom != null" >
+        UserFrom,
+      </if>
+      <if test="workcategory != null" >
+        WorkCategory,
+      </if>
+      <if test="companyid != null" >
+        CompanyId,
+      </if>
+      <if test="companyname != null" >
+        CompanyName,
+      </if>
+      <if test="departmentid != null" >
+        DepartmentId,
+      </if>
+      <if test="departmentname != null" >
+        DepartmentName,
+      </if>
+      <if test="workgroupid != null" >
+        WorkgroupId,
+      </if>
+      <if test="workgroupname != null" >
+        WorkgroupName,
+      </if>
+      <if test="gender != null" >
+        Gender,
+      </if>
+      <if test="mobile != null" >
+        Mobile,
+      </if>
+      <if test="telephone != null" >
+        Telephone,
+      </if>
+      <if test="officeaddr != null" >
+        OfficeAddr,
+      </if>
+      <if test="birthday != null" >
+        Birthday,
+      </if>
+      <if test="duty != null" >
+        Duty,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="userpassword != null" >
+        UserPassword,
+      </if>
+      <if test="changepassworddate != null" >
+        ChangePasswordDate,
+      </if>
+      <if test="qicq != null" >
+        QICQ,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="lang != null" >
+        Lang,
+      </if>
+      <if test="theme != null" >
+        Theme,
+      </if>
+      <if test="allowstarttime != null" >
+        AllowStartTime,
+      </if>
+      <if test="allowendtime != null" >
+        AllowEndTime,
+      </if>
+      <if test="lockstartdate != null" >
+        LockStartDate,
+      </if>
+      <if test="lockenddate != null" >
+        LockEndDate,
+      </if>
+      <if test="firstvisit != null" >
+        FirstVisit,
+      </if>
+      <if test="previousvisit != null" >
+        PreviousVisit,
+      </if>
+      <if test="lastvisit != null" >
+        LastVisit,
+      </if>
+      <if test="createon != null" >
+        CreateOn,
+      </if>
+      <if test="isstaff != null" >
+        IsStaff,
+      </if>
+      <if test="auditstatus != null" >
+        AuditStatus,
+      </if>
+      <if test="isvisible != null" >
+        IsVisible,
+      </if>
+      <if test="useronline != null" >
+        UserOnLine,
+      </if>
+      <if test="ipaddress != null" >
+        IPAddress,
+      </if>
+      <if test="macaddress != null" >
+        MACAddress,
+      </if>
+      <if test="homeaddress != null" >
+        HomeAddress,
+      </if>
+      <if test="openid != null" >
+        OpenId,
+      </if>
+      <if test="question != null" >
+        Question,
+      </if>
+      <if test="answerquestion != null" >
+        AnswerQuestion,
+      </if>
+      <if test="useraddress != null" >
+        UserAddress,
+      </if>
+      <if test="deletemark != null" >
+        DeleteMark,
+      </if>
+      <if test="enabled != null" >
+        Enabled,
+      </if>
+      <if test="sortcode != null" >
+        SortCode,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="logoncount != null" >
+        LogOnCount,
+      </if>
+      <if test="createuserid != null" >
+        CreateUserId,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifiedon != null" >
+        ModifiedOn,
+      </if>
+      <if test="modifyuserid != null" >
+        ModifyUserId,
+      </if>
+      <if test="modifiedby != null" >
+        ModifiedBy,
+      </if>
+      <if test="leadername != null" >
+        Leadername,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="userfrom != null" >
+        #{userfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="workcategory != null" >
+        #{workcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentname != null" >
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupid != null" >
+        #{workgroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupname != null" >
+        #{workgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="officeaddr != null" >
+        #{officeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="changepassworddate != null" >
+        #{changepassworddate,jdbcType=VARCHAR},
+      </if>
+      <if test="qicq != null" >
+        #{qicq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lang != null" >
+        #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="allowstarttime != null" >
+        #{allowstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="allowendtime != null" >
+        #{allowendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lockstartdate != null" >
+        #{lockstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lockenddate != null" >
+        #{lockenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstvisit != null" >
+        #{firstvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="previousvisit != null" >
+        #{previousvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="lastvisit != null" >
+        #{lastvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        #{createon,jdbcType=VARCHAR},
+      </if>
+      <if test="isstaff != null" >
+        #{isstaff,jdbcType=VARCHAR},
+      </if>
+      <if test="auditstatus != null" >
+        #{auditstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null" >
+        #{isvisible,jdbcType=VARCHAR},
+      </if>
+      <if test="useronline != null" >
+        #{useronline,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddress != null" >
+        #{macaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="homeaddress != null" >
+        #{homeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answerquestion != null" >
+        #{answerquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null" >
+        #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deletemark != null" >
+        #{deletemark,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        #{enabled,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        #{sortcode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logoncount != null" >
+        #{logoncount,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedon != null" >
+        #{modifiedon,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyuserid != null" >
+        #{modifyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="leadername != null" >
+        #{leadername,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+    <update id="update" parameterType="com.hfoa.entity.user.UserEntity" >
+    update u_user
+    <set >
+      <if test="id != null" >
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        Code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        RealName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="userfrom != null" >
+        UserFrom = #{userfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="workcategory != null" >
+        WorkCategory = #{workcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="companyid != null" >
+        CompanyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        CompanyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null" >
+        DepartmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentname != null" >
+        DepartmentName = #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupid != null" >
+        WorkgroupId = #{workgroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupname != null" >
+        WorkgroupName = #{workgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        Gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        Mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        Telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="officeaddr != null" >
+        OfficeAddr = #{officeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        Birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        Duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        UserPassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="changepassworddate != null" >
+        ChangePasswordDate = #{changepassworddate,jdbcType=VARCHAR},
+      </if>
+      <if test="qicq != null" >
+        QICQ = #{qicq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lang != null" >
+        Lang = #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null" >
+        Theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="allowstarttime != null" >
+        AllowStartTime = #{allowstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="allowendtime != null" >
+        AllowEndTime = #{allowendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lockstartdate != null" >
+        LockStartDate = #{lockstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lockenddate != null" >
+        LockEndDate = #{lockenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstvisit != null" >
+        FirstVisit = #{firstvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="previousvisit != null" >
+        PreviousVisit = #{previousvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="lastvisit != null" >
+        LastVisit = #{lastvisit,jdbcType=VARCHAR},
+      </if>
+      <if test="createon != null" >
+        CreateOn = #{createon,jdbcType=VARCHAR},
+      </if>
+      <if test="isstaff != null" >
+        IsStaff = #{isstaff,jdbcType=VARCHAR},
+      </if>
+      <if test="auditstatus != null" >
+        AuditStatus = #{auditstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null" >
+        IsVisible = #{isvisible,jdbcType=VARCHAR},
+      </if>
+      <if test="useronline != null" >
+        UserOnLine = #{useronline,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddress != null" >
+        IPAddress = #{ipaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddress != null" >
+        MACAddress = #{macaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="homeaddress != null" >
+        HomeAddress = #{homeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        OpenId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        Question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answerquestion != null" >
+        AnswerQuestion = #{answerquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null" >
+        UserAddress = #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deletemark != null" >
+        DeleteMark = #{deletemark,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        Enabled = #{enabled,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        SortCode = #{sortcode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logoncount != null" >
+        LogOnCount = #{logoncount,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        CreateUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedon != null" >
+        ModifiedOn = #{modifiedon,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyuserid != null" >
+        ModifyUserId = #{modifyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedby != null" >
+        ModifiedBy = #{modifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="leadername != null" >
+        Leadername = #{leadername,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id=#{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectDays" parameterType="string" resultType="com.hfoa.entity.user.UserEntity">
+  	select * from u_user where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="loginUser" resultType="com.hfoa.entity.user.UserEntity">
+  	select * from u_user where UserName = #{0} and UserPassword = #{1}
+  
+  </select>
+  
+  <select id="loginUserName" parameterType="string" resultType="com.hfoa.entity.user.UserEntity">
+  	select * from u_user where UserName = #{username,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <update id="updateUserDays" parameterType="com.hfoa.entity.user.UserEntity">
+  	update u_user set CreateBy = #{createby,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <select id="findUserByNameAndDept" parameterType="com.hfoa.entity.user.UserEntity" resultType="com.hfoa.entity.user.UserEntity">
+  	select * from u_user 
+  	where 1=1
+  	<if test='departmentname!=null and departmentname!=""'>
+  		AND DepartmentName = #{departmentname,jdbcType=VARCHAR}
+  	</if>
+  	<if test='username!=null and username!=""'>
+  		AND UserName = #{username,jdbcType = VARCHAR}
+  	</if>
+  </select>
+  
+<!--   <select id="findLeader1"  resultType="com.hfoa.entity.user.UserEntity"> -->
+<!--   	select * from u_user where DepartmentName = #{0}  -->
+<!--   	and RoleId = {1} and UserName = {2} -->
+<!--   </select> -->
+  
+<!--   <select id="findLeader"  resultType="com.hfoa.entity.user.UserEntity"> -->
+<!--   	select * from u_user where DepartmentName = #{0} and RoleId = #{1} -->
+<!--   </select> -->
+  
+<!--   <select id="findleader2" parameterType="java.lang.String" resultType="com.hfoa.entity.user.UserEntity"> -->
+<!--   	select * from u_user where Id = #{workgroupid,jdbcType = VARCHAR} -->
+<!--   </select> -->
+  
+<!--   <select id="findUserByNameAndId" resultType="com.hfoa.entity.user.UserEntity"> -->
+<!--   	select * from u_user where Id = #{0} and UserName = #{1} -->
+<!--   </select>  -->
+	
+
+  <select id="getopenId" parameterType="java.lang.String" resultType="com.hfoa.entity.user.UserEntity">
+  	select * from u_user where OpenId = #{modifyUserId,jdbcType = VARCHAR}
+  
+  </select>
+
+
+	<update id="updateGzhOpenId" parameterType="com.hfoa.entity.user.UserEntity">
+	update u_user set ModifiedBy = #{modifiedby,jdbcType = VARCHAR} 
+	where Id = #{id}
+	</update>
+		
+	<update id="updateOpenId" parameterType="com.hfoa.entity.user.UserEntity">
+	update u_user set OpenId = #{openid,jdbcType = VARCHAR} 
+	where Id = #{id}
+	</update>	
+
+
+
+</mapper>

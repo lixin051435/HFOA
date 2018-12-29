@@ -1,0 +1,27 @@
+<!--pages/publicPages/applyback/applyback.wxml-->
+<view>
+
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon type="success" size="100" color="#2A98BD"/>
+    </view>
+    <view>
+      <text class="weui-msg__title">提交成功</text>
+    </view>
+    <view>
+      <!-- <text class="weui-msg__desc">{{msg}}</text> -->
+    </view>
+  </view>
+
+  <view bindtap="toMenu">
+    <button class="btn">返回</button>
+  </view>
+
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__links">
+      <view class="weui-footer__link">海丰通航科技有限公司</view>
+    </view>
+    <view class="weui-footer__text">Copyright © 2008-2018 www.hfga.com.cn</view>
+  </view>
+
+</view>

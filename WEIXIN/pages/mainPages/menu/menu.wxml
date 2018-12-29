@@ -1,0 +1,30 @@
+<!--pages/mainPages/menu/menu.wxml-->
+
+<!-- 错误信息 -->
+<view class="errorMsg non_fixed" wx:if="{{showErrorMsg}}" bindtap="toMine" >{{errorMsg}}</view>
+
+<!-- 顶部图片 -->
+<image class="banner" src="{{banner}}"></image>
+
+<!-- 公告 -->
+<view class="informs" bindtap="toInformList">
+  <image class="inform_icon" src="../../../images/gonggao.png"></image>
+  <view class="inform_title">公告:</view>
+  <view class="inform_body">{{mainTitle}}</view>
+  <view class="inform_more">
+    <view class="more">更多</view>
+    <view class="arrow_right"></view>
+  </view>
+</view>
+
+<!-- 菜单项 -->
+<view class="menu_view">
+  <view class="weui-grids">
+    <view wx:for="{{menuList}}" wx:key="key" wx:for-item="item">
+      <view class="weui-grid" hover-class="weui-grid_active" bindtap="{{item.permissionurl}}">
+        <image class="weui-grid__icon" src="{{item.imageurl}}"></image>
+        <view class="weui-grid__label" hover-class="weui-grid_active">{{item.permissionname}}</view>
+      </view>
+    </view>
+  </view>
+</view>

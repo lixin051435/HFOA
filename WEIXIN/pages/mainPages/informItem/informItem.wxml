@@ -1,0 +1,12 @@
+<!--pages/mainPages/informItem/informItem.wxml-->
+<view class="inform">
+  <view class="inform_title">{{inform_title}}</view>
+  <view class="inform_content">{{inform_content}}</view>
+</view>
+<!-- 底部版权标识 -->
+<view class="weui-footer weui-footer_fixed-bottom">
+  <view class="weui-footer__links">
+    <navigator url="" class="weui-footer__link">海丰通航科技有限公司</navigator>
+  </view>
+  <view class="weui-footer__text">Copyright © 2008-2018 www.hfga.com.cn</view>
+</view>

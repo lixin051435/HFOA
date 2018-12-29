@@ -1,0 +1,75 @@
+/* pages/modulePages/public/publicStatus/publicStatus.wxss */
+
+page {
+  max-width: 750rpx;
+}
+
+.border_top{
+  border-top: 1rpx solid #E6E6E6;
+}
+
+.btn{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.list{
+  padding-bottom: 50rpx;
+}
+
+.item {
+  position: relative;
+  width: 750rpx;
+  height: 140rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #E6E6E6;
+}
+
+.public_icon {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 190rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  margin: 10rpx;
+}
+
+.public_carnum {
+  position: absolute;
+  left: 210rpx;
+  top: 20rpx;
+  color: #000000;
+  font-size: 32rpx;
+}
+
+.public_carstate {
+  position: absolute;
+  left: 210rpx;
+  top: 82rpx;
+  color: #000000;
+  font-size: 32rpx;
+}
+
+.public_suspendday {
+  position: absolute;
+  right: 80rpx;
+  top: 20rpx;
+  color: #888888;
+  font-size: 32rpx;
+}
+
+.public_apply {
+  position: absolute;
+  right: 80rpx;
+  top: 82rpx;
+  color: #2A98BD;
+  font-size: 32rpx;
+}
+
+.arrow_right {
+  position: absolute;
+  right: 30rpx;
+  bottom: 60rpx;
+  display: inline-block;
+}

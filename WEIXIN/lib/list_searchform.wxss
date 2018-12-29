@@ -1,0 +1,252 @@
+/* 列表页的公用样式 包括搜索框 列表项 */
+
+.bgr {
+	position: relative;
+}
+
+.operate {
+	position: fixed;
+	top: 0;
+	z-index: 9;
+	height: 70rpx;
+	width: 750rpx;
+	line-height: 70rpx;
+	font-size: 32rpx;
+	border-bottom: 1rpx solid #EAEAEA;
+	background: #fff;
+}
+
+.operate_item {
+	width: 50%;
+	height: 50rpx;
+	display: inline-block;
+	text-align: center;
+}
+
+.operate_item.active {
+	color: #2A98BD;
+	border-bottom: 4rpx #2A98BD solid;
+	transition: all 0.2s linear 0s;
+}
+
+.operate_text {
+	height: 32rpx;
+	line-height: 32rpx;
+	font-size: 32rpx;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.pending,
+.approved {
+	width: 750rpx;
+}
+
+.pendingItem {
+	position: relative;
+	padding-top: 20rpx;
+	border-bottom: 2rpx solid #E6E6E6;
+}
+
+.user_icon {
+	float: left;
+	margin-right: 25rpx;
+	margin-left: 30rpx;
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 50%;
+}
+
+.user_info {
+	float: left;
+	width: 500rpx;
+	height: 56rpx;
+}
+
+.user_name {
+	color: #2A98BD;
+	font-size: 36rpx;
+	display: inline-block;
+}
+
+.user_applytype {
+	color: #000000;
+	font-size: 32rpx;
+	display: inline-block;
+}
+
+.check_info {
+	float: left;
+	width: 560rpx;
+	height: 220rpx;
+	font-size: 32rpx;
+}
+
+.detail_info {
+	display: inline-block;
+	width: 560rpx;
+	color: #888888;
+	font-size: 28rpx;
+}
+
+.check_info view {
+	display: inline-block;
+}
+
+.list_company {
+	width: 420rpx;
+}
+
+
+.status {
+	color: #F5A623;
+	font-size: 32rpx;
+}
+
+.arrow_right {
+	position: absolute;
+	top: 50%;
+	right: 30rpx;
+}
+
+.modal-mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 90;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.3;
+}
+
+.modal-dialog {
+	position: fixed;
+	top: 200rpx;
+	left: 120rpx;
+	width: 535rpx;
+	height: 550rpx;
+	z-index: 99;
+	background: #ffffff;
+	border-radius: 20rpx;
+	box-shadow: #2A98BD 4rpx 4rpx 20rpx 6rpx, #2A98BD -4rpx -4rpx 20rpx 6rpx;
+}
+
+.modal-dialog_four {
+	height: 470rpx;
+}
+
+.modal-content {
+	padding-top: 10rpx;
+	padding-left: 20rpx;
+	width: 535rpx;
+	height: 410rpx;
+	overflow: hidden;
+	font-size: 32rpx;
+	border-bottom: #B2B2B2;
+}
+
+.modal-content_four {
+	height: 330rpx;
+}
+
+.content_view {
+	width: 500rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+}
+
+.search_label {
+	padding-left: 36rpx;
+	padding-right: 20rpx;
+	width: 160rpx;
+	height: 60rpx;
+	display: inline-block;
+}
+
+.search_picker,
+.search_input {
+	width: 240rpx;
+	height: 60rpx;
+	display: inline-block;
+}
+
+.picker_view {
+	width:300rpx;
+	height: 60rpx;
+	display: inline-block;
+}
+
+.input_view {
+	position: relative;
+}
+
+.input_view_label {
+	position: absolute;
+}
+
+.input_view_input {
+	position: absolute;
+	left: 218rpx;
+	top: 10rpx;
+}
+
+.modal-footer {
+	margin-top: 10rpx;
+	width: 100%;
+	padding: 0 40rpx;
+}
+
+.btn-confirm {
+	margin: 0;
+	padding: 0;
+	margin-left: 50rpx;
+	display: inline-block;
+	width: 180rpx;
+	height: 90rpx;
+	text-align: center;
+}
+
+.btn-cancel {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 180rpx;
+	height: 90rpx;
+	text-align: center;
+}
+
+.needChangeLine_item{
+  padding-top: 20rpx;
+  /* padding-bottom: 20rpx; */
+  border-bottom: 2rpx solid #E6E6E6;
+}
+
+.needChangeLine_info{
+  float: left;
+  width: 560rpx;
+  font-size: 32rpx;
+}
+
+.needChangeLine_info view {
+  display: inline-block;
+}
+
+.needChangeLine_fwdw{
+  display: flex !important;
+}
+/* 
+.needChangeLine_label{
+  width: 140rpx !important;
+} */
+
+.needChangeLine_content{
+  width: 420rpx !important;
+}

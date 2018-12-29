@@ -1,0 +1,11 @@
+/* pages/operatePages/myCheck/sealItem/sealItem.wxss */
+
+page {
+  background: #EFEFF4;
+  max-width: 750rpx;
+}
+
+.check_info{
+  margin-top: 20rpx;
+}
+@import "/lib/reject.wxss";

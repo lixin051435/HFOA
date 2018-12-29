@@ -1,0 +1,122 @@
+<!-- pages/operatePages/myCheck/vacationItem/vacationItem.wxml -->
+<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+<!-- 审批信息 -->
+<view class="check_info">
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_name">{{info.applyMan}}</view>
+    <view class="apply_type">差旅申请</view>
+    <!-- <view class="status">{{info.status}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">出 差 人：</text>
+      </view>
+      <view class="content">{{info.travelers}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{info.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请时间：</view>
+      <view class="content">{{info.applyTime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出差日期：</view>
+      <view class="content">{{info.beginTime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">返回日期：</view>
+      <view class="content">{{info.endTime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">试验类型：</view>
+      <view class="content">{{info.isTest}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">出 发 地：</text>
+      </view>
+      <view class="content">{{info.startAddress}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">途 径 地：</text>
+      </view>
+      <view class="content">{{info.middAddress}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出行方式：</view>
+      <view class="content">{{info.goTravelMode}}</view>
+    </view>
+    <block wx:for="{{info.middleList}}" wx:key="key">
+      <view class="other_detail">
+        <view class="label">
+          <text space="ensp">途 径 地：</text>
+        </view>
+        <view class="content">{{item.beginAddress}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">
+          <text space="ensp">途 径 地：</text>
+        </view>
+        <view class="content">{{item.endAddress}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">出行方式：</view>
+        <view class="content">{{item.vehicle}}</view>
+      </view>
+    </block>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">途 径 地：</text>
+      </view>
+      <view class="content">{{info.lastPlace}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">目 的 地：</text>
+      </view>
+      <view class="content">{{info.endAddress}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出行方式：</view>
+      <view class="content">{{info.backTravelMode}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出差事由：</view>
+      <view class="content">{{info.cause}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">
+        <text space="ensp">抄 送 人：</text>
+      </view>
+      <view class="content">{{info.cCListOpenIdName}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{info.approveMan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">当前状态：</view>
+      <view class="content status">{{info.approveState}}</view>
+    </view>
+    <view class="other_detail" hidden="{{info.comment == null }}">
+      <view class="label">驳回理由：</view>
+      <view class="content">{{info.comment}}</view>
+    </view>
+  </view>
+  <block wx:if="{{showButton == 1}}">
+    <button bindtap="agree" class="btn">同意</button>
+    <button bindtap="disagree" class="btn btn_bottom">驳回</button>
+  </block>
+  <button wx:if="{{canUpdate == 1}}" bindtap="toUpdate" class="btn btn_bottom">修改</button>
+  <button wx:if="{{canConfirm == 1}}" bindtap="confirm" class="btn">确认</button>
+  <button wx:if="{{canRevoke == 1}}" bindtap="revoke" class="btn btn_bottom">撤回</button>
+</view>
+<import src="/pages/template/reject.wxml"></import>
+<template is="rejectBox" data="{{showModal}}"></template>

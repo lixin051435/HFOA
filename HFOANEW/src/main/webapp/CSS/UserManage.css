@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+.mdiv
+{
+	position:absolute;
+	text-align:center;
+	width:98%;
+	height:620px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:20px;
+	padding-bottom:30px;
+}

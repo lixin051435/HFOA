@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.privatecar.PrivatecarinvoiceMapper">
+  
+   <insert id="insertPrivateCarinvoice" parameterType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+   		insert into b_privatecarinvoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="applyId != null">ApplyId,</if>
+      <if test="applyMan != null">ApplyMan,</if>
+      <if test="approveMan != null">ApproveMan,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="sum != null">Sum,</if>
+      <if test="sureLength != null">SureLength,</if>
+      <if test="voucherNum != null">VoucherNum,</if>
+      <if test="status != null">Status,</if>
+      <if test="paidTime != null">PaidTime,</if>
+      <if test="applyIds != null">ApplyIds,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="applyId != null">
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyMan != null">
+        #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sum != null">
+        #{sum,jdbcType=VARCHAR},
+      </if>
+      <if test="sureLength != null">
+        #{sureLength,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNum != null">
+        #{voucherNum,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	#{status,jdbcType=VARCHAR},
+      </if>
+      <if test="paidTime != null">
+        #{paidTime,jdbcType=DOUBLE},
+      </if>
+      <if test="applyIds != null">
+        #{applyIds,jdbcType=DOUBLE},
+      </if>
+    </trim>
+   </insert>
+   
+   <update id="updatePrivateCarinvoice" parameterType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+  	update  b_privatecarinvoice
+   <trim prefix="set" suffixOverrides=",">  
+      <if test ="applyMan != null">
+        ApplyMan = #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test ="approveMan != null">
+        ApproveMan = #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test ="applyTime != null">
+        ApplyTime = #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test ="sum != null">
+        Sum = #{sum,jdbcType=VARCHAR},
+      </if>
+      <if test ="sureLength != null">
+        SureLength = #{sureLength,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNum != null">
+      	VoucherNum = #{voucherNum,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sureLength != null">
+        SureLength = #{sureLength,jdbcType=VARCHAR},
+      </if>
+      <if test="paidTime != null">
+        PaidTime = #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyIds != null">
+        ApplyIds = #{applyIds,jdbcType=VARCHAR}
+      </if>
+      </trim>
+    where ApplyId = #{applyId,jdbcType=VARCHAR}
+  </update>
+   
+   
+   <delete id="deletePrivateCarinvoice" parameterType="java.lang.String">
+   		delete from b_privatecarinvoice where ApplyId = #{applyId,jdbcType=VARCHAR}
+   </delete>
+   
+   <select id="selectPrivatecarinvoiceEntity" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+   		select * from b_privatecarinvoice where Status = '待审核' or Status = '待财务审核'
+   </select>
+   
+   
+   <select id="getApplyIdsPrivatecarinvoiceEntity" parameterType="java.lang.String" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+   		select * from b_privatecarinvoice where ApplyIds = CONCAT(CONCAT('%',#{ApplyIds,jdbcType=VARCHAR}),'%')
+   </select>
+
+
+	<select id="selectPrivatecarinvoiveEntityApplyman" parameterType="java.lang.String" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from b_privatecarinvoice where Status = '待审核' and  ApplyMan = #{applyman,jdbcType = VARCHAR}
+	</select>
+
+
+	<select id="getApplyIdPrivatecarinvoiceEntity" parameterType="java.lang.String" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from b_privatecarinvoice where ApplyId = #{applyId,jdbcType = VARCHAR}
+	</select>
+	
+	<select id="unSignInvoiceDisplay" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from  b_privatecarinvoice where Status = '已报销'
+	</select>
+	
+	<select id="invoiceDisplay" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from b_privatecarinvoice where Status = '已完成'
+	</select>
+	
+	<select id="invoiceDisplayApplyTime" resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from b_privatecarinvoice where Status = '已完成'
+		and ApplyTime <![CDATA[ >= ]]> #{0}
+		
+  		and ApplyTime <![CDATA[ <= ]]> #{1}
+	</select>
+	
+	
+	<select id="applymanPrivatecarinvoice"  resultType="com.hfoa.entity.privatecar.PrivatecarinvoiceEntity">
+		select * from b_privatecarinvoice where Status = '已完成' and ApplyMan = #{0} and ApplyTime like #{1}
+	
+	</select>
+
+
+
+
+</mapper>

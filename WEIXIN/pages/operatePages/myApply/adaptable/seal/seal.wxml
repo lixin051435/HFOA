@@ -1,0 +1,257 @@
+<!--pages/modulePages/seal/sealApply/sealApply.wxml-->
+
+<view>
+
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+    <view class="weui-cells">
+
+      <input type="text" name="user_id" value="{{user_id}}" hidden="true"></input>
+      <input type="text" name="department_id" value="{{department_id}}" hidden="true"></input>
+      <input type="text" name="applyTime" value="{{applyTime}}" hidden="true"></input>
+      <input type="text" name="grade" value="{{grade}}" hidden="true"></input>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申 请 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyMan" value="{{applyMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所属部门</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="department" value="{{department}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">申请时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyTime" value="{{applyTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公章类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="sealType" value="{{sealType}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用印份数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="useSealNumber" value="{{useSealNumber}}" placeholder-style="color:#B2B2B2"
+            placeholder="只输入数字即可" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发往单位</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="toCompany" value="{{toCompany}}" bindinput="isInput"
+            placeholder-style="color:#B2B2B2" placeholder="请输入发往单位" />
+        </view>
+        <!-- 遮罩层-当用户点击遮罩层时隐藏匹配框 -->
+        <view class="company_mask" wx:if="{{isShowCompanyMask}}" bindtap="hideCompanyMask"></view>
+        <!-- 匹配框 -->
+        <scroll-view scroll-y="true" class="scrollview" wx:if="{{showInputView}}">
+          <view wx:for="{{bindSource}}" wx:key="key">
+            <view class="itemview" id="{{item}}" bindtap="itemtap">{{item}}</view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showContractAmount}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">合同金额</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="digit" class="weui-input" name="contractAmount" value="{{contracAmount}}" placeholder-style="color:#B2B2B2"
+            placeholder="请填写合同金额" disabled="disabled"/>
+        </view>
+        <view class='weui-cell__ft'>万元</view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showContractType}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">合同类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="contractType" value="{{contractType}}" disabled="disabled"/>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">文件密级</view>
+        <radio-group name="classified" bindchange="bindClassifiedChange">
+          <label class="first_radio">
+            <radio value="是" checked="{{isBM}}" color="#2A98BD" />是</label>
+          <label>
+            <radio value="否" checked="{{!isBM}}" color="#2A98BD" />否</label>
+        </radio-group>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">申请事由</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="useSealReason" min-length="5" max-length="20" value="{{useSealReason}}" placeholder-style="color:#B2B2B2"placeholder="请输入5-20个字符" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">受 托 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="trustee" value="{{trustee}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入受托人" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">受托人职务</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="trusteeDuty" value="{{trusteeDuty}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入受托人职务" />
+        </view>
+      </view>
+
+      <view class="weui-cell" wx:if="{{showMoreInfo}}">
+        <view class="weui-label">证件类型</view>
+        <radio-group name="certificateType" bindchange="bindCertificateTypeChange">
+          <label class="first_radio">
+            <radio value="身份证" checked="{{isSFZ}}" color="#2A98BD" />身份证</label>
+          <label>
+            <radio value="护照" checked="{{!isSFZ}}" color="#2A98BD" />护照</label>
+        </radio-group>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{isSFZ && showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">身份证号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="idcard" class="weui-input" name="entrustedcardnum" value="{{entrustedcardnum}}"
+            placeholder-style="color:#B2B2B2" placeholder="请输入身份证号" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{!isSFZ && showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">护照号码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="text" class="weui-input" name="entrustedcardnum" value="{{entrustedcardnum}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入护照号码" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">受托事项</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="entrustedMatters" value="{{entrustedMatters}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入受托事项" />
+        </view>
+      </view>
+
+      <view class="weui-cell" wx:if="{{showMoreInfo}}">
+        <view class="weui-label">开始时间</view>
+        <picker mode="date" name="beginTime" value="{{beginTime}}" bindchange="bindBeginTimeChange">
+          <view>{{beginTime}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell" wx:if="{{showMoreInfo}}">
+        <view class="weui-label">结束时间</view>
+        <picker mode="date" name="endTime" value="{{endTime}}" bindchange="bindEndTimeChange">
+          <view>{{endTime}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{showMoreInfo}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">受托期限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="timeLimit" value="{{timeLimit}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <!-- 营业执照原件和公章外带的借出时间和归还时间 -->
+      <view class="weui-cell" wx:if="{{showTime}}">
+        <view class="weui-label">借出时间</view>
+        <picker mode="date" name="borrowTime" value="{{borrowTime}}" bindchange="bindBeginTimeChange2">
+          <view>
+            <view style="color: #37383B">{{borrowTime}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell" wx:if="{{showTime}}">
+        <view class="weui-label">归还时间</view>
+        <picker mode="date" name="returnTime" value="{{returnTime}}" bindchange="bindEndTimeChange2">
+          <view>
+            <view style="color: #37383B">{{returnTime}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{item.approveman != null && item.approveman != ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="approveman" value="{{approveman}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{item.businessManager != null && item.businessManager != ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="businessManager" value="{{businessManager}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input" wx:if="{{item.confirmman != null && item.confirmman != '' && showLeader3 == true}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="confirmman" value="{{confirmman}}" disabled="disabled" />
+        </view>
+      </view>
+
+    </view>
+
+    <button class="btn btn_bottom" hover-class="pressed_btn" formType="submit">提交</button>
+
+  </form>
+</view>

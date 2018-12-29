@@ -1,0 +1,273 @@
+/**app.wxss**/
+
+/* 引用weui中的样式 */
+@import "./lib/weui.wxss";
+
+/* 九宫格-UI样式 */
+.weui-grids {
+  border-left: none;
+}
+
+.weui-grid {
+  padding-top: 20rpx;
+  height: 204rpx;
+  /* border: none; */
+}
+
+.weui-grid__icon {
+  width: 106rpx;
+  height: 106rpx;
+}
+
+.weui-grid__label {
+  margin: 0;
+  padding-top: 20rpx;
+  color: #7f8389;
+  font-size: 32rpx;
+}
+
+.weui-grid_active {
+  color: #2A98BD;
+}
+
+.weui-label {
+  color: #000;
+}
+
+.weui-cell__bd input {
+  color: #37383B;
+}
+
+/* 页面顶部错误提示框 */
+.errorMsg {
+  z-index: 3;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  background: #e64340;
+}
+
+.non_fixed {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.placeholder {
+  color: #B2B2B2;
+}
+
+/* picker宽度 */
+picker {
+  width: 440rpx;
+}
+
+picker view {
+  color: #37383B;
+}
+
+/* 右箭头 */
+.arrow_right {
+  width: 20rpx;
+  height: 20rpx;
+  border-right: 2px solid #B2B2B2;
+  border-top: 2px solid #B2B2B2;
+  transform: rotate(45deg);
+}
+
+/* 下箭头 */
+.arrow_down {
+  width: 20rpx;
+  height: 20rpx;
+  border-right: 2px solid #B2B2B2;
+  border-bottom: 2px solid #B2B2B2;
+  transform: rotate(45deg);
+}
+
+/* 按钮显示90%且有上间距 */
+.btn {
+  margin-top: 40rpx;
+  width: 90%;
+  color: #2A98BD;
+  border: 2rpx solid #2A98BD;
+  border-radius: 20rpx;
+  background-color: #FBFAFC;
+}
+
+.pressed_btn {
+  color: #FBFAFC;
+  background-color: #2A98BD;
+}
+
+.pressed_view {
+  background: #f6f6f7;
+}
+
+/* 最后一个按钮且触底,使距离底部有一定间距 */
+.btn_bottom {
+  margin-bottom: 40rpx;
+}
+
+/* 顶部间距为0 */
+.weui-cells {
+  margin-top: 0;
+}
+
+/* 顶部边距不为0,同WEUI */
+.margin_top {
+  margin-top: 1.17647059em;
+}
+
+/* 页面中不突出显示的文字 */
+.note {
+  font-size: 28rpx;
+  color: #888;
+}
+
+/* view中行内显示的键值对 */
+.key {
+  display: inline-block;
+  width: 35%;
+}
+
+.value {
+  display: inline-block;
+  width: 65%;
+}
+
+/* 开始时间、结束时间、休假天数等遍历显示部分的顶部边框 */
+.forItemBorder:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 96%;
+  height: 2rpx;
+  background-color: #d9d9d9;
+}
+
+/* 显示为行内块级元素 */
+.inline_block {
+  display: inline-block;
+}
+
+/* 居中显示 */
+.center {
+  margin: 0 auto;
+}
+
+.mradio {
+  margin-left: 50rpx;
+  transform: scale(0.7);
+}
+
+.mlabel {
+  font-size: 32rpx;
+}
+
+/* 我审批的、我发起的-列表详情页-顶部用户信息 */
+.user_info {
+  position: relative;
+  padding-top: 20rpx;
+  width: 750rpx;
+  height: 80rpx;
+  border-top: 1rpx solid #E6E6E6;
+  background: #FFFFFF;
+}
+
+.user_icon {
+  float: left;
+  margin-right: 25rpx;
+  margin-left: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.user_name {
+  margin-right: 30rpx;
+  display: inline-block;
+  color: #2A98BD;
+  font-size: 36rpx;
+}
+
+.apply_type {
+  display: inline-block;
+  color: #37383B;
+  font-size: 32rpx;
+}
+
+/* 审批详细信息 */
+.check_detail {
+  width: 750rpx;
+  border-bottom: 1rpx solid #E6E6E6;
+  background: #FFFFFF;
+}
+
+/* 我审批的、我发起的-列表详情页-键值对 */
+.other_detail {
+  line-height: 70rpx;
+  display: flex;
+}
+
+.label {
+  padding-left: 115rpx;
+  width: 192rpx;
+  display: inline-block;
+  color: #888;
+  font-size: 32rpx;
+}
+
+.content {
+  width: 400rpx;
+  display: inline-block;
+  color: #000000;
+  font-size: 32rpx;
+}
+
+.status {
+  /* position: absolute;
+  top: 40rpx;
+  right: 80rpx;
+  display: inline-block; */
+  color: #f5a623;
+  /* font-size: 28rpx;
+  line-height: 14px; */
+}
+
+/* 我审批的、我发起的等列表页，如有换行样式 */
+.needChangeLine_item {
+  padding-top: 20rpx;
+  /* padding-bottom: 20rpx; */
+  border-bottom: 2rpx solid #E6E6E6;
+}
+
+.needChangeLine_info {
+  float: left;
+  width: 560rpx;
+  font-size: 32rpx;
+}
+
+.needChangeLine_info view {
+  display: inline-block;
+}
+
+.needChangeLine_fwdw {
+  display: flex !important;
+}
+
+/* .needChangeLine_label{
+  width: 140rpx !important;
+} */
+
+.needChangeLine_content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 420rpx !important;
+}

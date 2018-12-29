@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.lear.LearTimeMapper">
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.vacation.LearTime">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Leave_ID" jdbcType="VARCHAR" property="leave_id" />
+    <result column="BegingTime" jdbcType="VARCHAR" property="begingTime" />
+    <result column="EndTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="Days" jdbcType="VARCHAR" property="days" />
+    <result column="State" jdbcType="VARCHAR" property="state"/>
+    <result column="SFYC" jdbcType="VARCHAR" property="sfyc"/>
+  </resultMap>
+  
+  <delete id="deleteleave" parameterType="java.lang.String">
+    delete from b_leave_time
+    where Leave_Id = #{leave_Id,jdbcType=VARCHAR} and State != '1'
+  </delete>
+  
+  <update id="updateStateLeave" parameterType="java.lang.String" >
+  	update b_leave_time set  State = '1' where Leave_Id = #{leave_id,jdbcType=VARCHAR}
+  </update>
+ 
+  <insert id="insert"  parameterType="com.hfoa.entity.vacation.LearTime">
+    insert into b_leave_time
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">ID,</if>
+      <if test="leave_id != null">Leave_Id,</if>
+      <if test="beingTime != null">BeingTime,</if>
+      <if test="endTime != null">EndTime,</if>
+      <if test="days != null">Days,</if>
+      <if test="state != null">State,</if>
+      <if test="sfyc != null">SFYC,</if>
+      <if test="status != null">Status,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="leave_id != null">
+        #{leave_id,jdbcType=VARCHAR},
+      </if>
+      <if test="beingTime != null">
+        #{beingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyc != null">
+      	#{sfyc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	#{status,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+ 
+  <update id="updateBatch" parameterType="java.util.List" >  
+  <foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";">
+      update b_leave_time set
+      BeingTime = #{item.beingTime},
+      EndTime = #{item.endTime},
+      Days = #{item.days}
+      where ID = #{item.id}   
+    </foreach>
+  </update>
+  
+  <update id="updateTime" parameterType="com.hfoa.entity.vacation.LearTime">
+  	update b_leave_time set
+  		BeingTime = #{beingTime},
+      EndTime = #{endTime},
+      Days = #{days}
+      where ID = #{id}   
+  </update>
+  
+  <select id="getLearTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from b_leave_time where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="listLearTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from b_leave_time  where  Leave_ID = #{leave_id,jdbcType=VARCHAR}  order by BeingTime asc
+  </select>
+  <!-- 查询 -->
+  <select id="selectLearTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from b_leave_time where state = '0' and Leave_ID = #{leave_id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <!-- 查询完成的年假 -->
+  <select id="seartTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from b_leave_time where State = '1' and Leave_ID = #{leave_id,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updateState" parameterType="java.lang.String">
+  	update b_leave_time set  State = '1',Status = '1' where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateStateStatus" parameterType="java.lang.String">
+  	update b_leave_time set State = '1',Status = '0' where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateSfyc" parameterType="java.lang.String">
+  	update b_leave_time set  SFYC = '1' where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+
+</mapper>

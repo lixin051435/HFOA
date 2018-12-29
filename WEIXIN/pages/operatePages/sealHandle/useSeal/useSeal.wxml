@@ -1,0 +1,91 @@
+<!--pages/operatePages/sealHandle/useSeal/useSeal.wxml-->
+<!-- 审批信息 -->
+<view class="check_info">
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_name">{{item.applyusername}}</view>
+    <view class="apply_type">{{item.title}}</view>
+    <!-- <view class="status">{{item.status}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{item.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请时间：</view>
+      <view class="content">{{item.applytime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">公章类型：</view>
+      <view class="content">{{item.gzkind}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">用印份数：</view>
+      <view class="content">{{item.copies}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">发往单位：</view>
+      <view class="content">{{item.sendto}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">文件密级：</view>
+      <view class="content">{{item.issecret}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请事由：</view>
+      <view class="content">{{item.reason}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showTime}}">
+      <view class="label">借出时间：</view>
+      <view class="content">{{item.beginTime}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showTime}}">
+      <view class="label">归还时间：</view>
+      <view class="content">{{item.returnTime}}</view>
+    </view>
+    <view wx:if="{{showMore}}">
+      <view class="other_detail">
+        <view class="label"><text space="ensp">受 托 人：</text></view>
+        <view class="content">{{item.entrustedman}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托人职务：</view>
+        <view class="content">{{item.entrustedpost}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">证件类型：</view>
+        <view class="content">{{item.entrustedcardtype}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">证件号码：</view>
+        <view class="content">{{item.entrustedcardnum}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托事项：</view>
+        <view class="content">{{item.entrustedmatter}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托期限：</view>
+        <view class="content">{{item.entrustedpermission}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">开始时间：</view>
+        <view class="content">{{item.entrustedstarttime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">结束时间：</view>
+        <view class="content">{{item.entrustedendtime}}</view>
+      </view>
+    </view>
+    <view class="other_detail">
+      <view class="label">当前状态：</view>
+      <view class="content status">{{item.status}}</view>
+    </view>
+  </view>
+
+  <button wx:if="{{canUseSeal == 1}}" bindtap="toHandle" class="btn btn_bottom">确认</button>
+
+</view>

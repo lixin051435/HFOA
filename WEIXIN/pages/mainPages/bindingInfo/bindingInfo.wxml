@@ -1,0 +1,37 @@
+<!--pages/mainPages/bindingInfo/bindingInfo.wxml-->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+
+    <view class="errorMsg non_fixed" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+    <view class="weui-cells">
+
+      <input type="text" name="openId" value="{{openId}}" disabled="disabled" hidden="true"></input>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用户名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input tpye="text" class="weui-input" name="userName" value="{{userName}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入信息化app用户名" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">密码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="password" class="weui-input" name="password" value="{{password}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入信息化app密码" />
+        </view>
+      </view>
+
+    </view>
+
+    <button formType="submit" class="btn">提交</button>
+    <button formType="reset" class="btn">重置</button>
+
+  </form>
+</view>

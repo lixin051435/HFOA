@@ -1,0 +1,47 @@
+<import src="/pages/template/listItem"></import>
+<import src="/pages/template/searchItem"></import>
+
+<!-- <view class="search" bindtap="showModal" hover-class="pressed">
+  <view class="search_item">
+    <image class="search_icon" src="../../../../images/search.png"></image>
+    <view class="search_lable">搜索</view>
+  </view>
+</view> -->
+
+<view>
+
+  <button class="btn_search" bindtap="showModal">
+    <image class="search_icon" src="../../../../images/search.png"></image>
+    <view class="search_lable">搜索</view>
+  </button>
+
+  <view class="overview">
+    <view class="header">
+      <view class="applyMan">{{applyMan}}</view>
+      <view class="title">今年数据总览</view>
+    </view>
+    <view>
+      <view class="overview_label">完成次数：</view>
+      <view class="overview_content">{{countApply}}次</view>
+    </view>
+    <view>
+      <view class="overview_label">行驶里程：</view>
+      <view class="overview_content">{{countLength}}km</view>
+    </view>
+  </view>
+
+  <!-- 没有数据 -->
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+  <!-- 有数据 -->
+  <view class="approved" wx:if="{{!noData}}">
+    <view wx:for="{{list}}" wx:key="key" wx:for-item="item">
+      <view data-id="{{index}}" bindtap="toDetail">
+        <template data="{{item,icon}}" is="public"></template>
+      </view>
+    </view>
+  </view>
+  <template is="publicSearchItem" data="{{searchInfo,showModal}}"></template>
+
+</view>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.common.BMessagenoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.common.BMessagenotice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="mainTitle" property="maintitle" jdbcType="VARCHAR" />
+    <result column="contentTitle" property="contenttitle" jdbcType="VARCHAR" />
+    <result column="userTime" property="usertime" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, mainTitle, contentTitle, userTime,content
+  </sql>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from b_messagenotice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hfoa.entity.common.BMessagenotice" >
+    insert into b_messagenotice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="maintitle != null" >
+        mainTitle,
+      </if>
+      <if test="contenttitle != null" >
+        contentTitle,
+      </if>
+      <if test="usertime != null" >
+        userTime,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="maintitle != null" >
+        #{maintitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttitle != null" >
+        #{contenttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="usertime != null" >
+        #{usertime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hfoa.entity.common.BMessagenotice" >
+    update b_messagenotice
+    <set >
+      <if test="maintitle != null" >
+        mainTitle = #{maintitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttitle != null" >
+        contentTitle = #{contenttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="usertime != null" >
+        userTime = #{usertime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

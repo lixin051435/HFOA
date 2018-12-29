@@ -1,0 +1,79 @@
+<!-- 我的->我审批的 -->
+<import src="../../../template/listItem.wxml"></import>
+<import src="../../../template/searchItem.wxml"></import>
+
+<view class="bgr">
+
+	<!-- tab标签 -->
+	<view class="operate">
+		<view class="operate_item {{currentTab == 'pending' ?'active':''}}" data-status="pending" bindtap="switchNav">
+			<view class="operate_text">待我审批的({{pendingNumber}})</view>
+		</view>
+		<view class="operate_item {{currentTab == 'approved' ?'active':''}}" data-status="approved" bindtap="switchNav">
+			<view class="operate_text">我已审批的({{approvedNumber}})</view>
+		</view>
+	</view>
+
+	<!-- 待我审批的 -->
+	<view class="pending" hidden="{{currentTab!=='pending'}}">
+
+		<!-- <view class="search" bindtap="showModal" hover-class="pressed">
+			<view class="search_item">
+				<image class="search_icon" src="../../../../images/search.png"></image>
+				<view class="search_lable">搜索待我审批的</view>
+			</view>
+		</view> -->
+
+		<button class="btn_search" bindtap="showModal">
+			<image class="search_icon" src="../../../../images/search.png"></image>
+			<view class="search_lable">搜索</view>
+		</button>
+
+		<!-- 隐藏功能，一键同意 -->
+		<!-- <button wx:if="{{true}}" bindtap="agreeAll" class="btn btn_bottom">全部同意</button> -->
+
+		<!-- 没有数据 -->
+		<view class="weui-loadmore weui-loadmore_line pengding_loadmore" hidden="{{!pending_noData}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+		</view>
+
+		<!-- 有数据 -->
+		<view wx:for="{{pendingList}}" wx:key="key" wx:for-item="item">
+			<view id="{{index}}" bindtap="toPendingDetailItem">
+				<template data="{{item,icon,index}}" is="item"></template>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 我已审批的 -->
+	<view class="approved" hidden="{{currentTab!=='approved'}}">
+
+		<!-- <view class="search" bindtap="showModal" hover-class="pressed">
+			<view class="search_item">
+				<image class="search_icon" src="../../../../images/search.png"></image>
+				<view class="search_lable">搜索我已审批的</view>
+			</view>
+		</view> -->
+
+		<button class="btn_search" bindtap="showModal">
+			<image class="search_icon" src="../../../../images/search.png"></image>
+			<view class="search_lable">搜索</view>
+		</button>
+
+		<!-- 没有数据 -->
+		<view class="weui-loadmore weui-loadmore_line approved_loadmore" hidden="{{!approved_noData}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+		</view>
+
+		<!-- 有数据 -->
+		<view wx:for="{{approvedList}}" wx:key="key" wx:for-item="item">
+			<view id="{{index}}" bindtap="toApprovedDetailItem">
+				<template data="{{item,icon}}" is="item"></template>
+			</view>
+		</view>
+
+	</view>
+
+</view>
+<template is="searchItem" data="{{searchInfo,showModal}}"></template>

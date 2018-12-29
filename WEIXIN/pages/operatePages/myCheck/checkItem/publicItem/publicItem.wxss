@@ -1,0 +1,12 @@
+/* pages/operatePages/myCheck/publicItem/publicItem.wxss */
+
+page {
+  background: #EFEFF4;
+  max-width: 750rpx;
+}
+
+.check_info{
+  margin-top: 20rpx;
+}
+@import "/lib/reject.wxss";
+

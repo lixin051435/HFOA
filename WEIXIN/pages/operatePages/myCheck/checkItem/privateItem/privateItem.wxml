@@ -1,0 +1,122 @@
+<!-- pages/operatePages/myCheck/vacationItem/vacationItem.wxml -->
+<!-- 审批信息 -->
+<view class="check_info">
+	<!-- 顶部用户信息 -->
+	<view class="user_info">
+		<image class="user_icon" src="{{icon}}"></image>
+		<view class="user_name">{{info.applyMan}}</view>
+		<view class="apply_type">私车公用</view>
+		<!-- <view class="status">{{info.status}}</view> -->
+	</view>
+	<!-- 审批详细信息 -->
+	<view class="check_detail forItemBorder">
+		<view class="other_detail">
+			<view class="label">所属部门：</view>
+			<view class="content">{{info.department}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">用车事由：</view>
+			<view class="content">{{info.reason}}</view>
+		</view>
+			<view class="other_detail">
+			<view class="label">申请时间：</view>
+			<view class="content">{{info.applyTime}}</view>
+		</view>
+		<view class="other_detail" wx:if="{{info.userCarTime != '请选择实际时间' && info.userCarTime != '' && info.userCarTime != null}}">
+			<view class="label">用车时间：</view>
+			<view class="content">{{info.userCarTime}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">是否补录：</view>
+			<view class="content">{{info.ifBefore == 1?'是':'否'}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">
+				<text space="ensp">出 发 地：</text>
+			</view>
+			<view class="content">{{info.beginAddress}}</view>
+		</view>
+		<block wx:for="{{info.middleList}}" wx:key="key">
+			<view class="other_detail">
+				<view class="label">
+					<text space="ensp">途 径 地：</text>
+				</view>
+				<view class="content">{{item.addressName}}</view>
+			</view>
+			<view class="other_detail">
+				<view class="label">
+					<text space="ensp">里 程 数：</text>
+				</view>
+				<view class="content">{{item.addressValue}}km</view>
+			</view>
+		</block>
+		<view class="other_detail">
+			<view class="label">
+				<text space="ensp">目 的 地：</text>
+			</view>
+			<view class="content">{{info.destination}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">
+				<text space="ensp">里 程 数：</text>
+			</view>
+			<view class="content">{{info.endLength}}km</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">计价里程：</view>
+			<view class="content">{{info.countLength}}km</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">核定价格：</view>
+			<view class="content">{{info.sureLength}}元</view>
+		</view>
+    <view class="other_detail">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{info.approveMan}}</view>
+    </view>
+		<view class="other_detail">
+			<view class="label">当前状态：</view>
+			<view class="content status">{{info.status}}</view>
+		</view>
+		<view class="other_detail" hidden="{{info.comment == null }}">
+			<view class="label">驳回理由：</view>
+			<view class="content">{{info.comment}}</view>
+		</view>
+	</view>
+	<block wx:if="{{showButton == 1}}">
+		<button bindtap="agree" class="btn">同意</button>
+		<button bindtap="disagree" class="btn btn_bottom">驳回</button>
+	</block>
+	<button wx:if="{{canUpdate == 1}}" bindtap="toUpdate" class="btn btn_bottom">修改</button>
+	<block wx:if="{{canConfirm == 1}}">
+		<button bindtap="confirm" class="btn">确认</button>
+		<!-- <button bindtap="relinquish" class="btn btn_bottom">放弃</button> -->
+	</block>
+	<block wx:if="{{canFinance == 1}}">
+		<!-- <view class="weui-cells">
+						<view class="weui-cell">*************以下内容请您输入*************</view>
+						<view class="weui-cell">
+								<view class="weui-label">报销日期</view>
+								<picker mode="date" name="applyTime" value="{{info.paidTime}}" data-item="paidTime" bindchange="bindData" class='mpicker'>
+										<view class='mview'>{{info.paidTime}}</view>
+								</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+						</view>
+						<view class="weui-cell weui-cell_input">
+								<view class="weui-cell__hd">
+										<view class="weui-label">
+												<text space="ensp">凭 证 号</text>
+										</view>
+								</view>
+								<view class="weui-cell__bd">
+										<input type="number" class="weui-input" value="{{info.voucherNum}}" data-item="voucherNum" bindinput="bindData" placeholder-style="color:#B2B2B2" placeholder="格式:2017010001" />
+								</view>
+						</view>
+				</view>
+				<button bindtap="financeConfirm" class="btn">财务批准</button> -->
+		<button bindtap="financeRelinquish" class="btn btn_bottom">驳回</button>
+	</block>
+	<button wx:if="{{canRevoke == 1}}" bindtap="revoke" class="btn btn_bottom">撤回</button>
+</view>
+<import src="/pages/template/reject.wxml"></import>
+<template is="rejectBox" data="{{showModal}}"></template>

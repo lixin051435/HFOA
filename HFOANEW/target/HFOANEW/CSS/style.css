@@ -1,0 +1,248 @@
+/*  全局  */
+*{padding:0;font-family: Arial;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+    margin-bottom: 0px;
+}
+html{height:100% ; padding:0;margin:0; }
+body,div,td,th{font-size:12px; line-height:150%;
+}
+body{ margin:0; padding:0;height:100%; background-color:transparent;
+     
+}
+a{color:#666; text-decoration:none}
+a:hover{color:#666; text-decoration:underline}
+a,img, a img{outline:0;}
+img{border-style: none;
+	border-color: inherit;
+	border-width: 0;
+    height: 25px;
+    width: 80px;
+}
+font{font-size:12px;}
+h5{font-size:10px}
+h5{font-size:12px}
+h4{font-size:14px}
+h3{font-size:16px;}
+h2{font-size:18px}
+h1{font-size:20px}
+
+
+.fleft {float:left;}
+.fright {float:right;}
+.cleft{clear:left}
+.cright{clear:right}
+.cboth{clear:both}
+
+
+/*  头部  */
+.bodyTop{background:url(../img/entertainImg/top_bg.png) repeat;height:90px;}
+	.bodyTop  div{background:url(../img/entertainImg/top_left.png) left no-repeat;height:90px; width:100%; region="north" split="true" border="false" style="overflow: hidden; height: 90px;"}
+		.bodyTop div div{background:url(../img/entertainImg/top_right.png) right no-repeat; height:90px; width:100%; text-align:right}
+
+
+
+/*  导航菜单  */
+.nav{ background:url(navbg.png); height:28px;vertical-align:bottom}
+.nav a,.nav{  font-size:12px;}
+.nav td { line-height:28px; text-align:left;vertical-align:bottom}
+.nav input{background:none; border:0;  cursor:pointer} 
+
+
+
+/*  标准表单页面  */
+.openWin{ }
+.main{}
+.form td{ background:#fdfdfe; color:#5a5a5a; vertical-align:middle; line-height:33px;padding-right:5px; 
+	text-align: left; font-size:14px;
+}
+.bottom{ background:url(bottom_bg.jpg); height:35px; border-bottom:1px solid #d3d3d3;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3; margin:0 30px; padding-top:15px; padding-bottom:14px ;border:0px}
+.bottom .btC4{ margin:0 10px}
+.bottom8{height:35px; border-bottom:1px solid #d3d3d3;border-left:1px solid #d3d3d3;border-right:1px solid #d3d3d3; margin:0 30px; padding-top:15px; padding-bottom:14px ;border:0px}
+.bottom8 .btC4{ margin:0 10px}
+.bottom5{ border-style: none;
+    border-color: inherit;
+    border-width: 0px;
+    height:35px;    margin:0 30px;     padding-top:15px;     padding-bottom:14px;    width: 1280px;
+}
+.bottom5 .btC4{ margin:0 10px}
+table.form{ border:30px solid #fff;border-bottom:0;background:#d3d3d3; width:100%;}
+table.form td.title{width:150px; text-indent:9px;text-align:right}
+table.form td.control{text-align:left;vertical-align:middle}
+table.form td span.must{ position:absolute; margin-left:3px; margin-top:4px; color:#FF0000; font-size:12px}
+table.form td span.help{ color:#06C}
+table.form td select{margin-bottom:-1px; margin-top:3px; margin-left:0px;}
+table.form td input,
+table.form td textarea{padding:2px; margin-top:5px;  font-size:12px}
+table.form1 td bottom{}
+table.form1 td bottom.btC4{margin:0 10px}
+table.form td textarea{height:60px; width:99%; margin-bottom:2px; }
+table.form td select.max,
+table.form td input.max{width:100%}
+table.form td select.max50,
+table.form td input.max50{width:50%}
+table.form td input{ background:url(inbg.jpg);
+	height: 22px;  margin-top:-1px
+}
+
+.bottom{ text-align:center;}
+.bottom1{ text-align:right;height:30px;
+    width: 100%;margin-right:15px;border:0px
+}
+bottom2{text-align:left;height:30px;
+}
+
+.form1 td{ background:#fdfdfe; color:#5a5a5a; vertical-align:middle; line-height:25px;padding-right:5px; 
+	 font-size:14px;
+}
+table.form1{ border:20px solid #fff;border-bottom:0;background:#d3d3d3; width:100%;}
+table.form1 td.title{width:150px; text-indent:9px;text-align:right}
+
+table.form1 td span.must{ position:absolute; margin-left:2px; margin-top:2px; color:#FF0000; font-size:12px}
+table.form1 td span.help{ color:#06C}
+
+table.form1 td input,
+table.form1 td textarea{padding:2px; margin-top:5px;  font-size:12px
+}
+table.form1 td textarea{height:40px; width:99%; margin-bottom:2px; }
+table.form1 td select.max,
+table.form1 td input.max{width:100%}
+table.form1 td select.max50,
+table.form1 td input.max50{width:50%}
+table.form1 td input{ background:url(inbg.jpg);
+	height: 22px;  margin-top:0px
+}
+
+
+
+table.form2 td.tdHead{ text-align:center; font-weight:bold}
+.form2 td{  vertical-align:middle; line-height:25px;padding-right:5px; 
+	 font-size:14px;
+}
+table.form2{ border:20px solid #fff;border-bottom:0;width:100%;}
+table.form2 td.title{width:150px; text-indent:9px;text-align:right}
+
+table.form2 td span.must{ position:absolute; margin-left:2px; margin-top:2px;  font-size:12px}
+
+table.form2 td input,
+table.form2 td textarea{padding:2px; margin-top:5px;  font-size:12px
+}
+table.form2 td textarea{height:40px; width:99%; margin-bottom:2px; }
+table.form2 td select.max,
+table.form2 td input.max{width:100%}
+table.form2 td select.max50,
+table.form2 td input.max50{width:50%}
+table.form2 td input{ background:url(inbg.jpg);
+	height: 22px;  margin-top:-1px
+}
+
+
+.form3 td{  background:#fdfdfe; color:#5a5a5a; vertical-align:middle; line-height:25px;padding-right:5px; 
+	 font-size:14px;
+}
+table.form3{ border:20px solid #fff;border-bottom:0;background:#d3d3d3; width:100%;}
+table.form3 td.title{width:150px; text-indent:9px;text-align:right}
+
+table.form3 td span.must{ position:absolute; margin-left:2px; margin-top:2px; color:#FF0000; font-size:12px}
+table.form3 td span.help{ color:#06C}
+
+table.form3 td input,
+table.form3 td textarea{padding:2px; margin-top:5px;  font-size:12px
+}
+table.form3 td textarea{height:40px; width:99%; margin-bottom:2px; }
+table.form3 td select.max,
+table.form3 td input.max{width:100%}
+table.form3 td select.max50,
+table.form3 td input.max50{width:50%}
+table.form3 td input{ background:url(inbg.jpg);
+	height: 22px;  margin-top:-1px
+}
+table.form3 td.tdHead{ background:url(bottom_bg.jpg) top; text-align:center; font-weight:bold}
+
+table.form1 td.tdHead{ background:url(bottom_bg.jpg) top; text-align:center; font-weight:bold}
+table.form td.tdHead{ background:url(bottom_bg.jpg) top; text-align:center; font-weight:bold}
+table.form td.tdBottom{ background:url(bottom_bg.jpg) 22px; text-align:center}
+table.form td.tdBottom input{ background-image: url(../css/bt1.gif);display:-moz-inline-box !important;display: inline-block;-moz-box-align:center !important;-moz-box-pack:center !important;text-align:center; color:#000000; text-decoration:none; font-size:12px;
+background-position:-141px -112px; width:68px;height:21px; line-height:17px; border:0; margin-left:6px}
+
+
+
+.btCx{background: url(bt1.gif) 92 20 ; width:40px;height:22px;line-height:28px; border:none; cursor:pointer;}
+.btC4{background: url(bt1.gif) 0 0; width:69px;height:28px;line-height:28px; border:none; cursor:pointer;}
+.bt1-5
+{background-image: url(../css/bt1.gif);display:-moz-inline-box !important;display: inline-block;-moz-box-align:center !important;-moz-box-pack:center !important;text-align:center; color:#000000; text-decoration:none; font-size:12px;
+background-position:-94px -112px; width:47px;height:21px; line-height:21px;}
+	.bt1-5{}
+			.bt1-5:hover{background-position:-94px -133px; color: #FF3300; }
+
+table.form td input.bt1-6{ background: url(bt1.gif) 0 0; width:69px;height:28px;line-height:28px; border:none; cursor:pointer;}
+table.form td input.button
+{cursor:pointer;font-size:12px;height:22px;border:1px solid #A5CBE7;border-bottom:#689eb5 solid 1px;border-right:#689eb5 solid 1px;background:#dcf6ff url(images/buttonSkinB_A.gif) 0px 4px repeat-x;color:#016586;padding:2px 2px 0 2px;margin:0 3px -1px 0;line-height:16px; }
+
+
+
+.CheckBoxListProject{ height:122px; width:263px; overflow: auto; border: 2px inset ; margin:4px 0}
+.CheckBoxListProject table td { padding:1px;}
+.list{ background:#ccc}
+table.list{border:30px solid #fff; border-bottom:0;background:#d3d3d3; width:100%;border-top:0}
+
+table.list td.tdHead{ background:url(bottom_bg.jpg) top; text-align:center; font-weight:bold;padding-left:5px; font-size:14px}
+table.list th{font-weight:bold;padding-left:4px; font-size:14px}
+
+.list td{ height:33px; color:#5a5a5a; vertical-align:middle; line-height:33px;padding-right:5px; padding-left:5px; font-size:14px}
+table.list td.tdBottom{ background:url(bottom_bg.jpg) 22px; text-align:left; padding-left:11px}
+
+
+
+
+			
+a.bt1-1,
+a.bt1-1a,
+a.bt1-1b,
+a.bt1-2,
+a.bt1-2a,
+a.bt1-2b,
+.bt1-3,
+.bt1-3a,
+.bt1-4,
+.bt1-4a,
+.bt1-5
+{background-image: url(../css/bt1.gif);display:-moz-inline-box !important;display: inline-block;-moz-box-align:center !important;-moz-box-pack:center !important;text-align:center; color:#000000; text-decoration:none; font-size:12px }
+	a.bt1-1{background-position:0 0; width:69px;height:28px;line-height:28px;}
+			a.bt1-1:hover{background-position:0 -28px; color: #FF3300; }
+	a.bt1-1a{background-position:-69px 0; width:98px;height:28px; line-height:28px;}
+			a.bt1-1a:hover{background-position:-69px -28px; color: #FF3300; }
+	a.bt1-1b{background-position:-167px 0; width:114px;height:28px; line-height:28px;}
+			a.bt1-1b:hover{background-position:-167px -28px; color: #FF3300; }
+	a.bt1-2{background-position:0 -56px; width:69px;height:28px;line-height:28px;}
+			a.bt1-2:hover{background-position:0 -84px; color: #FF3300; }
+	a.bt1-2a{background-position:-69px -56px; width:98px;height:28px; line-height:28px;}
+			a.bt1-2a:hover{background-position:-69px -84px; color: #FF3300; }
+	a.bt1-2b{background-position:-167px -56px; width:114px;height:28px; line-height:28px;}
+			a.bt1-2b:hover{background-position:-167px -84px; color: #FF3300; }
+	.bt1-3{background-position:-0px -112px; width:47px;height:21px; line-height:21px;border:none; cursor:pointer}
+			a.bt1-3:hover{background-position:-0px -133px; color: #FF3300; }
+	.bt1-3a{background-position:-47px -112px; width:47px;height:21px; line-height:21px; border:none; cursor:pointer}
+			a.bt1-3a:hover{background-position:-47px -133px; color: #FF3300; }
+	.bt1-4{background-position:-0px -154px; width:69px;height:21px; line-height:21px;border:none; cursor:pointe}
+			a.bt1-4:hover{background-position:-0px -175px; color: #FF3300; }
+	.bt1-4a{background-position:-69px -154px; width:117px;height:21px; line-height:21px;border:none; cursor:pointe}
+			a.bt1-4a:hover{background-position:-69px -175px; color: #FF3300; }
+	.bt1-5{background-position:-94px -112px; width:47px;height:21px; line-height:21px;}
+			a.bt1-5:hover{background-position:-94px -133px; color: #FF3300; }
+			
+			
+			
+/*  中间部分的样式  */
+.middle_table{ width:100%; background:#e7faff; height:100%; }
+.middle_table .left{ border:1px solid #a8c4d3; background:#fff; padding:7px; width:200px ; vertical-align:top}
+.middle_table .right{ border:1px solid #a8c4d3; background:#fff; padding:7px; vertical-align:top}
+#footer div{ background:url(bottom.png);text-align:right; }
+#footer{ background:url(bottom.png); border-top:1px solid #333}
+#footer a{ color:#fff}
+
+.ButtonLogout{ background: url(../css/注销按钮-正常.png) ; height:100%}
+
+
+.

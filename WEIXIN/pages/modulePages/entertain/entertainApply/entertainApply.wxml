@@ -1,0 +1,246 @@
+<!-- pages/travelmanagement/travelApply/travelApply.wxml -->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_input" hidden="true">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">审批编号</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="departmentId" bindinput="inputedit" data-obj="info" data-item="number" value="{{info.number}}"
+            placeholder-style="color:#B2B2B2" placeholder='请输入部门编号' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">接 待 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="manager" bindinput="inputedit" data-obj="info" data-item="manager" value="{{info.manager}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">所属部门</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="department"  bindinput="inputedit" data-obj="info" data-item="department"
+            value="{{info.department}}" placeholder-style="color:#B2B2B2" placeholder='请填写部门' disabled="{{true}}" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">招待单位</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="entertainUnit"  bindinput="inputedit" data-obj="info" data-item="entertainObject"
+            value="{{info.entertainObject}}" placeholder-style="color:#B2B2B2" placeholder='请填写招待单位' />
+        </view>
+        <!-- 遮罩层-当用户点击遮罩层时隐藏匹配框 -->
+        <view class="company_mask" wx:if="{{isShowCompanyMask}}" bindtap="hideCompanyMask"></view>
+        <!-- 匹配框 -->
+        <scroll-view scroll-y="true" class="scrollview" wx:if="{{showInputView}}">
+          <view wx:for="{{bindSource}}" wx:key="key">
+            <view class="itemview" data-value="{{item}}" bindtap="setEntertainObject">{{item}}</view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd"> 
+          <view class="weui-label rui-justify">
+            <text space="ensp">招待事由</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="cause" bindinput="inputedit" data-obj="info" data-item="entertainReason"
+            value="{{info.entertainReason}}" placeholder-style="color:#B2B2B2" placeholder='请输入事由' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">招待人数</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="entertainPeopleNumber" bindinput="inputedit" data-obj="info"
+            data-item="entertainNum" value="{{info.entertainNum}}" placeholder-style="color:#B2B2B2" placeholder='请输入招待人数' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">陪同人数</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="accompanyPeopleNumber" bindinput="inputedit" data-obj="info"
+            data-item="accompanyNum" value="{{info.accompanyNum}}" placeholder-style="color:#B2B2B2" placeholder='请输入陪同人数' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">人均预算</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="averageBudget" bindinput="inputedit" data-obj="info" data-item="perBudget"
+            value="{{info.perBudget}}" placeholder-style="color:#B2B2B2" placeholder='请输入人均预算' />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">总 预 算</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="totalBudget" bindinput="inputedit" data-obj="info" data-item="masterBudget"
+            value="{{info.masterBudget}}" disabled="disabled" placeholder-style="color:#B2B2B2" placeholder="不必填写此项" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">招待类别</view>
+        <picker name="entertainCategory" value="{{info.entertainCategory}}" bindchange="setEntertainCategory" class='mpicker'
+          data-obj="info" data-item="entertainCategory" range='{{entertainCategories}}'>
+          <view class='mview' style="color:{{info.entertainCategory == '请选择招待类别'?'#B2B2B2':'#37383B'}}">
+            {{info.entertainCategory}}
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">
+          <text space="ensp">酒水申请</text>
+        </view>
+        <radio-group name="ifWine" id="ifWine" bindchange="radioChange" data-item="ifWine">
+          <label>
+            <radio class="mradio" value="1" color="#2A98BD" />
+            是
+          </label>
+          <label>
+            <radio class="mradio" value="0" color="#2A98BD" checked="true" />
+            否
+          </label>
+        </radio-group>
+      </view>
+      <view wx:for="{{info.wines}}" wx:key="key" class="forItemBorder">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text space="ensp">酒水类型</text>
+            </view>
+          </view>
+          <picker mode="multiSelector" id="wineType-{{index}}" bindcolumnchange="updateWineColumn" bindchange="setWineCategory"
+            class='mpicker' range='{{item.wineTypes}}'>
+            <view class='mview' style="color:{{item.category == '请选择酒水类型'?'#B2B2B2':'#37383B'}}">
+              {{item.category+ " " +item.name}}
+            </view>
+          </picker>
+          <view class='weui-cell__ft arrow_right'></view>
+        </view>
+
+        <view wx:if="{{item.name == '其他'|| item.name == '红酒'}}" class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text space="ensp">酒水名称</text>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="text" class="weui-input" bindinput="setCustomWineName" id="wineNumber-{{index}}"
+              placeholder="请填写酒水名称" placeholder-style="color:#B2B2B2" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text space="ensp">酒水数量</text>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="number" class="weui-input" name="totalBudget" bindinput="setWineNumber" id="wineNumber-{{index}}"
+              placeholder="请填写酒水数量" placeholder-style="color:#B2B2B2" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell" wx:if="{{info.ifWine == '1'}}">
+        <button class="btn" bindtap='addItem' style='width:50%;margin-top: 0;'>增加酒水</button>
+        <button class="btn" bindtap='removeItem' style='width:50%;margin-top: 0;margin-left:5rpx;'>
+          删除酒水
+        </button>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">
+          <text space="ensp">是否补录</text>
+        </view>
+        <radio-group name="ifBefore" bindchange="radioChange" data-item="ifBefore">
+          <label>
+            <radio value="1" class="mradio" color="#2A98BD" />
+            是
+          </label>
+          <label>
+            <radio value="0" class="mradio" checked="true" color="#2A98BD" />
+            否
+          </label>
+        </radio-group>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">申请日期</view>
+        <picker disabled="{{true}}" mode="date" name="applyTime" value="{{info.applyTime}}" bindchange="bindApplyTime" class='mpicker'>
+          <view class='mview'>{{info.applyTime}}</view>
+        </picker>
+        <!-- <view class='weui-cell__ft arrow_right'></view> -->
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">招待日期</view>
+        <picker mode="date" name="beforeDate" value="{{info.beforeDate}}" bindchange="bindBeforeTime" class='mpicker'>
+          <view class='mview' style="color:{{info.beforeDate == '请选择招待日期'?'#B2B2B2':'#37383B'}}">
+            {{info.beforeDate}}
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">审 批 人</text>
+          </view>
+        </view>
+        <picker name="approver" value="{{info.approver}}" bindchange="setApproveMan" class='mpicker' data-obj="info"
+          data-item="approver" range='{{approvers}}'>
+          <view>
+            <view class='mview'>{{info.approver}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <!-- <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">备注信息</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="remark" bindinput="inputedit" data-obj="info" data-item="remark" value="{{info.remark}}"
+            placeholder-style="color:#B2B2B2" placeholder='请输入备注信息' />
+        </view>
+      </view> -->
+    </view>
+    <button formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+  </form>
+</view>

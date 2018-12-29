@@ -1,0 +1,69 @@
+<!-- 我的->财务处理->点击某人的私车  -->
+<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+<view class="border_top"></view>
+<view wx:for="{{info.items}}" wx:key="key" wx:for-item="item">
+	<view id="{{index}}" bindtap="toDetail">
+		<template data="{{item,icon}}" is="private"></template>
+	</view>
+</view>
+<view class="weui-cells">
+	<view class="weui-cell">
+		<view class="weui-label">报销日期</view>
+		<picker disabled="{{showButton < 0}}" mode="date" name="applyTime" value="{{info.paidTime}}" data-item="paidTime"
+		 bindchange="bindData" class='mpicker'>
+			<view class='mview'>{{info.paidTime}}</view>
+		</picker>
+		<view wx:if="{{showButton > 0}}" class='weui-cell__ft arrow_right'></view>
+	</view>
+	<view class="weui-cell weui-cell_input">
+		<view class="weui-cell__hd">
+			<view class="weui-label">
+				<text space="ensp">凭 证 号</text>
+			</view>
+		</view>
+		<view class="weui-cell__bd">
+			<input type="digit" disabled="{{showButton < 0}}" class="weui-input" value="{{info.voucherNum}}" data-item="voucherNum"
+			 bindinput="bindData" placeholder-style="color:#B2B2B2" placeholder="格式:2017010001" />
+		</view>
+	</view>
+</view>
+<button wx:if="{{showButton > 0}}" bindtap="financeConfirm" class="btn pressed_btn">通过</button>
+<!-- <button bindtap="financeReject" class="btn pressed_btn">全部驳回</button> -->
+<!-- 私车 -->
+<template name="private">
+
+	<!-- 顶部用户信息 -->
+	<view class="user_info" style="width:0px;">
+		<image class="user_icon" src="{{icon}}"></image>
+	</view>
+
+	<view class="check_detail forItemBorder">
+		<view class="other_detail">
+			<view class="label">出发地点：</view>
+			<view class="content">{{item.beginAddress}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">目的地点：</view>
+			<view class="content">{{item.destination}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">金额总数：</view>
+			<view class="content">{{item.sureLength}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">用车事由：</view>
+			<view class="content">{{item.reason}}</view>
+		</view>
+
+		<view class="other_detail">
+			<view class="label">申请时间：</view>
+			<view class="content">{{item.applyTime}}</view>
+		</view>
+		<view class="other_detail">
+			<view class="label">当前状态</view>
+			<view class="content">{{item.status}}</view>
+		</view>
+
+	</view>
+
+</template>

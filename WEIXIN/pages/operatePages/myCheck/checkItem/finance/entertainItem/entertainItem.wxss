@@ -1,0 +1,9 @@
+@import "/lib/reject.wxss";
+
+page {
+    max-width: 750rpx;
+}
+
+.mpicker {
+    width: 440rpx;
+}

@@ -1,0 +1,373 @@
+<!-- 搜索 -->
+<template name="searchItem">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-content">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker disabled="{{searchInfo.cannotEdit}}" class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询类别</view>
+				<picker class="search_picker" range="{{searchInfo.typeList}}" value="{{searchInfo.type}}" bindchange="setType">
+					<view class='picker_view'>{{searchInfo.type}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" bindinput="setApplyMan" disabled="{{searchInfo.cannotEdit}}" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+<!-- 差旅查询 -->
+<template name="travelSearchItem">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog modal-dialog_four" wx:if="{{showModal}}">
+		<view class="modal-content modal-content_four">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" disabled="{{searchInfo.IamAverage}}" bindinput="setApplyMan" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+<!-- 用印查询 -->
+<template name="sealSearchItem">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-content">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">用印类型</view>
+				<picker class="search_picker" range="{{searchInfo.nameList}}" value="{{searchInfo.sealName}}" bindchange="setSealName">
+					<view class='picker_view'>{{searchInfo.sealName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" disabled="{{searchInfo.IamAverage}}" bindinput="setApplyMan" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+<!-- 公车查询 -->
+<template name="publicSearchItem">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-content">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label"><text space="ensp">车 牌 号</text></view>
+				<picker class="search_picker" range="{{searchInfo.carNames}}" value="{{searchInfo.carName}}" bindchange="setCarName">
+					<view class="picker_view">{{searchInfo.carName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" disabled="{{searchInfo.IamAverage}}" bindinput="setApplyMan" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+<!-- 我的->抄送我的->搜索  -->
+<template name="carbonSearchItem">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog modal-dialog_four" wx:if="{{showModal}}">
+		<view class="modal-content modal-content_four">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<!-- <view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker disabled="{{searchInfo.cannotEdit}}" class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view> -->
+
+			<view class="content_view">
+				<view class="search_label">查询类别</view>
+				<picker class="search_picker" disabled="{{true}}" range="{{searchInfo.typeList}}" value="{{searchInfo.type}}"
+				 bindchange="setType">
+					<view class='picker_view'>{{searchInfo.type}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" bindinput="setApplyMan" disabled="{{searchInfo.cannotEdit}}" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+
+<!-- 用印处理查询 -->
+<template name="sealSearchItemHandle">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-content">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">用印类型</view>
+				<picker class="search_picker" range="{{searchInfo.objectList}}" range-key="gzkind" value="{{searchInfo.sealName}}" bindchange="setSealName">
+					<view class='picker_view'>{{searchInfo.sealName}}</view>
+					<view class='picker_view' style="display: none">{{searchInfo.gzId}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" bindinput="setApplyMan" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>
+
+<!-- 公车处理查询 -->
+<template name="publicSearchItemHandle">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-content">
+
+			<view class="content_view">
+				<view class="search_label">开始日期</view>
+				<picker class="search_picker" mode="date" name="beginTime" value="{{searchInfo.beginTime}}" data-item="beginTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.beginTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">结束日期</view>
+				<picker class="search_picker" mode="date" name="endTime" value="{{searchInfo.endTime}}" data-item="endTime"
+				 bindchange="bindTime">
+					<view class='picker_view'>{{searchInfo.endTime}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label">查询部门</view>
+				<picker class="search_picker" range="{{searchInfo.departmentNameList}}" value="{{searchInfo.departmentName}}"
+				 bindchange="setDepartment">
+					<view class='picker_view'>{{searchInfo.departmentName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view">
+				<view class="search_label"><text space="ensp">车 牌 号</text></view>
+				<picker class="search_picker" range="{{searchInfo.carNames}}" value="{{searchInfo.carName}}" bindchange="setCarName">
+					<view class="picker_view">{{searchInfo.carName}}</view>
+				</picker>
+			</view>
+
+			<view class="content_view input_view">
+				<view class="search_label input_view_label"><text space="ensp">申 请 人</text></view>
+				<input class="search_input input_view_input" bindinput="setApplyMan" data-item="applyMan"
+				 value="{{searchInfo.applyMan}}" placeholder-style="color:#B2B2B2" placeholder="请输入申请人" />
+			</view>
+
+		</view>
+		<!-- 查询-操作按钮 -->
+		<view class="modal-footer">
+			<button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+			<button class="btn btn-confirm" bindtap="search" data-status="confirm">确定</button>
+		</view>
+	</view>
+</template>

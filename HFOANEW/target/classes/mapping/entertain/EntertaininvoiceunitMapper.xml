@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.entertain.EntertaininvoiceunitMapper">
+  <!-- <resultMap id="BaseResultMap" type="com.hfoa.entity.entertain.Entertainapplyinfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Leave_ID" jdbcType="VARCHAR" property="leave_id" />
+    <result column="BegingTime" jdbcType="VARCHAR" property="begingTime" />
+    <result column="EndTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="Days" jdbcType="VARCHAR" property="days" />
+    <result column="State" jdbcType="VARCHAR" property="state"/>
+    <result column="SFYC" jdbcType="VARCHAR" property="sfyc"/>
+  </resultMap> -->
+  
+  <select id="getInvoiceUnitType" resultType="com.hfoa.entity.entertain.Entertaininvoiceunit">
+  	select * from B_EntertainInvoiceUnit ORDER BY convert(InvoiceUnit USING gbk)
+  </select>
+  
+  <insert id="insertUnitType" parameterType="com.hfoa.entity.entertain.Entertaininvoiceunit">
+  insert into B_EntertainInvoiceUnit
+  	<trim prefix="(" suffix=")" suffixOverrides=",">
+  		<if test="id!=null">
+  			ID,
+  		</if>
+  		<if test="invoiceUnit!=null">
+  			InvoiceUnit,
+  		</if>
+  	</trim>
+  	<trim prefix="values (" suffix=")" suffixOverrides=",">
+  		<if test="id!=null">
+  			#{id,jdbcType=VARCHAR},
+  		</if>
+  		<if test="invoiceUnit!=null">
+  			#{invoiceUnit,jdbcType=VARCHAR},
+  		</if>
+  	</trim>
+  </insert>
+  
+
+</mapper>

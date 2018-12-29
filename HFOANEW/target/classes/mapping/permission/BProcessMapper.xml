@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.permission.BProcessMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.permission.BProcess" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="processname" property="processname" jdbcType="VARCHAR" />
+    <result column="processurl" property="processurl" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, processname, processurl, parentId
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_process
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from b_process
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hfoa.entity.permission.BProcess" >
+    insert into b_process (id, processname, processurl, 
+      parentId)
+    values (#{id,jdbcType=INTEGER}, #{processname,jdbcType=VARCHAR}, #{processurl,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hfoa.entity.permission.BProcess" >
+    insert into b_process
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+<!--       <if test="id != null" > -->
+<!--         id, -->
+<!--       </if> -->
+      <if test="processname != null" >
+        processname,
+      </if>
+      <if test="processurl != null" >
+        processurl,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+<!--       <if test="id != null" > -->
+<!--         #{id,jdbcType=INTEGER}, -->
+<!--       </if> -->
+      <if test="processname != null" >
+        #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processurl != null" >
+        #{processurl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hfoa.entity.permission.BProcess" >
+    update b_process
+    <set >
+      <if test="processname != null" >
+        processname = #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processurl != null" >
+        processurl = #{processurl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getBySql" resultMap="BaseResultMap" parameterType="String" >
+   ${result}
+  </select>
+  <select id="getCountBysql" resultType="java.lang.Integer" parameterType="String" >
+   ${countResult}
+  </select>
+</mapper>

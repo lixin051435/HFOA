@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+
+
+    <beans xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:aop="http://www.springframework.org/schema/aop" 
+    	xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                            http://www.springframework.org/schema/context    
+                            http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                            http://www.springframework.org/schema/mvc    
+                            http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                            http://www.springframework.org/schema/tx 
+                            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+                            http://www.springframework.org/schema/aop 
+                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">  
+ 		
+ 		
+ 		<!-- 通过annotation-driven可以替代下边的处理器映射器和适配器 .放在这里为了避免初始化时的重复加载。-->
+ 		<mvc:annotation-driven />
+ 		<!-- modeler需要自动注入ObjectMapper 其实是jackon对象完成json操作-->
+    	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>	
+        <!-- 引入配置文件   
+        <bean id="propertyConfigurer"  
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+            <property name="location" value="classpath:jdbc.properties" />  
+        </bean> -->
+         <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	    	<property name="locations">
+	    		<list>
+	    			<value>classpath:jdbc.properties</value>
+	    		</list>
+	    	</property>
+   		</bean>
+         <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        	<property name="properties" ref="configProperties"/>
+        </bean>  
+       <!-- 数据源 org.apache.commons.dbcp.BasicDataSource com.alibaba.druid.pool.DruidDataSource -->
+	    <bean id="dataSourceOne" class="com.alibaba.druid.pool.DruidDataSource">
+	        <property name="driverClassName" value="${driver}" />
+	        <property name="url" value="${url}" />
+	        <property name="username" value="${username}" />
+	        <property name="password" value="${password}" />
+	        <property name="maxActive" value="${maxActive}" />
+	        <property name="minIdle" value="${maxIdle}" />
+	        <property name="maxWait" value="${maxWait}" /> 
+	        <property name="validationQuery"><value>SELECT 1</value></property> 
+	        <property name="testOnBorrow" value="false" />
+	        <property name="testOnReturn" value="false" />
+	        <property name="testWhileIdle" value="true" />
+	        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+	        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+	        <property name="minEvictableIdleTimeMillis" value="25200000" />
+	        <!-- 打开removeAbandoned功能 -->
+	        <property name="removeAbandoned" value="true" />
+	        <!-- 1800秒，也就是30分钟 -->
+	        <property name="removeAbandonedTimeout" value="1800" />
+	        <!-- 关闭abanded连接时输出错误日志 -->
+	        <property name="logAbandoned" value="true" />
+	        <!-- 监控数据库 -->
+	        <!-- <property name="filters" value="stat" /> -->
+	        <property name="filters" value="mergeStat" />
+	    </bean>
+	    
+	     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+	   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+ 	     <property name="dataSource" ref="dataSourceOne" />  
+ 	     <property name="configLocation" value="classpath:mybatis-config.xml"></property> 
+         <!-- 自动扫描mapping.xml文件 -->  
+         <property name="mapperLocations" value="classpath:mapping/**/*.xml">
+         
+         
+         </property>
+		 <property name="plugins"><!-- pageHelper实现分页的功能 -->
+		    <array>
+		      <bean class="com.github.pagehelper.PageHelper">
+		        <property name="properties">
+		        <value>dialect=mysql
+		        		rowBoundsWithCount=true<!-- 使用rowbounds分页会进行count查询 -->
+		       			pageSizeZero=true
+		        		reasonable=true<!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+		        </value>
+		        </property>
+		      </bean>
+		    </array>
+		 </property>
+		</bean> 
+	     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+	     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+	         <property name="basePackage" value="com.hfoa.dao" />  
+	         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+	     </bean>  
+     	
+     	 <bean id="travelExpessService" class="com.hfoa.service.impl.travelApplyImple.ApplyExpenseServiceImpl"/>     
+   		<tx:annotation-driven transaction-manager="transactionManager"/>    
+   			<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
+   			<property name="dataSource" ref="dataSourceOne"/>    
+  		</bean>    
+     
+     <bean id="uuidGenerator" class="org.activiti.engine.impl.persistence.StrongUuidGenerator" >	</bean>
+     
+        <!-- activiti begin -->
+		<!-- 配置流程引擎配置类 注意：这是用 org.activiti.spring.SpringProcessEngineConfiguration 这个类-->
+		<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+			<property name="dataSource" ref="dataSourceOne"/>
+			<property name="transactionManager" ref="transactionManager" />
+			<property name="databaseSchemaUpdate" value="true" /><!-- 如果数据库表不存在，则创建 -->
+			<property name="jobExecutorActivate" value="false" />
+			<property name="createDiagramOnDeploy" value="true" /> <!-- 是否生成流程定义图片 -->
+			<property name="idGenerator" ref="uuidGenerator"></property>
+			<!-- 生成流程图的字体不设置会乱码 -->
+			<property name="activityFontName" value="宋体"/>
+			<property name="labelFontName" value="宋体"/>
+		</bean>
+		
+		<!-- 配置流程引擎工厂 -->
+		<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+			<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+		</bean>
+		
+		
+    
+		
+		<!-- 配置注入一些服务 -->
+		<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+		<bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+		<bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
+		<bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
+		<bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
+		<bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService" />
+		<bean id="formService" factory-bean="processEngine" factory-method="getFormService" />
+		 <!--activiti end -->
+</beans>  
+
+    
+    

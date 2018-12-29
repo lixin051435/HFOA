@@ -1,0 +1,10 @@
+/* pages/modulePages/public/publicApply/publicApply.wxss */
+
+page {
+  max-width: 750rpx;
+  background-color: #F1EFF6;
+}
+
+.form_margin_top{
+  margin-top: 20rpx !important;
+}

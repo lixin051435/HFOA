@@ -1,0 +1,92 @@
+<!-- pages/operatePages/myCheck/vacationItem/vacationItem.wxml -->
+<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+<!-- 审批信息 -->
+<view class="check_info">
+  <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_name">{{item.applyMan}}</view>
+    <view class="apply_type">年假申请</view>
+    <!-- <view class="status">{{item.status}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{item.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请时间：</view>
+      <view class="content">{{item.applyTime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">请假类型：</view>
+      <view class="content">年假</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">休假次数：</view>
+      <view class="content">{{item.leaver.length}}次</view>
+    </view>
+    <view wx:for="{{item.leaver}}" wx:key="key" wx:for-item="leaverItem">
+      <view class="other_detail">
+        <view class="label">开始时间：</view>
+        <view class="content">{{leaverItem.beingTime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">结束时间：</view>
+        <view class="content">{{leaverItem.endTime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">休假天数：</view>
+        <view class="content">{{leaverItem.days}}天</view>
+      </view>
+    </view>
+    <view class="other_detail">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{item.approveMan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">当前状态：</view>
+      <view class="content status">{{item.status}}</view>
+    </view>
+    <view wx:if="{{item.comment != undefined && item.comment != null}}" class="other_detail">
+      <view class="label">驳回原因：</view>
+      <view class="content">{{item.comment}}</view>
+    </view>
+  </view>
+  <block wx:if="{{showButton == 1 && sfyc == 0}}">
+    <button bindtap="agree" class="btn">同意</button>
+    <button bindtap="disagree" class="btn">驳回</button>
+    <button bindtap="nextYear" class="btn">转到第二年</button>
+    <button bindtap="cash" class="btn btn_bottom">现金补偿</button>
+  </block>
+  <block wx:if="{{showButton == 1 && sfyc == 1}}">
+    <button bindtap="nextYearYC" class="btn">转到第二年</button>
+    <button bindtap="giveupYC" class="btn btn_bottom">放弃</button>
+  </block>
+  <block wx:if="{{canConfirm == 1}}">
+    <button bindtap="confirmVacation" class="btn">确认休假</button>
+    <button bindtap="giveupVacation" class="btn btn_bottom">放弃休假</button>
+  </block>
+  <button wx:if="{{canUpdate == 1}}" bindtap="toUpdate" class="btn btn_bottom">修改</button>
+  <button wx:if="{{canRevoke == 1}}" bindtap="toRevoke" class="btn btn_bottom">撤回</button>
+</view>
+
+<!-- 驳回-遮罩层 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 驳回-弹出框 -->
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="weui-cells__title">驳回原因</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea modify-textarea" bindinput="setRejectReason" placeholder="请输入驳回原因" value="{{rejectReason}}" />
+        </view>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+    <button class="btn btn-confirm" bindtap="confirmDisagree" data-status="confirmDisagree">确定</button>
+  </view>
+</view>

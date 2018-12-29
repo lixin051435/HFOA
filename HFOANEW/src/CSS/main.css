@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+.topleft
+{
+	
+	background:url(images/top-left.png) left no-repeat;
+	height:90px; width:100%; 
+	region:north;
+	split:true;
+	border:false;
+    overflow: hidden;
+	height: 90px;
+}
+.topright
+{
+	background:url(images/top-right.png) right no-repeat; 
+	height:90px; 
+	width:100%; 
+	text-align:right 
+}
+.topmiddle
+{
+	background:url(images/top-middle.png);
+	height:90px;
+	min-width:994px;
+}
+.logout
+{
+	border:none;
+	background-color:white;
+}

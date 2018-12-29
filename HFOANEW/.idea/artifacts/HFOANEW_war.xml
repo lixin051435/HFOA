@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HFOANEW:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="HFOANEW.war">
+      <element id="artifact" artifact-name="HFOANEW:war exploded" />
+    </root>
+  </artifact>
+</component>

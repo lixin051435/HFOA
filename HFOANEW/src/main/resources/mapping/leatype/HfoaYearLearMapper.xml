@@ -1,0 +1,284 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.lear.YearLearMapper">
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.vacation.LearYear">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="User_Id" jdbcType="VARCHAR" property="user_id" />
+    <result column="Department" jdbcType="VARCHAR" property="department" />
+    <result column="ApplyMan" jdbcType="VARCHAR" property="applyMan" />
+    <result column="Vacation" jdbcType="VARCHAR" property="vacation" />
+    <result column="ApplyTime" jdbcType="VARCHAR" property="applyTime" />
+    <result column="LeaveType" jdbcType="VARCHAR" property="leaveType" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+    <result column="Confirm" jdbcType="VARCHAR" property="confirm" />
+    <result column="Frequency" jdbcType="VARCHAR" property="frequency"/>
+    <result column="Remarks" jdbcType="CHAR" property="remarks" />
+    <result column="ApproveMan" jdbcType="VARCHAR" property="approveMan" />
+    <result column="State" jdbcType="VARCHAR" property="state"/>
+    <result column="OpenId" jdbcType="VARCHAR" property="openId"/>
+  </resultMap>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from b_leave
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+ 
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.hfoa.entity.vacation.LearYear">
+    insert into b_leave
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="id != null">ID,</if>
+      <if test="user_id != null">User_Id,</if>
+      <if test="department != null">Department,</if>
+      <if test="applyMan != null">ApplyMan,</if>
+      <if test="vacation != null">Vacation,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="leaveType != null">LeaveType,</if>
+      <if test="frequency != null">Frequency,</if>
+      <if test="status != null">Status,</if>
+      <if test="confirm != null">Confirm,</if>
+      <if test="remarks != null">Remarks,</if>
+      <if test="approveMan != null">ApproveMan,</if>
+      <if test="state != null">State,</if>
+      <if test="openId != null">OpenId,</if>
+      <if test="approveManOpenId != null">ApproveManOpenId,</if>
+      <if test="sfyc !=null">Sfyc,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="applyMan != null">
+        #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="vacation != null">
+        #{vacation,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=CHAR},
+      </if>
+      <if test="leaveType != null">
+        #{leaveType,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+      	#{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm != null">
+        #{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveManOpenId!=null">
+      	#{approveManOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyc!=null">
+      	#{sfyc,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.hfoa.entity.vacation.LearYear">
+    update b_leave
+   <trim prefix="set" suffixOverrides=",">  
+       <if test ="user_id != null">
+        User_Id = #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test ="department != null">
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test ="applyMan != null">
+        ApplyMan = #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test ="vacation != null">
+        Vacation = #{vacation,jdbcType=VARCHAR},
+      </if>
+      <if test ="applyTime != null">
+        ApplyTime = #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test ="leaveType != null">
+        LeaveType = #{leaveType,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+      	Frequency = #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm != null">
+        Confirm = #{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        ApproveMan = #{approveMan,jdbcType=VARCHAR},
+      </if>
+       <if test="approveManOpenId!=null">
+      	ApproveManOpenId = #{approveManOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+      	State = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+      	OpenId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyc!=null">
+      	Sfyc = #{sfyc,jdbcType=VARCHAR}
+      </if>
+      </trim>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+   <select id="findById" parameterType="java.lang.String" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave  
+  	where ID = #{id,jdbcType=VARCHAR}
+  </select> 
+
+  <select id = "findUserID" parameterType = "java.lang.String" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave where State = '0' and  OpenId = #{openId,jdbcType=VARCHAR}
+  </select>
+  <!-- 查询某个人可以调整的年假 -->
+  <select id="getUpdate"  resultType="map">
+  	select t.ID id,t.User_Id user_id,t.Department department,t.ApplyMan applyMan,t.ApplyTime applyTime,t.LeaveType leaveType,
+  	t.Status status,t.Remarks remarks,t.ApproveMan approveMan,t.Frequency frequency,t.OpenId openId,t.ApproveManOpenId approveManOpenId,
+  	 t1.ID timeId,
+  	t1.Leave_ID levae_id,t1.BeingTime beingTime,t1.EndTime endTime,t1.Days days
+  	 from b_leave t join b_leave_time t1 where t1.State='0' and t.OpenId = #{0} and t1.Leave_ID = #{1} order by beingTime asc
+  </select>
+  
+  <!-- 查看所有有效的年假 -->
+  <select id="listYear" parameterType="java.lang.String" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave where Status ='1' and  State = '0' and Sfyc = '1' and ApproveManOpenId = #{approveManOpenId,jdbcType=VARCHAR} 
+  </select>
+  
+  <!-- 查看待执行年假 -->
+  <select id="executed"  resultType="map">
+  	select t.ID id,t.User_Id user_id,t.Department department,t.ApplyMan applyMan,t.ApplyTime applyTime,t.LeaveType leaveType,
+  	t.Status status,t.Remarks remarks,t.ApproveMan approveMan,t.Frequency frequency,t.OpenId openId,t.ApproveManOpenId approveManOpenId,
+  	 t1.ID timeId,t1.Leave_ID levae_id,t1.BeingTime beingTime,t1.EndTime endTime,t1.Days days
+  	 from b_leave t join b_leave_time t1 where t1.State='0' and t.State='0'  and t.OpenId = #{0} and t1.Leave_ID = #{1}
+  	 order by beingTime asc
+  
+  </select>
+  <!-- 查看所有待执行年假 -->
+  <select id="listExecuted" resultType="map">
+  	select t.ID id,t.User_Id user_id,t.Department department,t.ApplyMan applyMan,t.ApplyTime applyTime,t.LeaveType leaveType,
+  	t.Status status,t.Remarks remarks,t.ApproveMan approveMan,t.Frequency frequency,t.OpenId openId,t.ApproveManOpenId approveManOpenId,
+  	 t1.ID timeId,
+  	t1.Leave_ID levae_id,t1.BeingTime beingTime,t1.EndTime endTime,t1.Days days
+  	 from b_leave t join b_leave_time t1 where t1.State='0' and t.Status = '3'
+  
+  </select>
+  
+  <select id="selectNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	select count(*) from b_leave where Status ='1' and  State = '0' and ApproveManOpenId = #{approveManOpenId,jdbcType=VARCHAR}
+  </select>
+  
+  
+ <!--  <update id="updateApply" parameter="java.lang.String">
+  	update b_leave set Status ='1' where ID = #{id,jdbcType = VARCHAR}
+  </update> -->
+  
+  <!-- 部门退回待修改 -->
+  <update id="updateReject" parameterType="java.lang.String">
+  	update b_leave set Status = '2' where ID = #{id,jdbcType = VARCHAR} 
+  </update>
+  <!-- 部门审批通过 -->
+  <update id="updatePass" parameterType="java.lang.String">
+  	update b_leave set Status = '3' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  <!-- 综合部确认 -->
+  <update id="updateAffirm" parameterType="java.lang.String">
+  	update b_leave set Status = '4' and Confirm = '1' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  <!-- 员工确认休年假完成 -->
+  <update id="updateEnd" parameterType="java.lang.String">
+  	update b_leave set Status = '5' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  <!-- 员工放弃 -->
+  <update id="updateRenounce" parameterType="java.lang.String">
+  	update b_leave set Status = '6' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  <!-- 转接到第二年 -->
+  <update id="updateTransfer" parameterType="java.lang.String">
+  	update b_leave set Status = '7' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  <!-- 现金补偿 -->
+  <update id="updateCash" parameterType="java.lang.String">
+  	update b_leave set Status = '8' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  
+  <!-- 异常 -->
+  <update id="updateAbnormal" parameterType="java.lang.String">
+  	update b_leave set Sfyc = '1', where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  
+  <!-- 年假变为无效 -->
+  <update id="updateState" parameterType="java.lang.String">
+  	update b_leave set State = '1' where ID = #{id,jdbcType = VARCHAR}
+  </update>
+  
+  <!-- 查询明细 -->
+  <select id="searLeaver" parameterType="com.hfoa.entity.vacation.LearYear" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave
+  	where state = '1'
+ 	<if test="department!=null">
+ 		and Department = #{department,jdbcType=VARCHAR}
+ 	</if>
+  	<if test="applyMan!=null">
+  		and ApplyMan = #{applyMan,jdbcType=VARCHAR}
+  	</if>
+  	<if test="beginTime!=null">
+  		and  ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType=VARCHAR}
+  	</if>
+  	<if test="endTime!=null">
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType=VARCHAR}
+  	</if>
+  </select>
+  <select id="searchLeaver" parameterType="com.hfoa.entity.vacation.LearYear" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave
+  	
+  	where 1=1
+    <if test="department!=null">
+  		and Department = #{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="applyMan!=null">
+  		and ApplyMan = #{applyMan,jdbcType=VARCHAR}
+  	</if>
+ 	<if test="beginTime!=null">
+  		and ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType=VARCHAR}
+  	</if>
+  	<if test="endTime!=null">
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType=VARCHAR}
+  	</if>
+  		order by ApplyTime desc
+  </select>
+  <!-- //state = '1' -->
+  <select id="countLeaver" resultType="map">
+  	select count(t.ID) toatl, SUM(t1.Days) days from b_leave t
+  	join b_leave_time t1 on t.ID = t1.Leave_ID
+  	where t.state ='1'  and OpenId = #{0} and ApplyTime like #{1} 
+  </select>
+  
+  
+  <select id="getOpenIdLeaver" resultType="com.hfoa.entity.vacation.LearYear">
+  	select * from b_leave where  OpenId = #{0} and ApplyTime like #{1} 
+  </select>
+  
+
+</mapper>

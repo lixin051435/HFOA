@@ -1,0 +1,75 @@
+/* pages/mainPages/menu/menu.wxss */
+
+page {
+  max-width: 750rpx;
+}
+
+.banner {
+  height: 360rpx;
+  width: 750rpx;
+}
+
+.informs {
+  position: relative;
+  margin-top: 6rpx;
+  width: 750rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  border-top: 1rpx solid #D9D9D9;
+  background-color: #ffffff;
+}
+
+.inform_icon {
+  position: absolute;
+  top: 12rpx;
+  right: 10rpx;
+  bottom: 10rpx;
+  left: 20rpx;
+  width: 54rpx;
+  height: 50rpx;
+}
+
+.inform_title {
+  position: absolute;
+  left: 84rpx;
+  display: inline-block;
+  width: 10%;
+  color: #2A98BD;
+  overflow: hidden;
+}
+
+.inform_body {
+  position: absolute;
+  left: 160rpx;
+  display: inline-block;
+  width: 63%;
+  overflow: hidden;
+}
+
+.inform_more {
+  position: absolute;
+  top: 2rpx;
+  right: 4rpx;
+  display: inline-block;
+  width: 100rpx;
+  color: #2A98BD;
+}
+
+.more {
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.arrow_right {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  color: #999999;
+}
+
+.menu_view {
+  /* margin-top: 20rpx; */
+  background-color: #ffffff;
+}

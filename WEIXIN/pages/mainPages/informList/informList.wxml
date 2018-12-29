@@ -1,0 +1,13 @@
+<!--pages/mainPages/informList/informList.wxml-->
+<view class="weui-cells">
+  <!-- 根据后台传值的数量渲染列表项 -->
+  <!-- wx:for是循环数组，wx:for-item即给列表赋别名 -->
+  <view class="weui-cell weui-cell_access" wx:for="{{dataList}}" wx:key="key" wx:for-item="item">
+    <view class="weui-cell__bd" bindtap="toInformDetail" id="{{item.id}}" data-index='{{index}}' data-item='{{item}}'>
+      <view class="title">{{item.contenttitle}}</view>
+      <view class="content">{{item.content}}</view>
+      <view class="time">{{item.usertime}}</view>
+    </view>
+    <view class="weui-cell__ft arrow_right"></view>
+  </view>
+</view>

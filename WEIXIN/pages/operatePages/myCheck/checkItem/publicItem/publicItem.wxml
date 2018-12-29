@@ -1,0 +1,114 @@
+<!--pages/operatePages/myCheck/publicItem/publicItem.wxml-->
+<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+<!-- 审批信息 -->
+<view class="check_info">
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_name">{{item.applyMan}}</view>
+    <view class="apply_type">{{item.title}}</view>
+    <!-- <view class="status">{{item.state}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label"><text space="ensp">驾 驶 人</text>：</view>
+      <view class="content">{{item.driver}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{item.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请时间：</view>
+      <view class="content">{{item.applyTime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">车牌型号：</view>
+      <view class="content">{{item.carType}} {{item.carCode}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">出发地点：</view>
+      <view class="content">{{item.beginPlace}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">目的地点：</view>
+      <view class="content">{{item.endPlace}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">预借时间：</view>
+      <view class="content">{{item.beginTimePlan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">预还时间：</view>
+      <view class="content">{{item.endTimePlan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">用车事由：</view>
+      <view class="content">{{item.useCarReason}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">同行人数：</view>
+      <view class="content">{{item.compareManNum}}</view>
+    </view>
+    <view wx:if="{{isCheckOk}}">
+      <view class="other_detail">
+        <view class="label">出库时间：</view>
+        <view class="content">{{item.beginTime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">入库时间：</view>
+        <view class="content">{{item.endTime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">出库里程：</view>
+        <view class="content">{{item.lengthBegin}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">入库里程：</view>
+        <view class="content">{{item.lengthEnd}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">用车时长：</view>
+        <view class="content">{{item.accountRealTime}}</view>
+      </view>
+    </view>
+    <view class="other_detail">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{item.approveMan}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">当前状态：</view>
+      <view class="content status">{{item.state}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showRejucted}}">
+      <view class="label">驳回原因：</view>
+      <view class="content">{{item.comment}}</view>
+    </view>
+  </view>
+  <block wx:if="{{showButton == 1}}">
+    <button bindtap="agree" class="btn">同意</button>
+    <button bindtap="disagree" class="btn btn_bottom">驳回</button>
+  </block>
+  <button wx:if="{{canUpdate == 1}}" bindtap="toUpdate" class="btn btn_bottom">修改</button>
+  <button wx:if="{{canRevoke == 1}}" bindtap="toRevoke" class="btn btn_bottom">撤回</button>
+</view>
+
+<!-- 查询-遮罩层 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 查询-弹出框 -->
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="weui-cells__title">驳回原因</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea modify-textarea" bindinput="setRejectReason" placeholder-style="color:#B2B2B2"
+          placeholder="请输入驳回原因" value="{{rejectReason}}"></textarea>
+      </view>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+    <button class="btn btn-confirm" bindtap="confirmDisagree" data-status="confirmDisagree">确定</button>
+  </view>
+</view>

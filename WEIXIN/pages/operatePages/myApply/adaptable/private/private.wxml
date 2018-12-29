@@ -1,0 +1,234 @@
+<!-- pages/travelmanagement/travelApply/travelApply.wxml -->
+<view>
+	<form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+		<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+		<view class="weui-cells">
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">申 请 人</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="applyMan" bindinput="inputedit" data-obj="info" data-item="applyMan" value="{{info.applyMan}}" disabled="{{true}}" />
+				</view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">所属部门</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="department" bindinput="inputedit" data-obj="info" data-item="department" value="{{info.department}}"
+					 placeholder-style="color:#B2B2B2" placeholder='请填写部门' disabled="{{true}}" />
+				</view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">申请事由</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="reason" bindinput="inputedit" data-obj="info" data-item="reason" value="{{info.reason}}"
+					 placeholder-style="color:#B2B2B2" placeholder='请输入申请事由' />
+				</view>
+			</view>
+
+			<view class="weui-cell">
+				<view class="weui-label">路线规划</view>
+				<picker name="wayModel" value="{{info.wayModel}}" bindchange="setWayModel" class='mpicker' data-obj="info"
+				 data-item="wayModel" range='{{info.wayModels}}'>
+					<view class='mview'>{{info.wayModel}}</view>
+				</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+			</view>
+
+			<view class="weui-cell" wx:if="{{info.wayModel != '自定义路线'}}">
+				<view class="weui-label">预置路线</view>
+				<picker name="wayModel" value="{{info.preDetail}}" bindchange="setPreDetail" class='mpicker' data-obj="info"
+				 data-item="preDetail" range-key="text" range='{{info.preDetailObjects}}'>
+					<view class='mview'>{{info.preDetail}}</view>
+				</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">出发地点</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" name="beginAddress" bindinput="inputedit" data-obj="info" data-item="beginAddress" value="{{info.beginAddress}}"
+					 placeholder-style="color:#B2B2B2" placeholder="请输入出发地点" disabled="{{info.isPreDetail}}" />
+				</view>
+			</view>
+
+			<view wx:for="{{info.details}}" wx:key="key" class="forItemBorder">
+				<view class="weui-cell weui-cell_input ">
+					<view class="weui-cell__hd">
+						<view class="weui-label rui-justify">
+							<text space="ensp">途径地点</text>
+						</view>
+					</view>
+					<input class="weui-input" id="place-{{index}}" bindinput="setPlace" value="{{item.addressName}}" placeholder-style="color:#B2B2B2"
+					 placeholder="请输入途经地" />
+					<!-- <input class="weui-input lcs" id="number-{{index}}" bindinput="setNumber" value="{{item.number}}"
+					 placeholder-style="color:#B2B2B2" placeholder="里程数(km)" /> -->
+				</view>
+				<view class="weui-cell weui-cell_input">
+					<view class="weui-cell__hd">
+						<view class="weui-label rui-justify">
+							<text space="ensp">行车里程</text>
+						</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input type="number" class="weui-input"  bindinput="setNumber" value="{{item.addressValue}}" id="number-{{index}}" placeholder-style="color:#B2B2B2" placeholder='请输入里程数' />
+					</view>
+					<view class="weui-cell__ft">km</view>
+				</view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">目的地点</text>
+					</view>
+				</view>
+				<input class="weui-input" name="destination" bindinput="inputedit" data-obj="info" data-item="destination" value="{{info.destination}}" placeholder-style="color:#B2B2B2" placeholder="请输入目的地点" disabled="{{info.isPreDetail}}" />
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">行车里程</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="endLength" bindinput="inputedit" data-obj="info" data-item="endLength"
+						value="{{info.endLength}}" disabled="{{info.isPreDetail}}" placeholder-style="color:#B2B2B2" placeholder='请输入里程数' />
+				</view>
+				<view class="weui-cell__ft">km</view>
+			</view>
+
+			<view class="weui-cell" hidden="{{info.isPreDetail}}">
+				<button class="btn" bindtap='addItem' style='width:50%;margin-top:0'>增加途经地点</button>
+				<button class="btn" bindtap='removeItem' style='width:50%;margin-left:5rpx;margin-top:0'>
+					删除途经地点
+				</button>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">单程里程</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="singleLength" bindinput="inputedit" data-obj="info" data-item="singleLength"
+					 value="{{info.singleLength}}" disabled="{{true}}" />
+				</view>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">计价里程</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="countLength" bindinput="inputedit" data-obj="info" data-item="countLength"
+					 value="{{info.countLength}}" disabled="{{true}}" />
+				</view>
+				<checkbox-group wx:if="{{true}}" name="isWangFan" id="isWangFan" bindchange="setIsWangFan"
+				 data-item="isWangFan">
+					<checkbox color="#2A98BD" value="1" checked="{{info.isWangFan == 1}}">
+						<text>往返</text>
+					</checkbox>
+				</checkbox-group>
+			</view>
+
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">核定价格</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" name="sureLength" bindinput="inputedit" value="{{info.sureLength}}"
+					 disabled="{{true}}" />
+				</view>
+			</view>
+
+			<view class="weui-cell">
+				<view class="weui-label">
+					<text space="ensp">是否补录</text>
+				</view>
+				<radio-group name="ifBefore" bindchange="radioChange" data-item="ifBefore">
+					<label>
+						<radio value="1" class='mradio' checked="{{info.ifBefore == 1}}" color="#2A98BD" />
+						是
+					</label>
+					<label>
+						<radio value="0" class='mradio' checked="{{info.ifBefore == 0}}" color="#2A98BD" />
+						否
+					</label>
+				</radio-group>
+			</view>
+
+			<view  class="weui-cell">
+				<view class="weui-label">申请时间</view>
+				<picker disabled="{{true}}" mode="date" name="applyTime" value="{{info.applyTime}}" bindchange="bindUserCarTime" class='mpicker'>
+					<view>
+						<view class='mview'>{{info.applyTime}}</view>
+					</view>
+				</picker>
+        <!-- <view class='weui-cell__ft arrow_right'></view> -->
+			</view>
+
+			<view class="weui-cell">
+				<view class="weui-label">用车时间</view>
+				<picker mode="date" name="userCarTime" value="{{info.userCarTime}}" bindchange="setRealTime" class='mpicker'>
+					<view>
+						<view class='mview' style="color:{{info.userCarTime == '请选择用车时间'?'#B2B2B2':''}}">{{info.userCarTime}}</view>
+					</view>
+				</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+			</view>
+
+			<!-- <view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">审 批 人</text>
+					</view>
+				</view>
+				<picker name="approveMan" value="{{info.approveMan}}" bindchange="setApproveMan" class='mpicker' data-obj="info"
+				 data-item="approveMan" range='{{approvers}}'>
+					<view>
+						<view class='mview'>{{info.approveMan}}</view>
+					</view>
+				</picker>
+        <view class='weui-cell__ft arrow_right'></view>
+			</view> -->
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">审 批 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="approveMan" bindinput="inputedit" data-obj="info" data-item="approveMan" value="{{info.approveMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+		</view>
+
+		<button formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+
+	</form>
+
+</view>

@@ -1,0 +1,6 @@
+/* pages/modulePages/public/publicApplyed/publicApplyed.wxss */
+
+page {
+  max-width: 750rpx;
+  background-color: #F1EFF6;
+}

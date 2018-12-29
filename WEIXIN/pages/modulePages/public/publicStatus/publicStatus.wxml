@@ -1,0 +1,21 @@
+<!--pages/modulePages/public/publicStatus/publicStatus.wxml-->
+
+<view class="border_top"></view>
+
+<button wx:if="{{showSubmit}}" class="btn btn_bottom" hover-class="pressed_btn" bindtap="toPublicApply">申请公车</button>
+
+<view class="list">
+  <view wx:for="{{publicCar}}" wx:key="key" wx:for-item="item">
+    <view class="item" bindtap="toBorrowDetail" data-index="{{item.carnum}}">
+
+      <image class="public_icon" src="{{item.carUrl}}" />
+      <view class="public_carnum">{{item.carnum}}</view>
+      <view class="public_carstate">{{item.carstate}}</view>
+      <view class="public_suspendday">限行：{{item.suspendday}}</view>
+      <view class="public_apply">{{item.appCount}}人申请/{{item.appointmentCount}}人预约</view>
+      <view class="arrow_right"></view>
+
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,38 @@
+<!--pages/mainPages/mine/mine.wxml-->
+
+<!-- 错误信息 -->
+<view class="errorMsg non_fixed" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+<!-- 授权绑定 -->
+<view class="mine_binding">
+  <!-- 未授权 -->
+  <view class="userinfo" wx:if="{{!(hasUserInfo && canIUse && authorization)}}">
+    <button class="binding_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    <view class="userinfo_nickname">点击头像授权</view>
+  </view>
+
+  <!-- 已授权 -->
+  <view class="userinfo" wx:if="{{hasUserInfo && canIUse && authorization}}">
+    <image class="userinfo_avatar" src="{{userInfo.avatarUrl}}"bindtap="toRemoveBinding"></image>
+    <view class="userinfo_nickname">{{userInfo.nickName}}</view>
+  </view>
+</view>
+
+<!-- 菜单项 -->
+<view class="mine_view">
+  <view class="weui-grids">
+    <view wx:for="{{mineList}}" wx:key="key" wx:for-item="item">
+      <view class="weui-grid" hover-class="weui-grid_active" bindtap="{{item.permissionurl}}">
+        <image class="weui-grid__icon" src="{{item.imageurl}}"></image>
+        <view class="weui-grid__label" hover-class="weui-grid_active">{{item.permissionname}}</view>
+        <view class="weui-badge" wx:if="{{item.id===41 && newApplyNum != 0}}">{{newApplyNum}}</view>
+        <view class="weui-badge" wx:if="{{item.id===42 && newCheckNum != 0}}">{{newCheckNum}}</view>
+        <view class="weui-badge" wx:if="{{item.id===43 && newccNum != 0}}">{{newccNum}}</view>
+
+        <view class="weui-badge" wx:if="{{item.id===100 && newCarNum != 0}}">{{newCarNum}}</view>
+        <view class="weui-badge" wx:if="{{item.id===101 && newSealNum != 0}}">{{newSealNum}}</view>
+        <view class="weui-badge" wx:if="{{item.id===102 && newfinNum != 0}}">{{newfinNum}}</view>
+      </view>
+    </view>
+  </view>
+</view>

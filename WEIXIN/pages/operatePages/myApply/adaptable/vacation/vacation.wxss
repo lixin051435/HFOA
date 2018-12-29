@@ -1,0 +1,6 @@
+/* pages/modulePages/vacation/vacationApply/vacationApply.wxss */
+
+page {
+  background-color: #F1EFF6;
+  max-width: 750rpx;
+}

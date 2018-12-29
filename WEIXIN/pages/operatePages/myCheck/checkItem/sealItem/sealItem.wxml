@@ -1,0 +1,143 @@
+<!--pages/operatePages/myCheck/sealItem/sealItem.wxml-->
+<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+<!-- 审批信息 -->
+<view class="check_info">
+  <!-- 顶部用户信息 -->
+  <view class="user_info">
+    <image class="user_icon" src="{{icon}}"></image>
+    <view class="user_name">{{item.applyusername}}</view>
+    <view class="apply_type">{{item.title}}</view>
+    <!-- <view class="status">{{item.status}}</view> -->
+  </view>
+  <!-- 审批详细信息 -->
+  <view class="check_detail forItemBorder">
+    <view class="other_detail">
+      <view class="label">所属部门：</view>
+      <view class="content">{{item.department}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请时间：</view>
+      <view class="content">{{item.applytime}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">公章类型：</view>
+      <view class="content">{{item.gzkind}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showContractAmount}}">
+      <view class="label">合同金额：</view>
+      <view class="content">{{item.contracAmount}}万元</view>
+    </view>
+    <view class="other_detail" wx:if="{{showContractType}}">
+      <view class="label">合同类型：</view>
+      <view class="content">{{item.contractType}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">用印份数：</view>
+      <view class="content">{{item.copies}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">发往单位：</view>
+      <view class="content">{{item.sendto}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">文件密级：</view>
+      <view class="content">{{item.issecret}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">申请事由：</view>
+      <view class="content">{{item.reason}}</view>
+    </view>
+    <view wx:if="{{showMore}}">
+      <view class="other_detail">
+        <view class="label"><text space="ensp">受 托 人：</text></view>
+        <view class="content">{{item.entrustedman}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托人职务：</view>
+        <view class="content">{{item.entrustedpost}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">证件类型：</view>
+        <view class="content">{{item.entrustedcardtype}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">证件号码：</view>
+        <view class="content">{{item.entrustedcardnum}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托事项：</view>
+        <view class="content">{{item.entrustedmatter}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">受托期限：</view>
+        <view class="content">{{item.entrustedpermission}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">开始时间：</view>
+        <view class="content">{{item.entrustedstarttime}}</view>
+      </view>
+      <view class="other_detail">
+        <view class="label">结束时间：</view>
+        <view class="content">{{item.entrustedendtime}}</view>
+      </view>
+    </view>
+    <view class="other_detail" wx:if="{{showTime}}">
+      <view class="label">借出时间：</view>
+      <view class="content">{{item.borrowTime}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showTime}}">
+      <view class="label">归还时间：</view>
+      <view class="content">{{item.returnTime}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{item.approveman != null && item.approveman != ''}}">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{item.approveman}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{item.businessManager != null && item.businessManager != ''}}">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{item.businessManager}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{item.confirmman != null && item.confirmman != '' && showLeader3 == true}}">
+      <view class="label"><text space="ensp">审 批 人</text>：</view>
+      <view class="content">{{item.confirmman}}</view>
+    </view>
+    <view class="other_detail">
+      <view class="label">当前状态：</view>
+      <view class="content status">{{item.status}}</view>
+    </view>
+    <view class="other_detail" wx:if="{{showRejucted}}">
+      <view class="label">驳回原因：</view>
+      <view class="content">{{item.comment}}</view>
+    </view>
+  </view>
+
+  <!-- 当是营业执照原件或公章外带时，且到了第三个审批人，要另外传开始时间和结束时间给后台，所以同意走这个方法 -->
+  <button wx:if="{{showSubmit == 1 && isLeaderCheck == 1}}" bindtap="submit" class="btn">同意</button>
+
+  <button wx:if="{{showButton == 1 && showSubmit == 0}}" bindtap="agree" class="btn">同意</button>
+  <button wx:if="{{showButton == 1}}" bindtap="disagree" class="btn btn_bottom">驳回</button>
+
+  <button wx:if="{{canUpdate == 1}}" bindtap="toUpdate" class="btn btn_bottom">修改</button>
+  <button wx:if="{{canRevoke == 1}}" bindtap="toRevoke" class="btn btn_bottom">撤回</button>
+
+  <button wx:if="{{canUseSeal == 1}}" bindtap="toHandle" class="btn btn_bottom">确认</button>
+</view>
+
+<!-- 查询-遮罩层 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 查询-弹出框 -->
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="weui-cells__title">驳回原因</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea modify-textarea" bindinput="setRejectReason" placeholder-style="color:#B2B2B2"
+          placeholder="请输入驳回原因" value="{{rejectReason}}"></textarea>
+      </view>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+    <button class="btn btn-confirm" bindtap="confirmDisagree" data-status="confirmDisagree">确定</button>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<!-- 我的->财务/我审批的->xxxItem->驳回弹出框 -->
+<template name="rejectBox">
+	<!-- 查询-遮罩层 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<!-- 查询-弹出框 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="weui-cells__title">驳回原因</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell">
+				<view class="weui-cell__bd">
+					<textarea class="weui-textarea modify-textarea" bindinput="setRejectReason" placeholder="请输入驳回原因" />
+					</view>
+            </view>
+        </view>
+        <view class="modal-footer">
+            <button class="btn btn-cancel" bindtap="cancel" data-status="cancel">取消</button>
+            <button class="btn btn-confirm" bindtap="confirmDisagree" data-status="confirm">确定</button>
+        </view>
+    </view>
+</template>

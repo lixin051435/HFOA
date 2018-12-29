@@ -1,0 +1,35 @@
+<!--pages/operatePages/myApply/confirmVacation/confirmVacation.wxml-->
+
+<view class="bgr">
+  <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+  <view class="pending">
+    <view wx:for="{{leaverList}}" wx:key="key" wx:for-item="item">
+      <view class="pendingItem clearfix">
+        <image class="user_icon" src="{{icon}}"></image>
+        <view class="top_user_info">
+          <view class="user_name">{{applyMan}}</view>
+          <view class="user_applytype">年假申请</view>
+        </view>
+        <view class="check_info">
+          <view class="detail_info">
+            <view>开始时间：</view>
+            <view>{{item.beingTime}}</view>
+          </view>
+          <view class="detail_info">
+            <view>结束时间：</view>
+            <view>{{item.endTime}}</view>
+          </view>
+          <view class="detail_info">
+            <view>休假天数：</view>
+            <view>{{item.days}}</view>
+          </view>
+        </view>
+        <checkbox-group data-index="{{index}}" bindchange="checkboxChange" style="padding-top: 80rpx;">
+          <checkbox value="{{index}}" checked="{{item.checked}}" color="#2A98BD"></checkbox>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+</view>
+<button wx:if="{{showConfirm == 1}}" bindtap="confirmVacation" class="btn btn_bottom">确认休假</button>
+<button wx:if="{{showCancel == 1}}" bindtap="giveupVacation" class="btn btn_bottom">放弃休假</button>

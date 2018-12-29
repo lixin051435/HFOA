@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.entertain.EntertainobjecttypeMapper">
+ 
+ 
+ 
+  
+  <select id="getType" resultType="com.hfoa.entity.entertain.Entertainobjecttype">
+  	select * from B_EntertainObjectType ORDER BY convert(OName USING gbk)
+  </select>
+  
+  <insert id="insertType" parameterType="com.hfoa.entity.entertain.Entertainobjecttype">
+  insert into b_entertainobjecttype
+  	<trim prefix="(" suffix=")" suffixOverrides=",">
+  		<if test="id !=null">
+  			ID,
+  		</if>
+  		<if test="oName !=null">
+  			OName
+  		</if>
+  	</trim>
+  	<trim prefix="values (" suffix=")" suffixOverrides=",">
+  		<if test="id !=null">
+  			#{id,jdbcType=INTEGER},
+  		</if>
+  		<if test="oName !=null">
+  			#{oName,jdbcType=VARCHAR}
+  		</if>
+  	</trim>
+  </insert>
+  
+  <select id="selectMax" resultType="com.hfoa.entity.entertain.Entertainobjecttype">
+  	select * from b_entertainobjecttype where ID=(select MAX(ID) from b_entertainobjecttype ) 
+  </select>
+  
+
+</mapper>

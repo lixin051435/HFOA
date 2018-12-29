@@ -1,0 +1,112 @@
+<!--pages/modulePages/public/publicApplyed/publicApplyed.wxml-->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+    <view class="weui-cells">
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申 请 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyMan" value="{{applyMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">驾 驶 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="driver" value="{{driver}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申请时间</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyTime" value="{{applyTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">车牌类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="publicType" value="{{publicType}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出发地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="beginPlace" value="{{beginPlace}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">目的地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="endPlace" value="{{endPlace}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预借时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="borrowTime" value="{{borrowTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预还时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="returnTime" value="{{returnTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="approveMan" value="{{approveMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用车事由</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="reason" value="{{reason}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">同行人数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="companyNo" value="{{companyNo}}" disabled="disabled" />
+        </view>
+      </view>
+
+    </view>
+
+  </form>
+
+</view>

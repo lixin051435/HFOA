@@ -1,0 +1,61 @@
+/* pages/mainPages/mine/mine.wxss */
+
+page {
+  max-width: 750rpx;
+}
+
+.mine_binding {
+  position: relative;
+  height: 360rpx;
+  width: 750rpx;
+  background: linear-gradient(#2A71C4, #3381CC, #3D92D4, #46A2DB, #4DADE1);
+}
+
+.binding_btn {
+  margin: 0 auto;
+  width: 160rpx;
+  height: 160rpx;
+  background: #9FDBFF;
+  border-radius: 50%;
+}
+
+.userinfo {
+  position: absolute;
+  top: 60rpx;
+  width: 750rpx;
+  height: 160rpx;
+}
+
+.userinfo_avatar {
+  margin: 0 auto;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.userinfo_nickname {
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  font-size: 32rpx;
+  text-align: center;
+  display: block;
+  width: auto;
+  color: #fff;
+}
+
+.mine_view {
+  /* margin-top: 20rpx; */
+  background-color: #ffffff;
+}
+
+.weui-grid_active {
+  color: #2A98BD;
+}
+
+.weui-badge {
+  position: absolute;
+  top: 10rpx;
+  right: 60rpx;
+  background: #FF0000;
+}

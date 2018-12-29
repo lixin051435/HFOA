@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.travelExpenses.ApproveExpensesMapper">
+  <!-- <resultMap id="BaseResultMap" type="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Department" jdbcType="VARCHAR" property="department" />
+    <result column="Travelers" jdbcType="VARCHAR" property="travelers" />
+    <result column="Cause" jdbcType="VARCHAR" property="cause" />
+    <result column="TripDetails" jdbcType="VARCHAR" property="tripDetails" />
+    <result column="BeginTime" jdbcType="VARCHAR" property="beginTime"/>
+    <result column="EndTime" jdbcType="VARCHAR" property="endTime"/>
+    <result column="TravelDays" jdbcType="INTEGER" property="travelDays"/>
+    <result column="TotalBudget" jdbcType="REAL" property="totalBudget"/>
+    <result column="IsTest" jdbcType="VARCHAR" property="isTest"/>
+    <result column="ApplyTime" jdbcType="VARCHAR" property="applyTime"/>
+    <result column="ApplyMan" jdbcType="VARCHAR" property="applyMan"/>
+    <result column="ApproveMan" jdbcType="VARCHAR" property="approveMan"/>
+    <result column="Remarks" jdbcType="VARCHAR" property="remarks"/>
+    <result column="ApproveState" jdbcType="VARCHAR" property="approveState"/>
+    <result column="TripMode" jdbcType="VARCHAR" property="triMode"/>
+    <result column="StartAddress" jdbcType="VARCHAR" property="startAddress"/>
+    <result column="MiddAddress" jdbcType="VARCHAR" property="middAddress"/>
+    <result column="EndAddress" jdbcType="VARCHAR" property="endAddress"/>
+    
+  </resultMap> -->
+  
+  <!-- <insert id="insertApplyExpensesEntity" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	insert into b_travelexpenses
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="id != null">ID,</if>
+      <if test="department != null">Department,</if>
+      <if test="travelers != null">Travelers,</if>
+      <if test="cause != null">Cause,</if>
+      <if test="tripDetails != null">TripDetails,</if>
+      <if test="beginTime != null">BeginTime,</if>
+      <if test="endTime != null">EndTime,</if>
+      <if test="travelDays != null">TravelDays,</if>
+      <if test="totalBudget != null">TotalBudget,</if>
+      <if test="isTest != null">IsTest,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="applyMan != null">ApplyMan,</if>
+      <if test="approveMan != null">ApproveMan,</if>
+      <if test="remarks != null">Remarks,</if>
+      <if test="approveState !=null">ApproveState,</if>
+      <if test="triMode != null">TripMode,</if>
+      <if test="startAddress != null">StartAddress,</if>
+      <if test="middAddress != null">MiddAddress,</if>
+      <if test="endAddress != null">EndAddress,</if>
+      <if test="openId != null">OpenId,</if>
+      <if test="approveManOpenId != null">ApproveManOpenId,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="travelers != null">
+        #{travelers,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null">
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="tripDetails != null">
+        #{tripDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDays != null">
+      	#{travelDays,jdbcType=INTEGER},
+      </if>
+      <if test="totalBudget != null">
+        #{totalBudget,jdbcType=REAL},
+      </if>
+      <if test="isTest != null">
+        #{isTest,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyMan != null">
+        #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approveState != null">
+        #{approveState,jdbcType=VARCHAR},
+      </if>
+      <if test="triMode != null">
+        #{triMode,jdbcType=VARCHAR},
+      </if>
+      <if test="startAddress != null">
+        #{startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="middAddress != null">
+        #{middAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endAddress != null">
+        #{endAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveManOpenId!=null">
+      	#{approveManOpenId,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert> -->
+  
+  
+  
+  
+  
+  <!-- <delete id="deleteApplyExpese" parameterType="java.lang.String">
+  	 delete from  b_travelexpenses where ID = #{id,jdbcType=VARCHAR}
+  </delete> -->
+  
+  <insert id="insertApproveExpense" parameterType="com.hfoa.entity.travelExpenses.ApproveExpensesEntity">
+  	insert into b_travelexpensesapprove
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="id != null">ID,</if>
+      <if test="travelExpenseId != null">TravelExpenseId,</if>
+      <if test="vehicleCost != null">VehicleCost,</if>
+      <if test="foodAllowance != null">FoodAllowance,</if>
+      <if test="hotelExpense != null">HotelExpense,</if>
+      <if test="parValueAllowance != null">ParValueAllowance,</if>
+      <if test="urbanTraffic != null">UrbanTraffic,</if>
+      <if test="otherCost != null">OtherCost,</if>
+      <if test="repayCost != null">RepayCost,</if>
+      <if test="supplementalCost != null">SupplementalCost,</if>
+      <if test="inputTax != null">InputTax,</if>
+      <if test="totalExpenses != null">TotalExpenses,</if>
+      <if test="paidTime != null">PaidTime,</if>
+      <if test="fundSource != null">FundSource,</if>
+      <if test="voucherNum !=null">VoucherNum,</if>
+      <if test="isTestCost != null">IsTestCost,</if>
+      <if test="testSite != null">TestSite,</if>
+      <if test="illustration != null">Illustration,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="travelExpenseId != null">
+        #{travelExpenseId,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleCost != null">
+        #{vehicleCost,jdbcType=REAL},
+      </if>
+      <if test="foodAllowance != null">
+        #{foodAllowance,jdbcType=REAL},
+      </if>
+      <if test="hotelExpense != null">
+        #{hotelExpense,jdbcType=REAL},
+      </if>
+      <if test="parValueAllowance !=null">
+      	#{parValueAllowance,jdbcType=REAL},
+      </if>
+      <if test="urbanTraffic != null">
+        #{urbanTraffic,jdbcType=REAL},
+      </if>
+      <if test="otherCost != null">
+        #{otherCost,jdbcType=REAL},
+      </if>
+      <if test="repayCost != null">
+      	#{repayCost,jdbcType=REAL},
+      </if>
+      <if test="supplementalCost != null">
+        #{supplementalCost,jdbcType=REAL},
+      </if>
+      <if test="inputTax != null">
+        #{inputTax,jdbcType=REAL},
+      </if>
+      <if test="totalExpenses != null">
+        #{totalExpenses,jdbcType=REAL},
+      </if>
+      <if test="paidTime != null">
+        #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fundSource != null">
+        #{fundSource,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNum != null">
+        #{voucherNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isTestCost != null">
+        #{isTestCost,jdbcType=VARCHAR},
+      </if>
+      <if test="testSite != null">
+        #{testSite,jdbcType=VARCHAR},
+      </if>
+      <if test="illustration != null">
+        #{illustration,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <update id="updateApproveExpense" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	update b_travelexpensesapprove
+   <trim prefix="set" suffixOverrides=",">  
+       <if test ="travelExpenseId != null">
+        TravelExpenseId = #{travelExpenseId,jdbcType=VARCHAR},
+      </if>
+      <if test ="vehicleCost != null">
+        VehicleCost = #{vehicleCost,jdbcType=REAL},
+      </if>
+      <if test ="foodAllowance != null">
+        FoodAllowance = #{foodAllowance,jdbcType=REAL},
+      </if>
+      <if test ="hotelExpense != null">
+        HotelExpense = #{hotelExpense,jdbcType=REAL},
+      </if>
+      <if test ="parValueAllowance != null">
+        ParValueAllowance = #{parValueAllowance,jdbcType=REAL},
+      </if>
+      <if test="urbanTraffic != null">
+      	UrbanTraffic = #{urbanTraffic,jdbcType=REAL},
+      </if>
+      <if test="otherCost != null">
+        OtherCost = #{otherCost,jdbcType=REAL},
+      </if>
+      <if test="repayCost != null">
+        RepayCost = #{repayCost,jdbcType=REAL},
+      </if>
+      <if test="supplementalCost != null">
+        SupplementalCost = #{supplementalCost,jdbcType=REAL},
+      </if>
+      <if test="inputTax != null">
+      	InputTax = #{inputTax,jdbcType=REAL},
+      </if>
+      <if test="totalExpenses != null">
+      	TotalExpenses = #{totalExpenses,jdbcType=REAL},
+      </if>
+      <if test="paidTime != null">
+      	PaidTime = #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fundSource != null">
+      	FundSource = #{fundSource,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherNum != null">
+      	VoucherNum = #{voucherNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isTestCost != null">
+      	IsTestCost = #{isTestCost,jdbcType=VARCHAR},
+      </if>
+      <if test="testSite != null">
+      	TestSite = #{testSite,jdbcType=VARCHAR},
+      </if>
+      <if test="illustration != null">
+      	Illustration = #{illustration,jdbcType=VARCHAR},
+      </if>
+      </trim>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <select id="listApproveExpense" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApproveExpensesEntity">
+  	select * from b_travelexpensesapprove
+  	where TravelExpenseId = #{id,jdbcType = VARCHAR}
+  
+  </select>  
+  
+  
+   <delete id="deleteapproveExpenses" parameterType="java.lang.String">
+  	delete from b_travelexpensesapprove where ID = #{Id,jdbcType=VARCHAR}
+  </delete> 
+  
+  <select id="getApproveExpensesByTId" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApproveExpensesEntity">
+  	select * from b_travelexpensesapprove
+  	where TravelExpenseId = #{id,jdbcType = VARCHAR}
+  </select>
+  
+  
+ 
+  
+ 
+
+</mapper>

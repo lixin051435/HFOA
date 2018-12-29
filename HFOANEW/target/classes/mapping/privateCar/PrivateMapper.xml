@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.privatecar.PrivateMapper">
+  
+   <insert id="insertPrivateCar" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity">
+   		insert into b_privatecar
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="applyId != null">ApplyId,</if>
+      <if test="department != null">Department,</if>
+      <if test="userCarTime != null">UserCarTime,</if>
+      <if test="reason != null">Reason,</if>
+      <if test="beginAddress != null">BeginAddress,</if>
+      <if test="passAddress != null">PassAddress,</if>
+      <if test="destination != null">Destination,</if>
+      <if test="status != null">Status,</if>
+      <if test="singleLength != null">SingleLength,</if>
+      <if test="sureLength != null">SureLength,</if>
+      <if test="countLength != null">CountLength,</if>
+      <if test="applyMan != null">ApplyMan,</if>
+      <if test="approveMan != null">ApproveMan,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="sureTime !=null">SureTime,</if>
+      <if test="approveTime != null">ApproveTime,</if>
+      <if test="ifPerform != null">IfPerform,</if>
+      <if test="wayModel != null">WayModel,</if>
+      <if test="wayDetail != null">WayDetail,</if>
+      <if test="doubleLength != null">DoubleLength,</if>
+      <if test="endLength != null">EndLength,</if>
+      <if test="ifPass">IfPass,</if>
+      <if test="ifSub!=null">IfSub,</if>
+      <if test="ifBefore!=null">IfBefore,</if>
+      <if test="beforeDate!=null">BeforeDate,</if>
+      <if test="openId!=null">OpenId,</if>
+      <if test="approveOpenId!=null">ApproveOpenId,</if>
+      <if test="confirm!=null">Confirm,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="applyId != null">
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="userCarTime != null">
+        #{userCarTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAddress != null">
+        #{beginAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="passAddress != null">
+        #{passAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	#{status,jdbcType=VARCHAR},
+      </if>
+      <if test="singleLength != null">
+        #{singleLength,jdbcType=DOUBLE},
+      </if>
+      <if test="sureLength != null">
+        #{sureLength,jdbcType=DOUBLE},
+      </if>
+      <if test="countLength != null">
+        #{countLength,jdbcType=DOUBLE},
+      </if>
+      <if test="applyMan != null">
+        #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sureTime != null">
+        #{sureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null">
+        #{approveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPerform != null">
+        #{ifPerform,jdbcType=VARCHAR},
+      </if>
+      <if test="wayModel != null">
+        #{wayModel,jdbcType=VARCHAR},
+      </if>
+      <if test="wayDetail != null">
+        #{wayDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="doubleLength != null">
+        #{doubleLength,jdbcType=VARCHAR},
+      </if>
+      <if test="endLength!=null">
+      	#{endLength,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPass!=null">
+      	#{ifPass,jdbcType=VARCHAR},
+      </if>
+      <if test="ifSub!=null">
+      	#{ifSub,jdbcType=VARCHAR},
+      </if>
+      <if test="ifBefore!=null">
+      	#{ifBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeDate!=null">
+      	#{beforeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="openId!=null">
+      	#{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveOpenId!=null">
+      	#{approveOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm!=null">
+      	#{confirm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+   </insert>
+   
+   <update id="updatePrivateCar" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity">
+  	update b_privatecar
+   <trim prefix="set" suffixOverrides=",">  
+       <if test ="department != null">
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test ="userCarTime != null">
+        UserCarTime = #{userCarTime,jdbcType=VARCHAR},
+      </if>
+      <if test ="reason != null">
+        Reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test ="beginAddress != null">
+        BeginAddress = #{beginAddress,jdbcType=VARCHAR},
+      </if>
+      <if test ="passAddress != null">
+        PassAddress = #{passAddress,jdbcType=VARCHAR},
+      </if>
+      <if test ="destination != null">
+        Destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="singleLength != null">
+        SingleLength = #{singleLength,jdbcType=DOUBLE},
+      </if>
+      <if test="sureLength != null">
+        SureLength = #{sureLength,jdbcType=DOUBLE},
+      </if>
+      <if test="countLength != null">
+        CountLength = #{countLength,jdbcType=DOUBLE},
+      </if>
+      <if test="applyMan != null">
+        ApplyMan = #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+      	ApproveMan = #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+      	ApplyTime = #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sureTime != null">
+      	SureTime = #{sureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null">
+      	ApproveTime = #{approveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPerform != null">
+      	IfPerform = #{ifPerform,jdbcType=VARCHAR},
+      </if>
+      <if test="wayModel != null">
+      	WayModel = #{wayModel,jdbcType=VARCHAR},
+      </if>
+      <if test="wayDetail != null">
+      	WayDetail = #{wayDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="doubleLength != null">
+      	DoubleLength = #{doubleLength,jdbcType=VARCHAR},
+      </if>
+      <if test="endLength!=null">
+      	EndLength = #{endLength,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPass!=null">
+      	IfPass = #{ifPass,jdbcType=VARCHAR},
+      </if>
+      <if test="ifSub!=null">
+      	IfSub = #{ifSub,jdbcType=VARCHAR},
+      </if>
+      <if test="ifBefore!=null">
+      	IfBefore = #{ifBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeDate!=null">
+      	BeforeDate = #{beforeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="openId!=null">
+      	OpenId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveOpenId!=null">
+      	ApproveOpenId = #{approveOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm!=null">
+      	Confirm = #{confirm,jdbcType=VARCHAR},
+      </if>
+      </trim>
+    where ApplyId = #{applyId,jdbcType=VARCHAR}
+  </update>
+   
+   
+   <update id="updateOpenId" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity">
+   	update b_privatecar set OpenId = #{openId,jdbcType=VARCHAR}
+   	where ApplyMan = #{applyMan,jdbcType=VARCHAR}
+   </update>
+   
+   <update id="updateApproveOpenId" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity">
+   	update b_privatecar set ApproveOpenId = #{approveOpenId,jdbcType=VARCHAR}
+   	where ApproveMan = #{approveMan,jdbcType=VARCHAR}
+   </update>
+   
+   
+   
+   <delete id="deletePrivateCar" parameterType="java.lang.String">
+   		delete from b_privatecar where ApplyId = #{applyId,jdbcType=VARCHAR}
+   </delete>
+   
+   <select id="getPrivateCar" parameterType="java.lang.String" resultType="com.hfoa.entity.privatecar.PrivateCarEntity">
+   		select * from b_privatecar where ApplyId = #{applyId,jdbcType=VARCHAR}
+   </select>
+   
+   <select id="getMaxId" resultType="java.lang.Object">
+   		select max(ApplyId) as ApplyId from b_privatecar where Department = #{0}  and ApplyId like #{1}
+   </select>
+
+	<select id="searPrivateCar" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity" resultType="com.hfoa.entity.privatecar.PrivateCarEntity">
+		select * from b_privatecar 
+		
+		where IfPass='已报销'
+		<if test="department!=null">
+  		and Department = #{department,jdbcType=VARCHAR}
+  		</if>
+  		<if test="applyMan!=null">
+  		and ApplyMan  LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  		</if>
+ 		<if test="beingTime!=null">
+  		and UserCarTime <![CDATA[ >= ]]> #{beingTime,jdbcType=VARCHAR}
+  		</if>
+  		<if test="endTime!=null">
+  		and UserCarTime <![CDATA[ <= ]]> #{endTime,jdbcType=VARCHAR}
+  		</if>
+		order by ApplyTime desc
+	</select>
+
+
+	<select id="countPrivate" resultType="map">
+		SELECT count(t.ApplyId) toatl, SUM(SureLength) price FROM b_privatecar t
+		
+		where t.IfPass='已报销' and  ApplyMan = #{0} and t.ApplyTime like #{1} 
+	</select>
+
+	<select id="allApplySearchDisplay" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity" resultType="com.hfoa.entity.privatecar.PrivateCarEntity">
+  	select * from b_privatecar where 1=1
+  	<if test="status != null and status != '全部' and status!='null' ">
+  		and Status=#{status,jdbcType=VARCHAR}
+  	</if>
+  	<if test="department != null and department != '全部,' and department!='null,' and department != '全部'">
+  		and Department =#{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="applyMan != 'null' and applyMan != '' and applyMan != null ">
+  		and ApplyMan LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='beingTime != "null" and beingTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{beingTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endTime != "null" and endTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType = VARCHAR}
+  	</if>
+  	limit #{start,jdbcType = INTEGER},#{number,jdbcType = INTEGER}
+  </select>
+<select id="getAllSearchCount" parameterType="com.hfoa.entity.privatecar.PrivateCarEntity" resultType="Integer">
+  	select count(*) from b_privatecar where 1=1
+  	<if test="status != null and status != '全部' and status!='null' ">
+  		and Status=#{status,jdbcType=VARCHAR}
+  	</if>
+  	<if test="department != null and department != '全部,' and department!='null,' and department != '全部'">
+  		and Department =#{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="applyMan != 'null' and applyMan != '' and applyMan != null ">
+  		and ApplyMan LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='beingTime != "null" and beingTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{beingTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endTime != "null" and endTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType = VARCHAR}
+  	</if>
+  </select>
+ <select id="findTasksByApplyId" resultType="com.hfoa.entity.privatecar.PrivateCarEntity">
+  	select * from b_privatecar where ApplyId in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  </select>
+
+
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.department.BDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.department.BDepartmentEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="departmentname" property="departmentname" jdbcType="VARCHAR" />
+    <result column="available" property="available" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, departmentname, available
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_department
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from b_department
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hfoa.entity.department.BDepartmentEntity" useGeneratedKeys="true" keyProperty="id" >
+    insert into b_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departmentname != null" >
+        departmentname,
+      </if>
+      <if test="available != null" >
+        available,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="departmentname != null" >
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hfoa.entity.department.BDepartmentEntity" >
+    update b_department
+    <set >
+      <if test="departmentname != null" >
+        departmentname = #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+   <select id="getUserIdByDIds" resultType="com.hfoa.service.user.BUserDepartment">
+  	select userid from b_user_department where departmentid in 
+  		<foreach item="item" index="index" collection="dlist"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  </select>
+  <select id="getOwnDepartment" resultType="com.hfoa.entity.department.BDepartmentEntity">
+  	select * from b_department where id in 
+  		<foreach item="item" index="index" collection="departmentIdByUserId"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  </select>
+</mapper>

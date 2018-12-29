@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.car.BInsuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.car.BInsurance" >
+    <result column="Id" property="id" jdbcType="REAL" />
+    <result column="CarNum" property="carnum" jdbcType="VARCHAR" />
+    <result column="InsuranceType" property="insurancetype" jdbcType="VARCHAR" />
+    <result column="InsuranceSum" property="insurancesum" jdbcType="REAL" />
+    <result column="InsuranceFare" property="insurancefare" jdbcType="REAL" />
+    <result column="SuspendTime" property="suspendtime" jdbcType="VARCHAR" />
+    <result column="CarUrl" property="carUrl" jdbcType="VARCHAR" />
+    <result column="CarType" property="carType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, CarNum, InsuranceType, InsuranceSum, InsuranceFare, SuspendTime,CarUrl,CarType
+  </sql>
+  <insert id="insertSelective" parameterType="com.hfoa.entity.car.BInsurance" >
+    insert into b_insurance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="carnum != null" >
+        CarNum,
+      </if>
+      <if test="insurancetype != null" >
+        InsuranceType,
+      </if>
+      <if test="insurancesum != null" >
+        InsuranceSum,
+      </if>
+      <if test="insurancefare != null" >
+        InsuranceFare,
+      </if>
+      <if test="suspendtime != null" >
+        SuspendTime,
+      </if>
+      <if test="carUrl != null" >
+        CarUrl,
+      </if>
+      <if test="carType != null" >
+        CarType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=REAL},
+      </if>
+      <if test="carnum != null" >
+        #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancetype != null" >
+        #{insurancetype,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancesum != null" >
+        #{insurancesum,jdbcType=REAL},
+      </if>
+      <if test="insurancefare != null" >
+        #{insurancefare,jdbcType=REAL},
+      </if>
+      <if test="suspendtime != null" >
+        #{suspendtime,jdbcType=VARCHAR},
+      </if>
+       <if test="carUrl != null" >
+        #{carUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="com.hfoa.entity.car.BInsurance" >
+    update b_insurance
+    <set >
+      <if test="id != null" >
+        Id = #{id,jdbcType=REAL},
+      </if>
+      <if test="carnum != null" >
+        CarNum = #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancetype != null" >
+        InsuranceType = #{insurancetype,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancesum != null" >
+        InsuranceSum = #{insurancesum,jdbcType=REAL},
+      </if>
+      <if test="insurancefare != null" >
+        InsuranceFare = #{insurancefare,jdbcType=REAL},
+      </if>
+      <if test="suspendtime != null" >
+        SuspendTime = #{suspendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="carUrl != null" >
+        CarUrl = #{carUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        CarType = #{carType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=REAL}
+  </update>
+</mapper>

@@ -1,0 +1,109 @@
+/* pages/modulePages/public/borrowDetail/borrowDetail.wxss */
+
+page {
+  max-width: 750rpx;
+}
+
+.border_top_bottom {
+  width: 750rpx;
+  height: 140rpx;
+  border-top: 1rpx solid #EAEAEA;
+  border-bottom: 1rpx solid #EAEAEA;
+  background: #FFFFFF;
+}
+
+.public_icon {
+  display: inline-block;
+  width: 190rpx;
+  height: 120rpx;
+  margin: 10rpx;
+}
+
+.public_info {
+  display: inline-block;
+  position: absolute;
+  top: 44rpx;
+  left: 300rpx;
+  color: #000000;
+  font-size: 20px;
+}
+
+/* .weui-loadmore__tips {
+  background: #EFEFF4;
+} */
+
+.btn{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.list{
+  padding-bottom: 50rpx;
+}
+
+.item {
+  position: relative;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #E6E6E6;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.user_icon {
+  float: left;
+  margin-right: 25rpx;
+  margin-left: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.detail_info {
+  float: left;
+  width: 420rpx;
+  color: #888888;
+  font-size: 32rpx;
+}
+
+.applyMan{
+  width: 140rpx;
+  display: inline-block;
+  font-size: 36rpx;
+  color: #37383B;
+}
+
+.status{
+  width: 200rpx;
+  display: inline-block;
+  font-size: 36rpx;
+  color: #f5a623;
+}
+
+.destination {
+  float: left;
+  position: absolute;
+  top: 50rpx;
+  right: 10rpx;
+  width: 214rpx;
+  font-size: 28rpx;
+  color: #000000;
+  text-align: center;
+}
+
+.color_blue {
+  float: left;
+  position: absolute;
+  top: 96rpx;
+  right: 10rpx;
+  width: 214rpx;
+  font-size: 32rpx;
+  color: #2A98BD;
+  text-align: center;
+}

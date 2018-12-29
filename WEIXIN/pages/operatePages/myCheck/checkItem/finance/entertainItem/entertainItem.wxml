@@ -1,0 +1,121 @@
+<!-- 我的->财务处理->点击某人的招待  -->
+<view>
+	<form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+		<view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+		<view class="weui-cells">
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">审批编号</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" value="{{info.number}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">发 票 号</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" value="{{info.invoiceNumber}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">开票日期</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" value="{{info.invoiceDate}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">开票内容</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" value="{{info.invoiceContent}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">发票金额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" value="{{info.invoiceSum}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">开票单位</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" value="{{info.invoiceUnit}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">总 金 额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" value="{{info.enterSum}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label rui-justify">
+						<text space="ensp">人均金额</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input type="digit" class="weui-input" value="{{info.personSum}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">备    注</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" value="{{info.remark}}" disabled="{{true}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-label">报销日期</view>
+				<picker disabled="{{showButton < 0}}" mode="date" name="applyTime" value="{{info.paidTime}}" bindchange="setTime" class='mpicker'>
+					<view class='mview'>{{info.paidTime}}</view>
+				</picker>
+        <view wx:if="{{showButton > 0}}" class='weui-cell__ft arrow_right'></view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">
+						<text space="ensp">凭 证 号</text>
+					</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input disabled="{{showButton < 0}}" type="number" class="weui-input" value="{{info.voucherNum}}" bindinput="inputedit" data-obj="info"
+					 data-item="voucherNum"  placeholder-style="color:#B2B2B2" placeholder="格式:2017010001" />
+				</view>
+			</view>
+		</view>
+		<button wx:if="{{showButton > 0}}" bindtap="agree" class="btn pressed_btn">同意</button>
+		<button wx:if="{{showButton > 0}}" bindtap="disagree" class="btn btn_bottom">驳回</button>
+	</form>
+</view>
+
+<import src="/pages/template/reject.wxml"></import>
+<template is="rejectBox" data="{{showModal}}"></template>

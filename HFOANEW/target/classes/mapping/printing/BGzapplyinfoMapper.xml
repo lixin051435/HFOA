@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.printing.BGzapplyinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.printing.BGzapplyinfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ApprovalId" property="approvalid" jdbcType="VARCHAR" />
+    <result column="Department" property="department" jdbcType="VARCHAR" />
+    <result column="ApplyUserName" property="applyusername" jdbcType="VARCHAR" />
+    <result column="Reason" property="reason" jdbcType="VARCHAR" />
+    <result column="ApplyTime" property="applytime" jdbcType="VARCHAR" />
+    <result column="SendTo" property="sendto" jdbcType="VARCHAR" />
+    <result column="GZKind" property="gzkind" jdbcType="VARCHAR" />
+    <result column="Copies" property="copies" jdbcType="INTEGER" />
+    <result column="IsSecret" property="issecret" jdbcType="VARCHAR" />
+    <result column="Status" property="status" jdbcType="VARCHAR" />
+    <result column="ApproveMan" property="approveman" jdbcType="VARCHAR" />
+    <result column="ConfirmMan" property="confirmman" jdbcType="VARCHAR" />
+    <result column="HandleMan" property="handleman" jdbcType="VARCHAR" />
+    <result column="EntrustedMan" property="entrustedman" jdbcType="VARCHAR" />
+    <result column="EntrustedPost" property="entrustedpost" jdbcType="VARCHAR" />
+    <result column="EntrustedCardType" property="entrustedcardtype" jdbcType="VARCHAR" />
+    <result column="EntrustedCardNum" property="entrustedcardnum" jdbcType="VARCHAR" />
+    <result column="EntrustedMatter" property="entrustedmatter" jdbcType="VARCHAR" />
+    <result column="EntrustedPermission" property="entrustedpermission" jdbcType="VARCHAR" />
+    <result column="EntrustedStartTime" property="entrustedstarttime" jdbcType="VARCHAR" />
+    <result column="EntrustedEndTime" property="entrustedendtime" jdbcType="VARCHAR" />
+    <result column="MaxGarde" property="maxgarde" jdbcType="INTEGER" />
+    <result column="DepartmentId" property="departmentid" jdbcType="INTEGER" />
+    <result column="BusinessManager" property="businessManager" jdbcType="VARCHAR" />
+    <result column="approvalLable" property="approvalLable" jdbcType="INTEGER" />
+    <result column="bussinessLable" property="bussinessLable" jdbcType="INTEGER" />
+    <result column="confirmLable" property="confirmLable" jdbcType="INTEGER" />
+    <result column="gzId" property="gzId" jdbcType="INTEGER" />
+    <result column="contracAmount" property="contracAmount" jdbcType="DOUBLE" />
+    <result column="borrowTime" property="borrowTime" jdbcType="VARCHAR" />
+    <result column="returnTime" property="returnTime" jdbcType="VARCHAR" />
+    <result column="contractType" property="contractType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ApprovalId,Department, ApplyUserName, Reason, ApplyTime, SendTo, GZKind, Copies, IsSecret, 
+    Status, ApproveMan, ConfirmMan,HandleMan,EntrustedMan,EntrustedPost,EntrustedCardType,EntrustedMatter,
+    EntrustedPermission,EntrustedStartTime,EntrustedEndTime,MaxGarde,EntrustedCardNum,DepartmentId,BusinessManager,
+    approvalLable,bussinessLable,confirmLable,gzId,contracAmount,returnTime,borrowTime,contractType
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_gzapplyinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from b_gzapplyinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.hfoa.entity.printing.BGzapplyinfo" >
+    insert into b_gzapplyinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+<!--       <if test="id != null" > -->
+<!--         ID, -->
+<!--       </if> -->
+      <if test="approvalid != null" >
+        ApprovalId,
+      </if>
+      <if test="department != null" >
+        Department,
+      </if>
+      <if test="applyusername != null" >
+        ApplyUserName,
+      </if>
+      <if test="reason != null" >
+        Reason,
+      </if>
+      <if test="applytime != null" >
+        ApplyTime,
+      </if>
+      <if test="sendto != null" >
+        SendTo,
+      </if>
+      <if test="gzkind != null" >
+        GZKind,
+      </if>
+      <if test="copies != null" >
+        Copies,
+      </if>
+      <if test="issecret != null" >
+        IsSecret,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="approveman != null" >
+        ApproveMan,
+      </if>
+      <if test="confirmman != null" >
+        ConfirmMan,
+      </if>
+      <if test="handleman != null" >
+        HandleMan,
+      </if>
+      <if test="entrustedman != null" >
+        EntrustedMan,
+      </if>
+      <if test="entrustedpost != null" >
+        EntrustedPost,
+      </if>
+      <if test="entrustedcardtype != null" >
+        EntrustedCardType,
+      </if>
+      <if test="entrustedcardnum != null" >
+        EntrustedCardNum,
+      </if>
+      <if test="entrustedmatter != null" >
+        EntrustedMatter,
+      </if>
+       <if test="entrustedpermission != null" >
+        EntrustedPermission,
+      </if>
+      <if test="entrustedstarttime != null" >
+        EntrustedStartTime,
+      </if>
+      <if test="entrustedendtime != null" >
+        EntrustedEndTime,
+      </if>
+       <if test="maxgarde != null" >
+        MaxGarde,
+      </if>
+      <if test="departmentid != null" >
+        DepartmentId,
+      </if>
+      <if test="businessManager != null" >
+        BusinessManager,
+      </if>
+      <if test="approvalLable != null" >
+        approvalLable,
+      </if>
+      <if test="bussinessLable != null" >
+        bussinessLable,
+      </if>
+      <if test="confirmLable != null" >
+        confirmLable,
+      </if>
+      <if test="gzId != null" >
+        gzId,
+      </if>
+      <if test="contracAmount != null" >
+        contracAmount,
+      </if>
+      <if test="borrowTime != null" >
+        borrowTime,
+      </if>
+      <if test="returnTime != null" >
+        returnTime,
+      </if>
+      <if test="contractType != null" >
+        contractType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+<!--       <if test="id != null" > -->
+<!--         #{id,jdbcType=INTEGER}, -->
+<!--       </if> -->
+      <if test="approvalid != null" >
+        #{approvalid,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="applyusername != null" >
+        #{applyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="applytime != null" >
+        #{applytime,jdbcType=VARCHAR},
+      </if>
+      <if test="sendto != null" >
+        #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="gzkind != null" >
+        #{gzkind,jdbcType=VARCHAR},
+      </if>
+      <if test="copies != null" >
+        #{copies,jdbcType=INTEGER},
+      </if>
+      <if test="issecret != null" >
+        #{issecret,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="approveman != null" >
+        #{approveman,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmman != null" >
+        #{confirmman,jdbcType=VARCHAR},
+      </if>
+      <if test="handleman != null" >
+        #{handleman,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustedman != null" >
+        #{entrustedman,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustedpost != null" >
+        #{entrustedpost,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustedcardtype != null" >
+        #{entrustedcardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustedcardnum != null" >
+        #{entrustedcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustedmatter != null" >
+        #{entrustedmatter,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedpermission != null" >
+        #{entrustedpermission,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedstarttime != null" >
+        #{entrustedstarttime,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedendtime != null" >
+        #{entrustedendtime,jdbcType=VARCHAR},
+      </if>
+       <if test="maxgarde != null" >
+        #{maxgarde,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null" >
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+       <if test="businessManager != null" >
+        #{businessManager,jdbcType=VARCHAR},
+      </if>
+       <if test="approvalLable != null" >
+        #{approvalLable,jdbcType=INTEGER},
+      </if>
+      <if test="bussinessLable != null" >
+        #{bussinessLable,jdbcType=INTEGER},
+      </if>
+      <if test="confirmLable != null" >
+        #{confirmLable,jdbcType=INTEGER},
+      </if>
+      <if test="gzId != null" >
+        #{gzId,jdbcType=INTEGER},
+      </if>
+       <if test="contracAmount != null" >
+        #{contracAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowTime != null" >
+        #{borrowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="returnTime != null" >
+        #{returnTime,jdbcType=VARCHAR},
+      </if>
+       <if test="contractType != null" >
+        #{contractType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hfoa.entity.printing.BGzapplyinfo" >
+    update b_gzapplyinfo
+    <set >
+      <if test="approvalid != null" >
+        ApprovalId = #{approvalid,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="applyusername != null" >
+        ApplyUserName = #{applyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        Reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="applytime != null" >
+        ApplyTime = #{applytime,jdbcType=VARCHAR},
+      </if>
+      <if test="sendto != null" >
+        SendTo = #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="gzkind != null" >
+        GZKind = #{gzkind,jdbcType=VARCHAR},
+      </if>
+      <if test="copies != null" >
+        Copies = #{copies,jdbcType=INTEGER},
+      </if>
+      <if test="issecret != null" >
+        IsSecret = #{issecret,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="approveman != null" >
+        ApproveMan = #{approveman,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmman != null" >
+        ConfirmMan = #{confirmman,jdbcType=VARCHAR},
+      </if>
+       <if test="handleman != null" >
+        HandleMan = #{handleman,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedman != null" >
+        EntrustedMan = #{entrustedman,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedpost != null" >
+        EntrustedPost = #{entrustedpost,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedcardtype != null" >
+        EntrustedCardType = #{entrustedcardtype,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedcardnum != null" >
+        EntrustedCardNum = #{entrustedcardnum,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedmatter != null" >
+        EntrustedMatter = #{entrustedmatter,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedpermission != null" >
+        EntrustedPermission = #{entrustedpermission,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedstarttime != null" >
+        EntrustedStartTime = #{entrustedstarttime,jdbcType=VARCHAR},
+      </if>
+       <if test="entrustedendtime != null" >
+        EntrustedEndTime = #{entrustedendtime,jdbcType=VARCHAR},
+      </if>
+       <if test="maxgarde != null" >
+        MaxGarde = #{maxgarde,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null" >
+        DepartmentId = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="businessManager != null" >
+        BusinessManager = #{businessManager,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalLable != null" >
+        approvalLable = #{approvalLable,jdbcType=INTEGER},
+      </if>
+      <if test="bussinessLable != null" >
+        bussinessLable = #{bussinessLable,jdbcType=INTEGER},
+      </if>
+      <if test="confirmLable != null" >
+        confirmLable = #{confirmLable,jdbcType=INTEGER},
+      </if>
+      <if test="gzId != null" >
+        gzId = #{gzId,jdbcType=INTEGER},
+      </if>
+       <if test="contracAmount != null" >
+        contracAmount = #{contracAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowTime != null" >
+        borrowTime = #{borrowTime,jdbcType=VARCHAR},
+      </if>
+       <if test="returnTime != null" >
+        returnTime = #{returnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null" >
+        contractType = #{contractType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+   <select id="findTasksByStatus" resultType="com.hfoa.entity.printing.BGzapplyinfo">
+  	select * from b_gzapplyinfo where ID in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and Status=#{status,jdbcType=VARCHAR}
+  </select>
+  <select id="findTasksByUserCode" resultType="com.hfoa.entity.printing.BGzapplyinfo">
+  	select * from b_gzapplyinfo where ID in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and ApplyUserName=#{code,jdbcType=VARCHAR}
+  </select>
+  <select id="getBySql" resultType="com.hfoa.entity.printing.BGzapplyinfo"  parameterType="String">
+  	${result}
+  </select>
+  <select id="getCountBySQL" resultType="java.lang.Integer"  parameterType="String">
+  	${countResult}
+  </select>
+  <select id="findTasksByStatuses" resultType="com.hfoa.entity.printing.BGzapplyinfo">
+  	select * from b_gzapplyinfo where ID in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and (Status=#{status1,jdbcType=VARCHAR} or Status=#{status2,jdbcType=VARCHAR})
+  </select>
+  <select id="findTasksLikeStatuses" resultType="com.hfoa.entity.printing.BGzapplyinfo">
+  	select * from b_gzapplyinfo where ID in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and Status like #{status,jdbcType=VARCHAR}
+  </select>
+   <select id="findTasksByCase" resultType="com.hfoa.entity.printing.BGzapplyinfo" parameterType="com.hfoa.entity.printing.BGzapplyinfo">
+  	select * from b_gzapplyinfo where ID in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and Status=#{status,jdbcType=VARCHAR}
+  	<if test="gzId != null and gzId !=0 ">
+  		and gzId=#{gzId,jdbcType=INTEGER}
+  	</if>
+  	<if test="department != null and department != '全部' and department!='null' ">
+  		and Department =#{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="applyusername != null and applyusername != '' and applyusername!='null' ">
+  		and ApplyUserName LIKE CONCAT(CONCAT('%',#{applyusername,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='starttime != "null" and starttime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{starttime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endtime != "null" and endtime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endtime,jdbcType = VARCHAR}
+  	</if>
+  </select>
+</mapper>

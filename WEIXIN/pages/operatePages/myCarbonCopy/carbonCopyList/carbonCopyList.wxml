@@ -1,0 +1,52 @@
+<!-- 我的->抄送我的 -->
+<import src="/pages/template/listItem"></import>
+<import src="/pages/template/searchItem"></import>
+
+<view class="bgr">
+  <!-- tab标签 -->
+  <view class="operate">
+    <view class="operate_item {{currentTab == 'pending' ?'active':''}}" data-status="pending" bindtap="switchNav">
+      <view class="operate_text">未查看({{pendingNumber}})</view>
+    </view>
+    <view class="operate_item {{currentTab == 'approved' ?'active':''}}" data-status="approved" bindtap="switchNav">
+      <view class="operate_text">已查看({{approvedNumber}})</view>
+    </view>
+  </view>
+  <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+  <!-- 待处理 -->
+  <view class="pending" hidden="{{currentTab!=='pending'}}">
+    <button class="btn_search" bindtap="showModal">
+      <image class="search_icon" src="../../../../images/search.png"></image>
+      <view class="search_lable">搜索</view>
+    </button>
+    <!-- 没有数据 -->
+    <view class="weui-loadmore weui-loadmore_line pengding_loadmore" hidden="{{!pending_noData}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+    </view>
+    <!-- 有数据 -->
+    <view wx:for="{{pendingList}}" wx:key="key" wx:for-item="item">
+      <view id="{{index}}" bindtap="toPendingDetailItem">
+        <template data="{{item,index}}" is="item"></template>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 审批中 -->
+<view class="approved" hidden="{{currentTab!=='approved'}}">
+  <button class="btn_search" bindtap="showModal">
+    <image class="search_icon" src="../../../../images/search.png"></image>
+    <view class="search_lable">搜索</view>
+  </button>
+  <!-- 没有数据 -->
+  <view class="weui-loadmore weui-loadmore_line approved_loadmore" hidden="{{!approved_noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+  <!-- 有数据 -->
+  <view wx:for="{{approvedList}}" wx:key="key" wx:for-item="item">
+    <view id="{{index}}" bindtap="toApprovedDetailItem" data-param="{{1}}">
+      <template data="{{item}}" is="item"></template>
+    </view>
+  </view>
+</view>
+
+<template is="carbonSearchItem" data="{{searchInfo,showModal}}"></template>

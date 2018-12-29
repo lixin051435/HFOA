@@ -1,0 +1,24 @@
+/* pages/mainPages/informList/informList.wxss */
+
+page {
+  background: #EFEFF4;
+  max-width: 750rpx;
+}
+
+.title {
+  width: 650rpx;
+  font-size: 36rpx;
+  color: #37383B;
+}
+
+.content{
+  width: 650rpx;
+  font-size: 32rpx;
+  color: #37383B;
+}
+
+.time{
+  width: 650rpx;
+  font-size: 28rpx;
+  color: #888888;
+}

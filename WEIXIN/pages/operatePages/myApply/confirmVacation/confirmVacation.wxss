@@ -1,0 +1,75 @@
+/* pages/operatePages/myApply/confirmVacation/confirmVacation.wxss */
+page{
+  max-width: 750rpx;
+}
+
+.bgr {
+  position: relative;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.pendingItem,
+.approvedItem {
+  position: relative;
+  border-bottom: 2rpx solid #E6E6E6;
+}
+
+.user_icon {
+  float: left;
+  margin-top: 20rpx;
+  margin-right: 25rpx;
+  margin-left: 30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.top_user_info {
+  margin-top: 20rpx;
+  float: left;
+  width: 500rpx;
+  height: 56rpx;
+}
+
+.user_name {
+  color: #2A98BD;
+  font-size: 36rpx;
+  display: inline-block;
+}
+
+.user_applytype {
+  margin-left: 30rpx;
+  color: #000000;
+  font-size: 32rpx;
+  display: inline-block;
+}
+
+.check_info {
+  float: left;
+  width: 560rpx;
+  height: 160rpx;
+  font-size: 32rpx;
+}
+
+.detail_info {
+  display: inline-block;
+  width: 560rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+
+.check_info view {
+  display: inline-block;
+}
+
+.status {
+  color: #F5A623;
+  font-size: 32rpx;
+}

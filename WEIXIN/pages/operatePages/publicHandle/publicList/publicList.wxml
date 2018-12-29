@@ -1,0 +1,63 @@
+<!--pages/operatePages/publicHandle/publicList/publicList.wxml-->
+<import src="/pages/template/listItem"></import>
+<import src="/pages/template/searchItem"></import>
+
+<view class="bgr">
+
+  <!-- tab标签 -->
+  <view class="operate">
+    <view class="operate_item {{currentTab == 'pending' ?'active':''}}" data-status="pending" bindtap="switchNav">
+      <view class="operate_text">待出库({{pendingOutNumber}})</view>
+    </view>
+    <view class="operate_item {{currentTab == 'approved' ?'active':''}}" data-status="approved" bindtap="switchNav">
+      <view class="operate_text">待入库({{pendingInNumber}})</view>
+    </view>
+  </view>
+
+  <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+  <!-- 待出库 -->
+  <view class="pending" hidden="{{currentTab!=='pending'}}">
+
+		<button class="btn_search" bindtap="showModal">
+			<image class="search_icon" src="../../../../images/search.png"></image>
+			<view class="search_lable">搜索</view>
+		</button>
+
+    <!-- 没有数据 -->
+    <view class="weui-loadmore weui-loadmore_line" wx:if="{{pending_noData}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+    </view>
+
+    <!-- 有数据 -->
+    <view wx:for="{{publicOutList}}" wx:key="key" wx:for-item="item" wx:if="{{!pending_noData}}">
+      <view id="{{index}}" bindtap="toPublicOutItem">
+        <template data="{{item,icon,index}}" is="item"></template>
+      </view>
+    </view>
+  </view>
+  <template is="publicSearchItemHandle" data="{{searchInfo,showModal}}"></template>
+
+  <!-- 待入库 -->
+  <view class="approved" hidden="{{currentTab!=='approved'}}">
+
+    <button class="btn_search" bindtap="showModal">
+      <image class="search_icon" src="../../../../images/search.png"></image>
+      <view class="search_lable">搜索</view>
+    </button>
+  
+    <!-- 没有数据 -->
+    <view class="weui-loadmore weui-loadmore_line" wx:if="{{approved_noData}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+    </view>
+
+    <!-- 有数据 -->
+    <view wx:for="{{publicInList}}" wx:key="key" wx:for-item="item" wx:if="{{!approved_noData}}">
+      <view id="{{index}}" bindtap="toPublicInItem">
+        <template data="{{item,icon}}" is="item"></template>
+      </view>
+    </view>
+  </view>
+  <template is="publicSearchItemHandle" data="{{searchInfo,showModal}}"></template>
+
+</view>

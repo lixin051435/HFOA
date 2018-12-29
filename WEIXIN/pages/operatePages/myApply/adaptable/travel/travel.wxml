@@ -1,0 +1,368 @@
+<!-- pages/travelmanagement/travelApply/travelApply.wxml -->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+    <view class="weui-cells">
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">申 请 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input  minput" name="applyMan" bindinput="inputedit" data-obj="info" data-item="applyMan"
+            value="{{info.applyMan}}" disabled='disabled' />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">所属部门</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="department" value="{{info.department}}" bindinput="inputedit" data-obj="info"
+            data-item="department" placeholder-style="color:#B2B2B2" placeholder='请输入部门' disabled='disabled' />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label rui-justify">
+            <text space="ensp">出 差 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="travelers" value="{{info.travelers}}" bindinput="inputedit" data-obj="info"
+            data-item="travelers" placeholder-style="color:#B2B2B2" placeholder='如填写多个以“，”隔开' />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">申请事由</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="cause" value="{{info.cause}}" bindinput="inputedit" data-obj="info" data-item="cause"
+            placeholder-style="color:#B2B2B2" placeholder='请填写申请事由' />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">
+          <text space="ensp">行    程</text>
+        </view>
+        <radio-group name="triMode" bindchange="radioChange">
+          <label>
+            <radio value="1" checked="{{info.isMulti == false}}" class='mradio' color="#2A98BD" />
+            往返
+          </label>
+          <label>
+            <radio value="2" checked="{{info.isMulti == true}}" class='mradio' color="#2A98BD" />
+            多程
+          </label>
+        </radio-group>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">起    点</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input align_left" name="startAddress" value="{{info.startAddress}}" bindinput="inputedit"
+            data-obj="info" data-item="startAddress" placeholder-style="color:#B2B2B2" placeholder='请输入起点' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label ">
+            <text space="ensp">出差地点</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input align_left" name="middAddress" value="{{info.middAddress}}" bindinput="inputedit"
+            data-obj="info" data-item="middAddress" placeholder-style="color:#B2B2B2" placeholder='请输入出差地点' />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">出行方式</view>
+        <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange"
+          range="{{multiArray}}" class='mpicker'>
+          <view>
+            <view class='mview' style="color:{{info.goTravelMode == '请选择出行方式'?'#B2B2B2':''}}">{{info.goTravelMode}}</view>
+          </view>
+        </picker> -->
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" data-item="goTravelMode" bindcolumnchange="bindMultiPickerColumnChange"
+          range="{{info.goModes}}" class='mpicker'>
+          <view>
+            <view class='mview' style="color:{{info.goTravelMode == '请选择出行方式'?'#B2B2B2':''}}">
+              {{info.goTravelMode}}
+            </view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view wx:for="{{info.lists}}" wx:key="key" class="forItemBorder">
+        <view class="weui-cell weui-cell_input ">
+          <view class="weui-cell__hd">
+            <view class="weui-label ">
+              <text space="ensp">出差地点</text>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input align_left" bindinput="setFrom" name="src-{{index}}" id="src-{{index}}" value="{{item.beginAddress}}"
+              placeholder-style="color:#B2B2B2" placeholder='请输入出差地点' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label  ">
+              <text space="ensp">出差地点</text>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input align_left" bindinput="setTo" name="dest-{{index}}" id="dest-{{index}}" value="{{item.endAddress}}"
+              placeholder-style="color:#B2B2B2" placeholder='请输入出差地点' />
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-label">出行方式</view>
+          <!-- <picker mode="multiSelector" bindchange="bindPickerValues" bindcolumnchange="bindMultiPickerColumnChange"
+            range="{{item.modes}}" class='mpicker' name="travelMode{{index}}" id='picker-{{index}}' >
+            <view class='mview' style="color:{{item.vehicle == '请选择出行方式'?'#B2B2B2':''}}">{{item.vehicle}}</view>
+          </picker> -->
+          <picker mode="multiSelector" bindchange="bindPickerValues" data-item="picker-{{index}}" bindcolumnchange="bindMultiPickerColumnChange"
+            range="{{item.modes}}" class='mpicker' name="travelMode{{index}}" id='picker-{{index}}'>
+            <view class='mview' style="color:{{item.vehicle == '请选择出行方式'?'#B2B2B2':''}}">
+              {{item.vehicle}}
+            </view>
+          </picker>
+          <view class='weui-cell__ft arrow_right'></view>
+        </view>
+      </view>
+
+      <view class="weui-cell" wx:if="{{info.isMulti}}">
+        <button class="btn" bindtap='addItem' style='width:50%;margin-top:0;'>增加出差地点</button>
+        <button class="btn" bindtap='removeItem' style='width:50%;margin-left:5rpx;margin-top:0;'>
+          删除出差地点
+        </button>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">出差地点</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input align_left" name="lastPlace" value="{{info.lastPlace}}" bindinput="inputedit"
+            data-obj="info" data-item="lastPlace" placeholder-style="color:#B2B2B2" placeholder='请输入出差地点' />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">终    点</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="endAddress" value="{{info.endAddress}}" bindinput="inputedit" data-obj="info"
+            data-item="endAddress" placeholder-style="color:#B2B2B2" placeholder='请输入终点' />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">出行方式</view>
+        <!-- <picker mode="multiSelector" bindchange="setBackTravelMode" bindcolumnchange="bindMultiPickerColumnChange"
+          range="{{multiArray}}" class='mpicker'>
+          <view class='mview' style="color:{{info.backTravelMode == '请选择出行方式'?'#B2B2B2':''}}">{{info.backTravelMode}}</view>
+        </picker> -->
+        <picker mode="multiSelector" bindchange="setBackTravelMode" data-item="backTravelMode" bindcolumnchange="bindMultiPickerColumnChange"
+          range="{{info.backModes}}" class='mpicker'>
+          <view class='mview' style="color:{{info.backTravelMode == '请选择出行方式'?'#B2B2B2':''}}">
+            {{info.backTravelMode}}
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">出差日期</view>
+        <picker mode="date" name="beginTime" bindchange="bindBeginTime" class='mpicker'>
+          <view class='mview'>{{info.beginTime}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">返回日期</view>
+        <picker mode="date" name="endTime" bindchange="bindEndTime" class='mpicker'>
+          <view class='mview' style="color:{{info.endTime == '请选择返回日期'?'#B2B2B2':''}}">{{info.endTime}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出差天数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="travelDays" value="{{info.travelDays}}" bindinput="inputedit"
+            data-obj="info" data-item="travelDays" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">总 预 算</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="digit" class="weui-input" name="totalBudget" value="{{info.totalBudget}}" bindinput="inputedit"
+            data-obj="info" data-item="totalBudget" placeholder-style="color:#B2B2B2" placeholder='可不填' />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">属于试验</view>
+        <radio-group name="isTest" bindchange="handleIsTrial">
+          <label>
+            <radio value="1" class="mradio" checked="{{info.isTrial == false}}" color="#2A98BD" />
+            <text space='ensp'>否</text>
+          </label>
+          <label>
+            <radio value="2" class="mradio" checked="{{info.isTrial == true}}" color="#2A98BD" />
+            <text space='ensp'>是</text>
+          </label>
+        </radio-group>
+      </view>
+
+
+      <view wx:if="{{info.isTrial}}" class="weui-cell">
+        <checkbox-group bindchange="handleTrialType" style="margin:0px; padding:0px;">
+          <view class="testBox" wx:for="{{testList}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+            <checkbox value="{{index}}" checked="{{item.checked}}" color="#2A98BD">
+              <text class="testname">{{item.name}}</text>
+            </checkbox>
+          </view>
+        </checkbox-group>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label ">申请时间</view>
+        <picker disabled="{{true}}" mode="date" name="applyTime" bindchange="bindApplyTime" class='mpicker'>
+          <view class="mview1">
+            <view class='mview'>{{info.applyTime}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <!-- <view class="weui-cell ">
+        <view class="weui-label">
+          <text space="ensp">审 批 人</text>
+        </view>
+        <picker name="approveMan" value="{{finderIndex}}" bindchange="bindApproveMan" class='mpicker' range='{{finders}}'>
+          <view class='mview'>{{info.approveMan}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view> -->
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">审 批 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="approveMan" bindinput="inputedit" data-obj="info" data-item="approveMan"
+            value="{{info.approveMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <!-- <view class="weui-cell weui-cell_input" bindtap="showDialogBtn">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">抄 送 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{cCListOpenIdName}}" placeholder-style="color:#B2B2B2" disabled="{{true}}" placeholder='点击选择抄送人' />
+        </view>
+      </view> -->
+
+      <!-- 遮罩层 -->
+      <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+      <!-- 弹出框 -->
+      <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-content">
+          <checkbox-group bindchange="checkboxChange" style="margin:0px; padding:0px;">
+            <view class="ddd" wx:for="{{ccObjectList}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+              <checkbox disabled="{{true}}" value="{{index}}" checked="{{item.checked}}" color="#2A98BD">
+                <text>{{item.realname}}</text>
+              </checkbox>
+            </view>
+          </checkbox-group>
+        </view>
+        <!-- 操作按钮 -->
+        <view class="modal-footer">
+          <button class="btn btn-cancel" bindtap="onCancel" data-status="cancel">取消</button>
+          <button class="btn btn-confirm" bindtap="onConfirm" data-status="confirm">确定</button>
+        </view>
+      </view>
+
+      <!-- <view wx:if="{{ccObjectList.length > 0}}" class="weui-cell" style="padding-right:0rpx;">
+        <view class="weui-label">
+          <text space="ensp">抄 送 人</text>
+        </view>
+        <view style="margin-left:0px;" style="width:79%;">
+          <checkbox-group bindchange="checkboxChange" style="margin:0px; padding:0px;">
+            <view wx:for="{{ccObjectList}}" wx:for-item="item" wx:for-index="index" wx:key="key" style="width:160rpx;margin-left:10rpx;float:left;">
+              <checkbox value="{{index}}" checked="{{item.checked}}" color="#2A98BD">
+                <text>{{item.realname}}</text>
+              </checkbox>
+            </view>
+          </checkbox-group>
+        </view>
+      </view> -->
+
+      <view wx:if="{{ccObjectList.length > 0}}" class="weui-cell weui-cell_input" bindtap="showDialogBtn">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">抄 送 人</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{info.cCListOpenIdName}}" placeholder-style="color:#B2B2B2" disabled="{{true}}"
+            placeholder='点击选择抄送人' />
+        </view>
+      </view>
+
+      <!-- <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text space="ensp">备注信息</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="remarks" value="{{info.remarks}}" bindinput="inputedit" data-obj="info"
+            data-item="remarks" placeholder-style="color:#B2B2B2" placeholder='请输入备注信息' />
+        </view>
+      </view> -->
+    </view>
+
+    <button formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+
+  </form>
+
+</view>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.permission.BPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.permission.BPermissionEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="permissionname" property="permissionname" jdbcType="VARCHAR" />
+    <result column="permissiontype" property="permissiontype" jdbcType="VARCHAR" />
+    <result column="permissionurl" property="permissionurl" jdbcType="VARCHAR" />
+    <result column="permissionlable" property="permissionlable" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+    <result column="permissionsort" property="permissionsort" jdbcType="INTEGER" />
+    <result column="available" property="available" jdbcType="INTEGER" />
+    <result column="parentids" property="parentids" jdbcType="VARCHAR" />
+    <result column="urlclass" property="urlclass" jdbcType="INTEGER" />
+    <result column="processpermission" property="processpermission" jdbcType="VARCHAR" />
+    <result column="imageurl" property="imageurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, permissionname, permissiontype, permissionurl, permissionlable, parentid, permissionsort, 
+    available,parentids,urlclass,processpermission,imageurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from b_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hfoa.entity.permission.BPermissionEntity"  useGeneratedKeys="true" keyProperty="id">
+    insert into b_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="permissionname != null" >
+        permissionname,
+      </if>
+      <if test="permissiontype != null" >
+        permissiontype,
+      </if>
+      <if test="permissionurl != null" >
+        permissionurl,
+      </if>
+      <if test="permissionlable != null" >
+        permissionlable,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="permissionsort != null" >
+        permissionsort,
+      </if>
+      <if test="available != null" >
+        available,
+      </if>
+      <if test="parentids != null" >
+        parentids,
+      </if>
+      <if test="urlclass != null" >
+        urlclass,
+      </if>
+      <if test="processpermission != null" >
+        processpermission,
+      </if>
+      <if test="imageurl != null" >
+        imageurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="permissionname != null" >
+        #{permissionname,jdbcType=VARCHAR},
+      </if>
+      <if test="permissiontype != null" >
+        #{permissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionurl != null" >
+        #{permissionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionlable != null" >
+        #{permissionlable,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="permissionsort != null" >
+        #{permissionsort,jdbcType=INTEGER},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=INTEGER},
+      </if>
+       <if test="parentids != null" >
+        #{parentids,jdbcType=VARCHAR},
+      </if>
+       <if test="urlclass != null" >
+        #{urlclass,jdbcType=INTEGER},
+      </if>
+       <if test="processpermission != null" >
+        #{processpermission,jdbcType=VARCHAR},
+      </if>
+       <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.hfoa.entity.permission.BPermissionEntity" >
+    update b_permission
+    <set >
+      <if test="permissionname != null" >
+        permissionname = #{permissionname,jdbcType=VARCHAR},
+      </if>
+      <if test="permissiontype != null" >
+        permissiontype = #{permissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionurl != null" >
+        permissionurl = #{permissionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionlable != null" >
+        permissionlable = #{permissionlable,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="permissionsort != null" >
+        permissionsort = #{permissionsort,jdbcType=INTEGER},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="parentids != null" >
+        parentids = #{parentids,jdbcType=VARCHAR},
+      </if>
+      <if test="urlclass != null" >
+        urlclass = #{urlclass,jdbcType=INTEGER},
+      </if>
+      <if test="processpermission != null" >
+        processpermission = #{processpermission,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null" >
+        imageurl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

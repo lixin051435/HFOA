@@ -1,0 +1,174 @@
+@import "/lib/list_searchform.wxss";
+
+page{
+  max-width: 750rpx;
+}
+
+/* 
+.search {
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 750rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #EAEAEA;
+  background: #fff;
+}
+
+.search_item{
+  margin: 0 auto;
+  width: 130rpx;
+  height: 80rpx;
+  display: flex;
+}
+
+.search_icon {
+  margin-top: 18rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search_lable {
+  width: 90rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  display: inline-block;
+} */
+
+.btn_search {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 700rpx;
+  height: 75rpx;
+  color: #2A98BD;
+  border: 2rpx solid #2A98BD;
+  border-radius: 20rpx;
+  background-color: #FBFAFC;
+}
+
+.search_icon {
+  margin-top: 18rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.search_lable {
+  margin-bottom: 10rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  display: inline-block;
+}
+
+.pressed{
+  background: #F6F6F7;
+}
+
+.overview{
+  padding-left: 50rpx;
+  width: 700rpx;
+  height: 160rpx;
+  color: #888;
+  font-size: 28rpx;
+  border-top: 1rpx solid #EAEAEA;
+  border-bottom: 1rpx solid #EAEAEA;
+}
+
+.header{
+  position: relative;
+}
+
+.overview view{
+  height: 50rpx;
+  line-height: 50rpx
+}
+
+.applyMan{
+  display: inline-block;
+  color: #2A98BD;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.title{
+  position: absolute;
+  left: 140rpx;
+  display: inline-block;
+  color: #000000;
+  font-size: 32rpx;
+}
+
+.overview_label,
+.overview_content{
+  display: inline-block;
+}
+
+.detail_user_info{
+  position: relative;
+  float: left;
+  width: 500rpx;
+  height: 56rpx;
+}
+
+.user_info {
+  float: left;
+  width: 500rpx;
+  height: 56rpx;
+}
+
+.user_name {
+  color: #2A98BD;
+  font-size: 36rpx;
+  display: inline-block;
+}
+
+.user_applytype {
+  position: absolute;
+  top: 10rpx;
+  left: 140rpx;
+  color: #000000;
+  font-size: 32rpx;
+  display: inline-block;
+}
+
+/* 发往单位自动匹配 */
+.company_mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.scrollview {
+  position: absolute;
+  top: 90rpx;
+  left: 0;
+  margin-left: 224rpx;
+  width: 516rpx;
+  height: 350rpx;
+  z-index: 99;
+  overflow: auto;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: #2A98BD 2rpx 2rpx 10rpx 3rpx, #2A98BD -2rpx -2rpx 10rpx 3rpx;
+}
+
+.itemview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 1rpx solid #D9D9D9;
+}

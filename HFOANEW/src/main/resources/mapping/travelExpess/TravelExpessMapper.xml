@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.travelExpenses.ApplyExpensesMapper">
+  <!-- <resultMap id="BaseResultMap" type="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Department" jdbcType="VARCHAR" property="department" />
+    <result column="Travelers" jdbcType="VARCHAR" property="travelers" />
+    <result column="Cause" jdbcType="VARCHAR" property="cause" />
+    <result column="TripDetails" jdbcType="VARCHAR" property="tripDetails" />
+    <result column="BeginTime" jdbcType="VARCHAR" property="beginTime"/>
+    <result column="EndTime" jdbcType="VARCHAR" property="endTime"/>
+    <result column="TravelDays" jdbcType="INTEGER" property="travelDays"/>
+    <result column="TotalBudget" jdbcType="REAL" property="totalBudget"/>
+    <result column="IsTest" jdbcType="VARCHAR" property="isTest"/>
+    <result column="ApplyTime" jdbcType="VARCHAR" property="applyTime"/>
+    <result column="ApplyMan" jdbcType="VARCHAR" property="applyMan"/>
+    <result column="ApproveMan" jdbcType="VARCHAR" property="approveMan"/>
+    <result column="Remarks" jdbcType="VARCHAR" property="remarks"/>
+    <result column="ApproveState" jdbcType="VARCHAR" property="approveState"/>
+    <result column="TripMode" jdbcType="VARCHAR" property="triMode"/>
+    <result column="StartAddress" jdbcType="VARCHAR" property="startAddress"/>
+    <result column="MiddAddress" jdbcType="VARCHAR" property="middAddress"/>
+    <result column="EndAddress" jdbcType="VARCHAR" property="endAddress"/>    
+  </resultMap> -->
+  
+  <insert id="insertApplyExpensesEntity" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	insert into b_travelexpenses
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+       <if test="id != null">ID,</if>
+      <if test="department != null">Department,</if>
+      <if test="travelers != null">Travelers,</if>
+      <if test="cause != null">Cause,</if>
+      <if test="tripDetails != null">TripDetails,</if>
+      <if test="beginTime != null">BeginTime,</if>
+      <if test="endTime != null">EndTime,</if>
+      <if test="travelDays != null">TravelDays,</if>
+      <if test="totalBudget != null">TotalBudget,</if>
+      <if test="isTest != null">IsTest,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="applyMan != null">ApplyMan,</if>
+      <if test="approveMan != null">ApproveMan,</if>
+      <if test="remarks != null">Remarks,</if>
+      <if test="approveState !=null">ApproveState,</if>
+      <if test="tripMode != null">TripMode,</if>
+      <if test="startAddress != null">StartAddress,</if>
+      <if test="middAddress != null">MiddAddress,</if>
+      <if test="endAddress != null">EndAddress,</if>
+      <if test="openId != null">OpenId,</if>
+      <if test="approveManOpenId != null">ApproveManOpenId,</if>
+      <if test="cCListOpenId!=null">CCListOpenId,</if>
+      <if test="confirm!=null">Confirm,</if>
+      <if test="cCListOpenIdName!=null">CCListOpenIdName,</if>
+      <if test="state!=null">State</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="travelers != null">
+        #{travelers,jdbcType=VARCHAR},
+      </if>
+      <if test="cause != null">
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="tripDetails != null">
+        #{tripDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDays != null">
+      	#{travelDays,jdbcType=INTEGER},
+      </if>
+      <if test="totalBudget != null">
+        #{totalBudget,jdbcType=REAL},
+      </if>
+      <if test="isTest != null">
+        #{isTest,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyMan != null">
+        #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+        #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approveState != null">
+        #{approveState,jdbcType=VARCHAR},
+      </if>
+      <if test="tripMode != null">
+        #{tripMode,jdbcType=VARCHAR},
+      </if>
+      <if test="startAddress != null">
+        #{startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="middAddress != null">
+        #{middAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endAddress != null">
+        #{endAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveManOpenId!=null">
+      	#{approveManOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="cCListOpenId!=null">
+      	#{cCListOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm!=null">
+      	#{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="cCListOpenIdName!=null">
+      	#{cCListOpenIdName,jdbcType=VARCHAR},
+      </if>
+      <if test="state!=null">
+      	#{state,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  
+  
+  
+  <update id="updateApplyExpens" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	update b_travelexpenses
+   <trim prefix="set" suffixOverrides=",">  
+       <if test ="department != null">
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test ="travelers != null">
+        Travelers = #{travelers,jdbcType=VARCHAR},
+      </if>
+      <if test ="cause != null">
+        Cause = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test ="tripDetails != null">
+        TripDetails = #{tripDetails,jdbcType=VARCHAR},
+      </if>
+      <if test ="beginTime != null">
+        BeginTime = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test ="endTime != null">
+        EndTime = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDays != null">
+      	TravelDays = #{travelDays,jdbcType=VARCHAR},
+      </if>
+      <if test="totalBudget != null">
+        TotalBudget = #{totalBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="isTest != null">
+        IsTest = #{isTest,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        ApplyTime = #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="applyMan != null">
+        ApplyMan = #{applyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="approveMan != null">
+      	ApproveMan = #{approveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+      	Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="approveState != null">
+      	ApproveState = #{approveState,jdbcType=VARCHAR},
+      </if>
+      <if test="tripMode != null">
+      	TripMode = #{tripMode,jdbcType=VARCHAR},
+      </if>
+      <if test="startAddress != null">
+      	StartAddress = #{startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="middAddress != null">
+      	MiddAddress = #{middAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endAddress != null">
+      	EndAddress = #{endAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+      	OpenId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveManOpenId!=null">
+      	ApproveManOpenId = #{approveManOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm!=null">
+      	Confirm = #{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="cCListOpenIdName!=null">
+      	CCListOpenIdName = #{cCListOpenIdName,jdbcType=VARCHAR},
+      </if>
+      <if test="cCListOpenId !=null">
+      	CCListOpenId = #{cCListOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="state!=null">
+      	State = #{state,jdbcType=VARCHAR}
+      </if>
+      </trim>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <delete id="deleteApplyExpese" parameterType="java.lang.String">
+  	 delete from  b_travelexpenses where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <select id="getApplyExpens" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="searchApplyExpense" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses 
+  	where ApproveState = '已登记' 
+  	<if test="applyMan !=null">
+  		and  ApplyMan LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test="department !=null">
+  		and Department =#{department,jdbcType = VARCHAR}
+  	</if>
+  	<if test='searchBeginTime != null and searchBeginTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{searchBeginTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='searchEndTime != null and searchEndTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{searchEndTime,jdbcType = VARCHAR}
+  	</if>
+  	    order by ApplyTime desc
+  </select>
+  
+  <select id="finceApplyExpense" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses
+  	where 1=1
+  	<if test="tripDetails != null and tripDetails != '' ">
+  		and TripDetails LIKE CONCAT(CONCAT('%',#{tripDetails,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test="department != null and department != '' ">
+  		and Department = #{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="travelers != null and travelers != '' ">
+  		and Travelers LIKE CONCAT(CONCAT('%',#{travelers,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='beginTime != null and beginTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endTime != null and endTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType = VARCHAR}
+  	</if>
+  		order by ApplyTime desc
+  </select>
+  
+  <select id="statusApplyExpense" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where OpenId = #{openId,jdbcType=VARCHAR}
+  
+  </select>
+  
+  
+  <select id="getCCListOpenId" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where CCListOpenId LIKE CONCAT(CONCAT('%',#{cCListOpenId,jdbcType=VARCHAR}),'%') and State is NUll
+  </select>
+  
+  <select id="getCCListOpenIdState" parameterType="java.lang.String" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+   select * from b_travelexpenses where CCListOpenId LIKE CONCAT(CONCAT('%',#{cCListOpenId,jdbcType=VARCHAR}),'%') and State = '1'
+  </select>
+  
+  
+  
+  
+  <select id="getCCListOpenIdsearch" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity"  resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where CCListOpenId LIKE CONCAT(CONCAT('%',#{cCListOpenId}),'%')
+  	and State is NULL
+  	<if test="applyMan !=null">
+  		and  ApplyMan  LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='beginTime != null and beginTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endTime != null and endTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType = VARCHAR}
+  	</if>
+  </select>
+  
+  <select id="getCCListOpenIdsearchState" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity"  resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where CCListOpenId LIKE CONCAT(CONCAT('%',#{cCListOpenId}),'%')
+  	and State = '1'
+  	<if test="applyMan !=null">
+  		and  ApplyMan  LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  	</if>
+  	<if test='beginTime != null and beginTime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endTime != null and endTime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType = VARCHAR}
+  	</if>
+  </select>
+  
+  
+  <select id="searApplyExpenseApprove" resultType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	select * from b_travelexpenses where ApproveState = '已登记'
+  </select>
+  
+  <select id="countApplyExpense" resultType="map">
+  		SELECT count(t.ID) toatl, SUM(TotalExpenses) price FROM b_travelexpenses t JOIN b_travelexpensesapprove t1
+		on t.ID = t1.TravelExpenseId WHERE ApproveState='已登记' and ApplyMan = #{0} and t.ApplyTime like #{1}
+  </select>
+  
+  
+  
+  
+  
+  <update id="updateOpenId" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	update b_travelexpenses set OpenId = #{openId,jdbcType=VARCHAR} where ApplyMan LIKE CONCAT(CONCAT('%',#{applyMan,jdbcType=VARCHAR}),'%')
+  </update>
+  
+  <update id="updateApproveOpenId" parameterType="com.hfoa.entity.travelExpenses.ApplyExpensesEntity">
+  	update b_travelexpenses set ApproveManOpenId = #{approveManOpenId,jdbcType=VARCHAR} where ApproveMan = #{approveMan,jdbcType = VARCHAR}
+  </update>
+  
+ 
+
+</mapper>

@@ -1,0 +1,56 @@
+<!--pages/operatePages/sealHandle/sealList/sealList.wxml-->
+
+<import src="/pages/template/searchItem"></import>
+
+<view>
+
+  <button class="btn_search" bindtap="showModal">
+    <image class="search_icon" src="../../../../images/search.png"></image>
+    <view class="search_lable">搜索</view>
+  </button>
+  <template is="sealSearchItemHandle" data="{{searchInfo,showModal}}"></template>
+
+  <!-- 没有数据 -->
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{noData}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+
+  <!-- 有数据 -->
+  <view class="pending" wx:if="{{!noData}}">
+    <view wx:for="{{pendingList}}" wx:key="key" wx:for-item="item">
+      <view id="{{index}}" bindtap="toUseSeal">
+        <view class="pendingItem clearfix" hover-class="pressed_view">
+          <image class="user_icon" src="{{icon}}"></image>
+          <view class="detail_user_info">
+            <view class="user_name">{{item.applyusername}}</view>
+            <view class="user_applytype">{{item.title}}</view>
+          </view>
+
+          <view class="check_info">
+            <view class="detail_info">
+              <view>申请部门：</view>
+              <view>{{item.department}}</view>
+            </view>
+            <view class="detail_info">
+              <view>用印类型：</view>
+              <view>{{item.gzkind}}</view>
+            </view>
+            <view class="detail_info">
+              <view>申请时间：</view>
+              <view>{{item.applytime}}</view>
+            </view>
+            <!-- <view class="detail_info">
+              <view>发往单位：</view>
+              <view class="list_company">{{item.sendto}}</view>
+            </view> -->
+            <view class="detail_info">
+              <view class="status">{{item.status}}</view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

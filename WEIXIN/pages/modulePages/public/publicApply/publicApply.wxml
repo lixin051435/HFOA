@@ -1,0 +1,133 @@
+<!--pages/modulePages/public/publicApply/publicApply.wxml-->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+    <view class="weui-cells form_margin_top">
+
+      <input name="userCode" value="{{userCode}}" hidden="true" />
+      <input name="carCode" value="{{carCode}}" hidden="true" />
+      <input name="carType" value="{{carType}}" hidden="true" />
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申 请 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyMan" value="{{applyMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">驾 驶 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="driver" value="{{driver}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申请时间</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyTime" value="{{applyTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">车牌型号</view>
+        <picker name="publicType" bindchange="bindPublicTypeChange" range="{{publicType}}" range-key="{{'typenum'}}">
+          <view wx:if="{{showPublicType}}" style="color: #B2B2B2">请选择车牌型号</view>
+          <view wx:if="{{!showPublicType}}" style="color:#37383B">{{value}}</view>
+          <input name="carId" value="{{publicType[publicTypeIndex].id}}" hidden="true" />
+          <input name="passengerMax" value="{{publicType[publicTypeIndex].peasonnum}}" hidden="true" />
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出发地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="beginPlace" value="{{beginPlace}}" placeholder-style="color:#B2B2B2"
+            placeholder="请输入出发地点" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">目的地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="endPlace" value="{{endPlace}}" placeholder-style="color:#B2B2B2" placeholder="请输入目的地点" />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预借时间</view>
+        </view>
+        <picker mode="multiSelector" name="borrowTime" value="{{borrowTime}}" bindchange="bindBorrowTime" range="{{borrowTimeArray}}">
+          <view>
+            <view name="borrowTime" style="color:#37383B">{{borrowTimeArray[0][borrowTime[0]]}}-{{borrowTimeArray[1][borrowTime[1]]}}-{{borrowTimeArray[2][borrowTime[2]]}}
+              {{borrowTimeArray[3][borrowTime[3]]}}:{{borrowTimeArray[4][borrowTime[4]]}}:{{borrowTimeArray[5][borrowTime[5]]}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">预还时间</view>
+        </view>
+        <picker mode="multiSelector" name="returnTime" value="{{returnTime}}" bindchange="bindReturnTime" range="{{returnTimeArray}}">
+          <view>
+            <view style="color:#37383B">{{today_offtime}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <picker name="approveMan" range="{{approveManList}}" range-key="{{'code'}}" bindchange="bindApproveManChange"
+          value="{{approveManList[approveManIndex].code}}" style="width: 440rpx;">
+          <input name="openId" value='{{approveManList[approveManIndex].modifyUserId}}' hidden='true'></input>
+          <view style="color:#37383B">{{approveManList[approveManIndex].code}}</view>
+          <input name="realApproveMan" value="{{approveManList[approveManIndex].realname}}" hidden="true" />
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用车事由</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="reason" value="{{reason}}" min-length="5" placeholder-style="color:#B2B2B2" placeholder="请输入不少于5个字符" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">同行人数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type="number" class="weui-input" name="companyNo" value="{{companyNo}}" placeholder-style="color:#B2B2B2"
+            placeholder="本车最大载客量为{{publicType[publicTypeIndex].peasonnum || changedComanyNum}}" />
+        </view>
+      </view>
+
+    </view>
+
+    <button wx:if="{{showSubmit}}" formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+
+  </form>
+
+</view>

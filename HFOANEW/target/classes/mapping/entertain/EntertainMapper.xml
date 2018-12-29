@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hfoa.dao.entertain.EntertainMapper">
+  <!-- <resultMap id="BaseResultMap" type="com.hfoa.entity.entertain.Entertainapplyinfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Leave_ID" jdbcType="VARCHAR" property="leave_id" />
+    <result column="BegingTime" jdbcType="VARCHAR" property="begingTime" />
+    <result column="EndTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="Days" jdbcType="VARCHAR" property="days" />
+    <result column="State" jdbcType="VARCHAR" property="state"/>
+    <result column="SFYC" jdbcType="VARCHAR" property="sfyc"/>
+  </resultMap> -->
+  
+  <delete id="deleteEntertain" parameterType="int">
+    delete from b_entertainapplyinfo
+    where ID = #{id,jdbcType=INTEGER} 
+  </delete>
+  
+  <insert id="insertEntertain"  parameterType="com.hfoa.entity.entertain.Entertainapplyinfo">
+    insert into b_entertainapplyinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">ID,</if>
+      <if test="number != null">Number,</if>
+      <if test="department != null">Department,</if>
+      <if test="applyTime != null">ApplyTime,</if>
+      <if test="entertainObject != null">EntertainObject,</if>
+      <if test="entertainReason != null">EntertainReason,</if>
+      <if test="entertainNum != null">EntertainNum,</if>
+      <if test="accompanyNum != null">AccompanyNum,</if>
+      <if test="perBudget != null">PerBudget,</if>
+      <if test="masterBudget != null">MasterBudget,</if>
+      <if test="remainingBudget != null">RemainingBudget,</if>
+      <if test="entertainCategory != null">EntertainCategory,</if>
+      <if test="manager != null">Manager,</if>
+      <if test="approver != null">Approver,</if>
+      <if test="approverOpenid != null">ApproverOpenid,</if>
+      <if test="status != null">Status,</if>
+      <if test="remark != null">Remark,</if>
+      <if test="registerNum != null">RegisterNum,</if>
+      <if test="paidTime != null">PaidTime,</if>
+      <if test="approveTime != null">ApproveTime,</if>
+      <if test="ifWine != null">IfWine,</if>
+      <if test="wineType != null">WineType,</if>
+      <if test="wineNum != null">WineNum,</if>
+      <if test="wineOther != null">WineOther,</if>
+      <if test="wineSum != null">WineSum,</if>
+      <if test="ifBefore != null">IfBefore,</if>
+      <if test="beforeDate != null">BeforeDate,</if>
+      <if test="openId !=null">OpenId,</if>
+      <if test="confirm !=null">Confirm,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="entertainObject != null">
+        #{entertainObject,jdbcType=VARCHAR},
+      </if>
+      <if test="entertainReason != null">
+        #{entertainReason,jdbcType=VARCHAR},
+      </if>
+      <if test="entertainNum != null">
+      	#{entertainNum,jdbcType=VARCHAR},
+      </if>
+      <if test="accompanyNum != null">
+      	#{accompanyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="perBudget != null">
+      	#{perBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="masterBudget != null">
+      	#{masterBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingBudget != null">
+      	#{remainingBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="entertainCategory != null">
+      	#{entertainCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null">
+      	#{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+      	#{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approverOpenid != null">
+      	#{approverOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	#{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+      	#{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="registerNum != null">
+      	#{registerNum,jdbcType=INTEGER},
+      </if>
+      <if test="paidTime != null">
+      	#{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null">
+      	#{approveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ifWine != null">
+      	#{ifWine,jdbcType=VARCHAR},
+      </if>
+      <if test="wineType != null">
+      	#{wineType,jdbcType=VARCHAR},
+      </if>
+      <if test="wineNum != null">
+      	#{wineNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wineOther != null">
+      	#{wineOther,jdbcType=VARCHAR},
+      </if>
+      <if test="wineSum != null">
+      	#{wineSum,jdbcType=VARCHAR},
+      </if>
+      <if test="ifBefore != null">
+      	#{ifBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeDate != null">
+      	#{beforeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+      	#{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm !=null">
+      	#{confirm,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+ 
+ <update id="updateOpenId" parameterType="com.hfoa.entity.entertain.Entertainapplyinfo">
+ 	update b_entertainapplyinfo set OpenId = #{openId,jdbcType=VARCHAR}
+ 	where Manager = #{manager,jdbcType=VARCHAR}
+ </update>
+ 
+ <update id="updateApproverOpenid" parameterType="com.hfoa.entity.entertain.Entertainapplyinfo">
+ 	update b_entertainapplyinfo set ApproverOpenid = #{approverOpenid,jdbcType=VARCHAR}
+ 	where Approver = #{approver,jdbcType=VARCHAR}
+ </update>
+ 
+ 
+  <update id="updateEntertain" parameterType="com.hfoa.entity.entertain.Entertainapplyinfo">
+    update b_entertainapplyinfo
+   <trim prefix="set" suffixOverrides=",">  
+       <if test ="number != null">
+        Number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test ="department != null">
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test ="applyTime != null">
+        ApplyTime = #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test ="entertainObject != null">
+        EntertainObject = #{entertainObject,jdbcType=VARCHAR},
+      </if>
+      <if test ="entertainReason != null">
+        EntertainReason = #{entertainReason,jdbcType=VARCHAR},
+      </if>
+      <if test ="entertainNum != null">
+        EntertainNum = #{entertainNum,jdbcType=VARCHAR},
+      </if>
+      <if test="accompanyNum != null">
+      	AccompanyNum = #{accompanyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="perBudget != null">
+        PerBudget = #{perBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="masterBudget != null">
+        MasterBudget = #{masterBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingBudget != null">
+        RemainingBudget = #{remainingBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="entertainCategory != null">
+        EntertainCategory = #{entertainCategory,jdbcType=VARCHAR},
+      </if>
+       <if test="manager !=null">
+      	Manager = #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+      	Approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark !=null">
+      	Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="registerNum !=null">
+      	RegisterNum = #{registerNum,jdbcType=INTEGER},
+      </if>
+      <if test="paidTime!=null">
+      	PaidTime = #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime!=null">
+      	ApproveTime = #{approveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ifWine!=null">
+      	IfWine = #{ifWine,jdbcType=VARCHAR},
+      </if>
+      <if test="wineType!=null">
+      	WineType = #{wineType,jdbcType=VARCHAR},
+      </if>
+      <if test="wineNum!=null">
+      	WineNum = #{wineNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wineOther!=null">
+      	WineOther = #{wineOther,jdbcType=VARCHAR},
+      </if>
+      <if test="wineSum!=null">
+      	WineSum = #{wineSum,jdbcType=VARCHAR},
+      </if>
+      <if test="ifBefore!=null">
+      	IfBefore = #{ifBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeDate!=null">
+      	BeforeDate = #{beforeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="openId!=null">
+      	OpenId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="approverOpenid!=null">
+      	ApproverOpenid = #{approverOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm!=null">
+		Confirm = #{confirm,jdbcType=VARCHAR},      
+      </if>
+      </trim>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <select id="getNumberEntertainApplyInfo" parameterType="java.lang.String" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select * from B_EntertainApplyInfo where Number = #{number,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getSqlLast"  resultType="Integer">
+  	select ID  from B_EntertainApplyInfo where ID = (select max(ID) from B_EntertainApplyInfo)
+  </select>
+  
+  <select id="getSqlLastNumber" resultType="java.lang.String">
+  	select Number from B_EntertainApplyInfo where ID = (select max(ID) from B_EntertainApplyInfo)
+  </select>
+  
+  <select id="getApplyObject" resultType="Integer">
+  	select count(*) from B_EntertainApplyInfo
+  </select>
+  
+  <select id="listApproveEntertainAppliyInfo" parameterType="java.lang.String" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select * from B_EntertainApplyInfo where ApproverOpenid = #{approverOpenid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getAproveEntertain" parameterType="int" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select * from B_EntertainApplyInfo where ID = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="statusApproveEntertain" parameterType="java.lang.String" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select * from B_EntertainApplyInfo where OpenId = #{OpenId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getOneDepartmentEntertainSum" resultType="string">
+  	select  InvoiceSum from b_entertainapplyinfo t1,b_entertainregisterinfo t2 
+  	where t1.Number=t2.Number and InvoiceDate like #{1} and t1.Department=#{0}
+  
+  
+  </select>
+  
+  
+  <select id="getEntertainSum" resultType="map">
+  	select t1.ID, t1.Number, Department, InvoiceSum from b_entertainapplyinfo t1,b_entertainregisterinfo 
+  	t2 where t1.Number=t2.Number and t2.Status='通过' and t2.PaidTime like #{0} ORDER BY t1.Department
+  
+  </select>
+  
+  
+  
+  <select id="listEntertainApplyInfo" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select b.Number,b.Department,b.ApplyTime,b.EntertainObject,b.EntertainReason,b.EntertainNum,b.AccompanyNum,
+  	b.PerBudget,b.MasterBudget,b.RemainingBudget,b.EntertainCategory,b.Manager,b.Approver,b.Status,b.Remark,b.RegisterNum,
+  	b.ApproveTime,b.IfWine,b.WineType,b.WineNum,b.WineOther,b.WineSum,b.IfBefore,b.BeforeDate,t.PaidTime,t.InvoiceNumber,
+  	t.InvoiceSum,t.InvoiceNumber
+  	from B_EntertainApplyInfo b JOIN b_entertainregisterinfo t ON b.Number = t.Number
+	WHERE Confirm = '1' 
+	union
+	select b.Number,b.Department,b.ApplyTime,b.EntertainObject,b.EntertainReason,b.EntertainNum,b.AccompanyNum,
+  	b.PerBudget,b.MasterBudget,b.RemainingBudget,b.EntertainCategory,b.Manager,b.Approver,b.Status,b.Remark,b.RegisterNum,
+  	b.ApproveTime,b.IfWine,b.WineType,b.WineNum,b.WineOther,b.WineSum,b.IfBefore,b.BeforeDate,t.PaidTime,t.InvoiceNumber,
+  	t.InvoiceSum,t.InvoiceNumber
+  	from B_EntertainApplyInfo b JOIN b_entertainregisterinfo t ON b.Number = t.Number
+	WHERE b.Status = '已完成'
+  </select>
+  
+  
+  <select id="wgtServApply" parameterType="com.hfoa.entity.entertain.Entertainapplyinfo" resultType="com.hfoa.entity.entertain.Entertainapplyinfo">
+  	select b.Number,b.Department,b.ApplyTime,b.EntertainObject,b.EntertainReason,b.EntertainNum,b.AccompanyNum,
+  	b.PerBudget,b.MasterBudget,b.RemainingBudget,b.EntertainCategory,b.Manager,b.Approver,b.Status,b.Remark,b.RegisterNum,
+  	b.ApproveTime,b.IfWine,b.WineType,b.WineNum,b.WineOther,b.WineSum,b.IfBefore,b.BeforeDate,t.PaidTime,t.InvoiceNumber,
+  	t.InvoiceSum,t.InvoiceNumber
+  	from B_EntertainApplyInfo b JOIN b_entertainregisterinfo t ON b.Number = t.Number
+	WHERE Confirm = '1' 
+	union 
+	select b.Number,b.Department,b.ApplyTime,b.EntertainObject,b.EntertainReason,b.EntertainNum,b.AccompanyNum,
+  	b.PerBudget,b.MasterBudget,b.RemainingBudget,b.EntertainCategory,b.Manager,b.Approver,b.Status,b.Remark,b.RegisterNum,
+  	b.ApproveTime,b.IfWine,b.WineType,b.WineNum,b.WineOther,b.WineSum,b.IfBefore,b.BeforeDate,t.PaidTime,t.InvoiceNumber,
+  	t.InvoiceSum,t.InvoiceNumber
+  	from B_EntertainApplyInfo b JOIN b_entertainregisterinfo t ON b.Number = t.Number
+	WHERE b.Status = '已完成'
+	<!-- and Department = #{department,jdbcType=VARCHAR} -->
+	<if test="department != null">
+		and b.Department = #{department}
+	</if>
+	<if test="manager != null">
+	    and b.Manager = #{manager,jdbcType=VARCHAR}
+	</if>
+	<if test="startTime!=null">
+		and t.PaidTime <![CDATA[ >= ]]> #{startTime}
+	</if>
+	<if test="endTime!=null">
+		and t.PaidTime <![CDATA[ <= ]]> #{endTime}
+	</if>
+	<if test="invoiceNumber !=null">
+		and t.InvoiceNumber LIKE CONCAT(CONCAT('%',#{invoiceNumber}),'%')
+	</if>
+	
+	<if test="invoiceSum !=null">
+		and t.InvoiceSum LIKE CONCAT(CONCAT('%',#{invoiceSum}),'%')
+	</if>
+  
+  </select>
+  
+  
+  <select id="searchEntertainApprove" parameterType="com.hfoa.entity.entertain.Entertainapplyinfo" resultType="com.hfoa.entity.entertain.Entertainapplyinfo"> 
+  	select 
+  	b.Number,b.Department,b.ApplyTime,b.EntertainObject,b.EntertainReason,b.EntertainNum,b.AccompanyNum,
+  	b.PerBudget,b.MasterBudget,b.RemainingBudget,b.EntertainCategory,b.Manager,b.Approver,b.Status,b.Remark,b.RegisterNum,
+  	b.ApproveTime,b.IfWine,b.WineType,b.WineNum,b.WineOther,b.WineSum,b.IfBefore,b.BeforeDate,t.PaidTime,t.InvoiceNumber,
+  	t.InvoiceSum,t.InvoiceNumber
+  	from B_EntertainApplyInfo b JOIN b_entertainregisterinfo t ON b.Number = t.Number
+  	where b.status = '已完成'
+  	<if test="department!=null">
+  		and b.Department = #{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="manager!=null">
+	    and b.Manager LIKE CONCAT(CONCAT('%',#{manager,jdbcType=VARCHAR}),'%')
+	</if>
+	<if test="beginTime!=null">
+  		and b.ApplyTime <![CDATA[ >= ]]> #{beginTime,jdbcType=VARCHAR}
+  		</if>
+  		<if test="endTime!=null">
+  		and b.ApplyTime <![CDATA[ <= ]]> #{endTime,jdbcType=VARCHAR}
+  		</if>
+  		order by b.ApplyTime desc
+  </select>
+  
+  <select id="countEntertain"  resultType="map">
+  	SELECT count(t.ID) toatl, SUM(t1.InvoiceSum) price FROM b_entertainapplyinfo t JOIN b_entertainregisterinfo t1
+		on t.Number = t1.Number WHERE t.Status='已完成' and Manager = #{0} and t.ApplyTime like #{1}
+  </select>
+
+</mapper>

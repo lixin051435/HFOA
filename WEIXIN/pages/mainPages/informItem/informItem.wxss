@@ -1,0 +1,25 @@
+/* pages/mainPages/informItem/informItem.wxss */
+
+page {
+  background: #EFEFF4;
+  max-width: 750rpx;
+}
+
+.inform {
+  background: #fff;
+}
+
+.inform_title {
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  padding-top: 30rpx;
+  color: #37383B;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.inform_content{
+  padding: 0 60rpx 30rpx 60rpx;
+  color: #37383B;
+  font-size: 32rpx;
+}

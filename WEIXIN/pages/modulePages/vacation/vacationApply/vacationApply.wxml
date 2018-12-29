@@ -1,0 +1,167 @@
+<!--pages/modulePages/vacation/vacationApply/vacationApply.wxml-->
+<view>
+  <form class="weui-cells weui-cells_form" bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
+
+    <view class="errorMsg" wx:if="{{showErrorMsg}}">{{errorMsg}}</view>
+
+    <view class="weui-cells">
+
+      <input name="user_id" value="{{user_id}}" hidden="true"></input>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">申 请 人</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyMan" value="{{applyMan}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所属部门</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="department" value="{{department}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">申请时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="applyTime" value="{{applyTime}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">可休天数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="days" value="{{days}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-label">休假次数</view>
+        <radio-group name="frequency" bindchange="radioChange">
+          <label><radio value="1" checked="true" color="#2A98BD" />1次</label>
+          <label><radio value="2" color="#2A98BD" />2次</label>
+          <label><radio value="3" color="#2A98BD" />3次</label>
+        </radio-group>
+      </view>
+
+      <input name="beginTime" value="{{beginTime}}" disabled="disabled" hidden="true"></input>
+      <input name="endTime" value="{{endTime}}" disabled="disabled" hidden="true"></input>
+      <input name="offdays" value="{{offdays}}" disabled="disabled" hidden="true"></input>
+
+      <!-- 第一个开始时间&结束时间 -->
+      <view class="weui-cell">
+        <view class="weui-label">开始时间</view>
+        <picker mode="date" name="beginTime1" value="{{beginTime1}}" bindchange="bindBeginTimeChange1">
+          <view>
+            <view wx:if="{{showBeginTime1}}" style="color: #B2B2B2">请选择开始时间</view>
+            <view wx:if="{{!showBeginTime1}}" style="color:#37383B">{{beginTime1}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">结束时间</view>
+        <picker mode="date" name="endTime1" value="{{endTime1}}" bindchange="bindEndTimeChange1">
+          <view>
+            <view wx:if="{{showEndTime1}}" style="color: #B2B2B2">请选择结束时间</view>
+            <view wx:if="{{!showEndTime1}}" style="color:#37383B">{{endTime1}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">已选天数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="offdays1" value="{{offdays1}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <!-- 第二个开始时间&结束时间 -->
+      <view class="weui-cell" wx:if="{{showTime2}}">
+        <view class="weui-label">开始时间</view>
+        <picker name="beginTime2" bindchange="bindBeginTimeChange2" mode="date" value="{{beginTime2}}">
+          <view>
+            <view wx:if="{{showBeginTime2}}" style="color: #B2B2B2">请选择开始时间</view>
+            <view wx:if="{{!showBeginTime2}}" style="color:#37383B">{{beginTime2}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell" wx:if="{{showTime2}}">
+        <view class="weui-label">结束时间</view>
+        <picker name="endTime2" bindchange="bindEndTimeChange2" mode="date" value="{{endTime2}}">
+          <view>
+            <view wx:if="{{showEndTime2}}" style="color: #B2B2B2">请选择结束时间</view>
+            <view wx:if="{{!showEndTime2}}" style="color:#37383B">{{endTime2}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{showTime2}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">已选天数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="offdays2" value="{{offdays2}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <!-- 第三个开始时间&结束时间 -->
+      <view class="weui-cell" wx:if="{{showTime3}}">
+        <view class="weui-label">开始时间</view>
+        <picker name="beginTime3" bindchange="bindBeginTimeChange3" mode="date" value="{{beginTime3}}">
+          <view>
+            <view wx:if="{{showBeginTime3}}" style="color: #B2B2B2">请选择开始时间</view>
+            <view wx:if="{{!showBeginTime3}}" style="color:#37383B">{{beginTime3}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell" wx:if="{{showTime3}}">
+        <view class="weui-label">结束时间</view>
+        <picker name="endTime3" bindchange="bindEndTimeChange3" mode="date" value="{{endTime3}}">
+          <view>
+            <view wx:if="{{showEndTime3}}" style="color: #B2B2B2">请选择结束时间</view>
+            <view wx:if="{{!showEndTime3}}" style="color:#37383B">{{endTime3}}</view>
+          </view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{showTime3}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">已选天数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="offdays3" value="{{offdays3}}" disabled="disabled" />
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label"><text space="ensp">审 批 人</text></view>
+        </view>
+        <picker name="approveMan" range="{{leaderList}}" range-key="{{'realname'}}" bindchange="bindLeaderChange" value="{{leaderList[leaderIndex].realname}}"
+          data-leader="{{leaderList[leaderIndex].realname}}">
+          <input name="openId" value='{{leaderList[leaderIndex].openid}}' hidden='true'></input>
+          <view style="color:#37383B">{{leaderList[leaderIndex].realname}}</view>
+        </picker>
+        <view class='weui-cell__ft arrow_right'></view>
+      </view>
+
+    </view>
+
+    <button wx:if="{{showSubmit}}" formType="submit" class="btn btn_bottom" hover-class="pressed_btn">提交</button>
+
+  </form>
+</view>

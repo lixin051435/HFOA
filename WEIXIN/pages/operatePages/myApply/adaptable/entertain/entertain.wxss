@@ -1,0 +1,95 @@
+/* pages/travelmanagement/travelApply/travelApply.wxss */
+
+page {
+  background-color: #F1EFF6;
+  max-width: 750rpx;
+}
+
+.mradio {
+  margin-left: 40rpx;
+  transform: scale(0.8);
+}
+
+.mradio1 {
+  margin-left: 5rpx;
+  transform: scale(0.7);
+}
+
+.mlabel {
+  font-size: 28rpx;
+  margin: 0;
+}
+
+.mpicker {
+  width: 440rpx;
+}
+
+.leftPlace {
+  width: 170rpx;
+  margin-right: 20rpx;
+}
+
+.rightPlace {
+  width: 170rpx;
+  margin-right: -20rpx;
+}
+
+.minput {
+  margin-left: 7rpx;
+}
+
+.mview1 {
+  padding-left: 0px;
+}
+
+checkbox .wx-checkbox-input {
+  border-radius: 11px;
+  height: 20px;
+  width: 20px;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 14px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 32rpx;
+  height: 28.5px;
+  width: 28px;
+  background-color: #1AAD19;
+  color: white;
+  margin-top: -1rpx;
+}
+
+/* 发往单位自动匹配 */
+.company_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.scrollview {
+  position: absolute;
+  top: 90rpx;
+  left: 0;
+  margin-left: 224rpx;
+  width: 516rpx;
+  height: 350rpx;
+  z-index: 99;
+  overflow: auto;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: #2A98BD 2rpx 2rpx 10rpx 3rpx, #2A98BD -2rpx -2rpx 10rpx 3rpx;
+}
+
+.itemview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 1rpx solid #D9D9D9;
+}

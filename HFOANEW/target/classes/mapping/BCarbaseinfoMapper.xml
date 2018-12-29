@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.car.BCarbaseinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.car.BCarbaseinfo" >
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CarCode" property="carcode" jdbcType="VARCHAR" />
+    <result column="CarType" property="cartype" jdbcType="VARCHAR" />
+    <result column="CarNum" property="carnum" jdbcType="VARCHAR" />
+    <result column="CarUnit" property="carunit" jdbcType="VARCHAR" />
+    <result column="CarBuyTime" property="carbuytime" jdbcType="VARCHAR" />
+    <result column="CarDetailInfo" property="cardetailinfo" jdbcType="VARCHAR" />
+    <result column="CarInsuranceInfo1" property="carinsuranceinfo1" jdbcType="VARCHAR" />
+    <result column="CarInsuranceInfo" property="carinsuranceinfo" jdbcType="VARCHAR" />
+    <result column="CardVale" property="cardvale" jdbcType="REAL" />
+    <result column="CarDistance" property="cardistance" jdbcType="REAL" />
+    <result column="CarInsuranceInfoDetal" property="carinsuranceinfodetal" jdbcType="VARCHAR" />
+    <result column="others" property="others" jdbcType="VARCHAR" />
+    <result column="PeasonNum" property="peasonnum" jdbcType="INTEGER" />
+    <result column="CarState" property="carstate" jdbcType="VARCHAR" />
+    <result column="SuspendDay" property="suspendday" jdbcType="VARCHAR" />
+    <result column="CarLable" property="carLable" jdbcType="INTEGER" />
+    <result column="CarUrl" property="CarUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CarCode, CarType, CarNum, CarUnit, CarBuyTime, CarDetailInfo, CarInsuranceInfo1, 
+    CarInsuranceInfo, CardVale, CarDistance, CarInsuranceInfoDetal, others, PeasonNum, 
+    CarState, SuspendDay,CarLable,CarUrl
+  </sql>
+  <insert id="insert" parameterType="com.hfoa.entity.car.BCarbaseinfo" useGeneratedKeys="true" keyProperty="ID">
+    insert into b_carbaseinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="carcode != null" >
+        CarCode,
+      </if>
+      <if test="cartype != null" >
+        CarType,
+      </if>
+      <if test="carnum != null" >
+        CarNum,
+      </if>
+      <if test="carunit != null" >
+        CarUnit,
+      </if>
+      <if test="carbuytime != null" >
+        CarBuyTime,
+      </if>
+      <if test="cardetailinfo != null" >
+        CarDetailInfo,
+      </if>
+      <if test="carinsuranceinfo1 != null" >
+        CarInsuranceInfo1,
+      </if>
+      <if test="carinsuranceinfo != null" >
+        CarInsuranceInfo,
+      </if>
+      <if test="cardvale != null" >
+        CardVale,
+      </if>
+      <if test="cardistance != null" >
+        CarDistance,
+      </if>
+      <if test="carinsuranceinfodetal != null" >
+        CarInsuranceInfoDetal,
+      </if>
+      <if test="others != null" >
+        others,
+      </if>
+      <if test="peasonnum != null" >
+        PeasonNum,
+      </if>
+      <if test="carstate != null" >
+        CarState,
+      </if>
+      <if test="suspendday != null" >
+        SuspendDay,
+      </if>
+       <if test="carLable != null" >
+        CarLable,
+      </if>
+      <if test="CarUrl != null" >
+        CarUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="carcode != null" >
+        #{carcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null" >
+        #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carunit != null" >
+        #{carunit,jdbcType=VARCHAR},
+      </if>
+      <if test="carbuytime != null" >
+        #{carbuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="cardetailinfo != null" >
+        #{cardetailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carinsuranceinfo1 != null" >
+        #{carinsuranceinfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="carinsuranceinfo != null" >
+        #{carinsuranceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardvale != null" >
+        #{cardvale,jdbcType=REAL},
+      </if>
+      <if test="cardistance != null" >
+        #{cardistance,jdbcType=REAL},
+      </if>
+      <if test="carinsuranceinfodetal != null" >
+        #{carinsuranceinfodetal,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="peasonnum != null" >
+        #{peasonnum,jdbcType=INTEGER},
+      </if>
+      <if test="carstate != null" >
+        #{carstate,jdbcType=VARCHAR},
+      </if>
+      <if test="suspendday != null" >
+        #{suspendday,jdbcType=VARCHAR},
+      </if>
+       <if test="carLable != null" >
+        #{carLable,jdbcType=INTEGER},
+      </if>
+       <if test="CarUrl != null" >
+        #{CarUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <update id="update" parameterType="com.hfoa.entity.car.BCarbaseinfo" >
+    update b_carbaseinfo
+    <set >
+      <if test="carcode != null" >
+        CarCode = #{carcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        CarType = #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null" >
+        CarNum = #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carunit != null" >
+        CarUnit = #{carunit,jdbcType=VARCHAR},
+      </if>
+      <if test="carbuytime != null" >
+        CarBuyTime = #{carbuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="cardetailinfo != null" >
+        CarDetailInfo = #{cardetailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carinsuranceinfo1 != null" >
+        CarInsuranceInfo1 = #{carinsuranceinfo1,jdbcType=VARCHAR},
+      </if>
+      <if test="carinsuranceinfo != null" >
+        CarInsuranceInfo = #{carinsuranceinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardvale != null" >
+        CardVale = #{cardvale,jdbcType=REAL},
+      </if>
+      <if test="cardistance != null" >
+        CarDistance = #{cardistance,jdbcType=REAL},
+      </if>
+      <if test="carinsuranceinfodetal != null" >
+        CarInsuranceInfoDetal = #{carinsuranceinfodetal,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        others = #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="peasonnum != null" >
+        PeasonNum = #{peasonnum,jdbcType=INTEGER},
+      </if>
+      <if test="carstate != null" >
+        CarState = #{carstate,jdbcType=VARCHAR},
+      </if>
+      <if test="suspendday != null" >
+        SuspendDay = #{suspendday,jdbcType=VARCHAR},
+      </if>
+      <if test="carLable != null" >
+        CarLable = #{carLable,jdbcType=INTEGER},
+      </if>
+       <if test="CarUrl != null" >
+        CarUrl = #{CarUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+      where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

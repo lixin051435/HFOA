@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hfoa.dao.car.BCarapplymanageMapper" >
+  <resultMap id="BaseResultMap" type="com.hfoa.entity.car.CarApplyInfo2" >
+    <id column="id" property="ID" jdbcType="INTEGER" />
+    <result column="ApplyId" property="ApplyId" jdbcType="VARCHAR" />
+    <result column="DepartmentId" property="DepartmentId" jdbcType="VARCHAR" />
+    <result column="Department" property="Department" jdbcType="VARCHAR" />
+    <result column="ApplyUserName" property="ApplyUserName" jdbcType="VARCHAR" />
+    <result column="ApplyMan" property="ApplyMan" jdbcType="VARCHAR" />
+    <result column="ApproveMan" property="ApproveMan" jdbcType="VARCHAR" />
+    <result column="CarId" property="CarId" jdbcType="INTEGER" />
+    <result column="CarType" property="CarType" jdbcType="VARCHAR" />
+    <result column="CarCode" property="CarCode" jdbcType="VARCHAR" />
+    <result column="Driver" property="Driver" jdbcType="VARCHAR" />
+    <result column="CompareManNum" property="CompareManNum" jdbcType="INTEGER" />
+    <result column="LengthBegin" property="LengthBegin" jdbcType="FLOAT" />
+    <result column="LengthEnd" property="LengthEnd" jdbcType="FLOAT" />
+    <result column="AccountLength" property="AccountLength" jdbcType="DECIMAL" />
+    <result column="BeginTimePlan" property="BeginTimePlan" jdbcType="VARCHAR" />
+    <result column="EndTimePlan" property="EndTimePlan" jdbcType="VARCHAR" />
+    <result column="BeginTime" property="BeginTime" jdbcType="VARCHAR" />
+    <result column="EndTime" property="EndTime" jdbcType="VARCHAR" />
+    <result column="UseCarReason" property="UseCarReason" jdbcType="VARCHAR" />
+    <result column="BeginPlace" property="BeginPlace" jdbcType="VARCHAR" />
+    <result column="EndPlace" property="EndPlace" jdbcType="VARCHAR" />
+    <result column="ApplyTime" property="ApplyTime" jdbcType="VARCHAR" />
+    <result column="Remarks" property="Remarks" jdbcType="VARCHAR" />
+    <result column="Status" property="Status" jdbcType="VARCHAR" />
+    <result column="RoleId" property="RoleId" jdbcType="VARCHAR" />
+    <result column="RoleName" property="RoleName" jdbcType="VARCHAR" />
+    <result column="CheckMan" property="checkMan" jdbcType="VARCHAR" />
+    <result column="ApprovalUserId" property="ApprovalUserId" jdbcType="INTEGER" />
+    <result column="AccountPlanTime" property="AccountPlanTime" jdbcType="DECIMAL" />
+    <result column="AccountRealTime" property="AccountRealTime" jdbcType="DECIMAL" />
+    <result column="midAddress1" property="midAddress1" jdbcType="VARCHAR" />
+    <result column="midAddress2" property="midAddress2" jdbcType="VARCHAR" />
+    <result column="midAddress3" property="midAddress3" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="RealApproveMan" property="RealApproveMan" jdbcType="VARCHAR" />
+     <result column="OutTreasuryMan" property="OutTreasuryMan" jdbcType="VARCHAR" />
+      <result column="InTreasuryMan" property="InTreasuryMan" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ApplyId, DepartmentId, Department, ApplyUserName, ApplyMan, ApproveMan, CarId, 
+    CarType, CarCode, Driver, CompareManNum, LengthBegin, LengthEnd, AccountLength, BeginTimePlan, 
+    EndTimePlan, BeginTime, EndTime, UseCarReason, BeginPlace, EndPlace, ApplyTime, Remarks, 
+     Status, RoleId, RoleName,CheckMan,ApprovalUserId,AccountPlanTime,AccountRealTime,midAddress1,midAddress2,midAddress3,state,RealApproveMan,
+     OutTreasuryMan,InTreasuryMan
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from b_carapplymanage
+    where id = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_carapplymanage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertCarApply" useGeneratedKeys="true" keyProperty="ID" parameterType="com.hfoa.entity.car.CarApplyInfo2" >
+    insert into b_carapplymanage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+<!--       <if test="ID != null" > -->
+<!--         id, -->
+<!--       </if> -->
+      <if test="ApplyId != null" >
+        ApplyId,
+      </if>
+      <if test="DepartmentId != null" >
+        DepartmentId,
+      </if>
+      <if test="Department != null" >
+        Department,
+      </if>
+      <if test="ApplyUserName != null" >
+        ApplyUserName,
+      </if>
+      <if test="ApplyMan != null" >
+        ApplyMan,
+      </if>
+      <if test="ApproveMan != null" >
+        ApproveMan,
+      </if>
+      <if test="CarId != null" >
+        CarId,
+      </if>
+      <if test="CarType != null" >
+        CarType,
+      </if>
+      <if test="CarCode != null" >
+        CarCode,
+      </if>
+      <if test="Driver != null" >
+        Driver,
+      </if>
+      <if test="CompareManNum != null" >
+        CompareManNum,
+      </if>
+      <if test="LengthBegin != null" >
+        LengthBegin,
+      </if>
+      <if test="LengthEnd != null" >
+        LengthEnd,
+      </if>
+      <if test="AccountLength != null" >
+        AccountLength,
+      </if>
+      <if test="BeginTimePlan != null" >
+        BeginTimePlan,
+      </if>
+      <if test="EndTimePlan != null" >
+        EndTimePlan,
+      </if>
+      <if test="BeginTime != null" >
+        BeginTime,
+      </if>
+      <if test="EndTime != null" >
+        EndTime,
+      </if>
+      <if test="UseCarReason != null" >
+        UseCarReason,
+      </if>
+      <if test="BeginPlace != null" >
+        BeginPlace,
+      </if>
+      <if test="EndPlace != null" >
+        EndPlace,
+      </if>
+      <if test="ApplyTime != null" >
+        ApplyTime,
+      </if>
+      <if test="Remarks != null" >
+        Remarks,
+      </if>
+      <if test="Status != null" >
+        Status,
+      </if>
+      <if test="RoleId != null" >
+        RoleId,
+      </if>
+      <if test="RoleName != null" >
+        RoleName,
+      </if>
+      <if test="checkMan != null" >
+        checkMan,
+      </if>
+       <if test="ApprovalUserId != null" >
+        ApprovalUserId,
+      </if>
+       <if test="AccountPlanTime != null" >
+        AccountPlanTime,
+      </if>
+       <if test="AccountRealTime != null" >
+        AccountRealTime,
+      </if>
+      <if test="midAddress1 != null" >
+        midAddress1,
+      </if>
+      <if test="midAddress2 != null" >
+        midAddress2,
+      </if>
+      <if test="midAddress3 != null" >
+        midAddress3,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+       <if test="RealApproveMan != null" >
+        RealApproveMan,
+      </if>
+      <if test="OutTreasuryMan != null" >
+        OutTreasuryMan,
+      </if>
+      <if test="InTreasuryMan != null" >
+        InTreasuryMan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+<!--       <if test="ID != null" > -->
+<!--         #{ID,jdbcType=INTEGER}, -->
+<!--       </if> -->
+      <if test="ApplyId != null" >
+        #{ApplyId,jdbcType=VARCHAR},
+      </if>
+      <if test="DepartmentId != null" >
+        #{DepartmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="Department != null" >
+        #{Department,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyUserName != null" >
+        #{ApplyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyMan != null" >
+        #{ApplyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="ApproveMan != null" >
+        #{ApproveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="CarId != null" >
+        #{CarId,jdbcType=INTEGER},
+      </if>
+      <if test="CarType != null" >
+        #{CarType,jdbcType=VARCHAR},
+      </if>
+      <if test="CarCode != null" >
+        #{CarCode,jdbcType=VARCHAR},
+      </if>
+      <if test="Driver != null" >
+        #{Driver,jdbcType=VARCHAR},
+      </if>
+      <if test="CompareManNum != null" >
+        #{CompareManNum,jdbcType=INTEGER},
+      </if>
+      <if test="LengthBegin != null" >
+        #{LengthBegin,jdbcType=FLOAT},
+      </if>
+      <if test="LengthEnd != null" >
+        #{LengthEnd,jdbcType=FLOAT},
+      </if>
+      <if test="AccountLength != null" >
+        #{AccountLength,jdbcType=DECIMAL},
+      </if>
+      <if test="BeginTimePlan != null" >
+        #{BeginTimePlan,jdbcType=VARCHAR},
+      </if>
+      <if test="EndTimePlan != null" >
+        #{EndTimePlan,jdbcType=VARCHAR},
+      </if>
+      <if test="BeginTime != null" >
+        #{BeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="EndTime != null" >
+        #{EndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="UseCarReason != null" >
+        #{UseCarReason,jdbcType=VARCHAR},
+      </if>
+      <if test="BeginPlace != null" >
+        #{BeginPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="EndPlace != null" >
+        #{EndPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyTime != null" >
+        #{ApplyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="Remarks != null" >
+        #{Remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="Status != null" >
+        #{Status,jdbcType=VARCHAR},
+      </if>
+      <if test="RoleId != null" >
+        #{RoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="RoleName != null" >
+        #{RoleName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMan != null" >
+        #{checkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="ApprovalUserId != null" >
+        #{ApprovalUserId,jdbcType=INTEGER},
+      </if>
+       <if test="AccountPlanTime != null" >
+        #{AccountPlanTime,jdbcType=DECIMAL},
+      </if>
+       <if test="AccountRealTime != null" >
+        #{AccountRealTime,jdbcType=DECIMAL},
+      </if>
+      <if test="midAddress1 != null" >
+        #{midAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="midAddress2 != null" >
+        #{midAddress2,jdbcType=VARCHAR},
+      </if>
+       <if test="midAddress3 != null" >
+        #{midAddress3,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="RealApproveMan != null" >
+        #{RealApproveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="OutTreasuryMan != null" >
+        #{OutTreasuryMan,jdbcType=VARCHAR},
+      </if>
+      <if test="InTreasuryMan != null" >
+        #{InTreasuryMan,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateCarApply" parameterType="com.hfoa.entity.car.CarApplyInfo2" >
+    update b_carapplymanage
+    <set >
+      <if test="ApplyId != null" >
+        ApplyId = #{ApplyId,jdbcType=VARCHAR},
+      </if>
+      <if test="DepartmentId != null" >
+        DepartmentId = #{DepartmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="Department != null" >
+        Department = #{Department,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyUserName != null" >
+        ApplyUserName = #{ApplyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyMan != null" >
+        ApplyMan = #{ApplyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="ApproveMan != null" >
+        ApproveMan = #{ApproveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="CarId != null" >
+        CarId = #{CarId,jdbcType=INTEGER},
+      </if>
+      <if test="CarType != null" >
+        CarType = #{CarType,jdbcType=VARCHAR},
+      </if>
+      <if test="CarCode != null" >
+        CarCode = #{CarCode,jdbcType=VARCHAR},
+      </if>
+      <if test="Driver != null" >
+        Driver = #{Driver,jdbcType=VARCHAR},
+      </if>
+      <if test="CompareManNum != null" >
+        CompareManNum = #{CompareManNum,jdbcType=INTEGER},
+      </if>
+      <if test="LengthBegin != null" >
+        LengthBegin = #{LengthBegin,jdbcType=FLOAT},
+      </if>
+      <if test="LengthEnd != null" >
+        LengthEnd = #{LengthEnd,jdbcType=FLOAT},
+      </if>
+      <if test="AccountLength != null" >
+        AccountLength = #{AccountLength,jdbcType=DECIMAL},
+      </if>
+      <if test="BeginTimePlan != null" >
+        BeginTimePlan = #{BeginTimePlan,jdbcType=VARCHAR},
+      </if>
+      <if test="EndTimePlan != null" >
+        EndTimePlan = #{EndTimePlan,jdbcType=VARCHAR},
+      </if>
+      <if test="BeginTime != null" >
+        BeginTime = #{BeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="EndTime != null" >
+        EndTime = #{EndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="UseCarReason != null" >
+        UseCarReason = #{UseCarReason,jdbcType=VARCHAR},
+      </if>
+      <if test="BeginPlace != null" >
+        BeginPlace = #{BeginPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="EndPlace != null" >
+        EndPlace = #{EndPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="ApplyTime != null" >
+        ApplyTime = #{ApplyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="Remarks != null" >
+        Remarks = #{Remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="Status != null" >
+        Status = #{Status,jdbcType=VARCHAR},
+      </if>
+      <if test="RoleId != null" >
+        RoleId = #{RoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="RoleName != null" >
+        RoleName = #{RoleName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMan != null" >
+        CheckMan = #{checkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="ApprovalUserId != null" >
+        ApprovalUserId = #{ApprovalUserId,jdbcType=INTEGER},
+      </if>
+      <if test="AccountPlanTime != null" >
+        AccountPlanTime = #{AccountPlanTime,jdbcType=DECIMAL},
+      </if>
+      <if test="AccountRealTime != null" >
+        AccountRealTime = #{AccountRealTime,jdbcType=DECIMAL},
+      </if>
+      <if test="midAddress1 != null" >
+        midAddress1 = #{midAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="midAddress2 != null" >
+        midAddress2 = #{midAddress2,jdbcType=VARCHAR},
+      </if>
+      <if test="midAddress3 != null" >
+        midAddress3 = #{midAddress3,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="RealApproveMan != null" >
+        RealApproveMan = #{RealApproveMan,jdbcType=VARCHAR},
+      </if>
+      <if test="OutTreasuryMan != null" >
+        OutTreasuryMan = #{OutTreasuryMan,jdbcType=VARCHAR},
+      </if>
+      <if test="InTreasuryMan != null" >
+        InTreasuryMan = #{InTreasuryMan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{ID,jdbcType=INTEGER}
+  </update>
+  <select id="findByIds" resultType="com.hfoa.entity.car.CarApplyInfo2">
+  	select * from b_carapplymanage where id in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and DepartmentId=#{departmentId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findTasksByStatus" resultType="com.hfoa.entity.car.CarApplyInfo2">
+  	select * from b_carapplymanage where id in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and Status=#{status,jdbcType=INTEGER}
+  </select>
+   <select id="findBusinessByTaskses" resultType="com.hfoa.entity.car.CarApplyInfo2">
+  	select * from b_carapplymanage where id in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and DepartmentId in
+  		<foreach item="item1" index="index" collection="departList"
+  		open="(" separator="," close=")">#{item1}
+  		</foreach>
+  </select>
+   <select id="getBySql" resultType="com.hfoa.entity.car.CarApplyInfo2"  parameterType="String">
+  	${result}
+  </select>
+  <select id="findTasksByUserCode" resultType="com.hfoa.entity.car.CarApplyInfo2">
+  	select * from b_carapplymanage where id in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and ApplyUserName=#{code,jdbcType=VARCHAR} and (Status &gt;0 and Status &lt;5)
+  </select>
+  <select id="getCountBySQL" resultType="Integer"  parameterType="String">
+  	${countResult}
+  </select>
+    <select id="findTasksByCase" parameterType="com.hfoa.entity.car.CarApplyDTO" resultType="com.hfoa.entity.car.CarApplyInfo2">
+  	select * from b_carapplymanage where id in 
+  		<foreach item="item" index="index" collection="list"
+  		open="(" separator="," close=")">#{item}
+  		</foreach>
+  		and Status=#{status,jdbcType=INTEGER}
+  	<if test="carinfo != null and carinfo != '全部' and carinfo!='null' ">
+  		and CarCode=#{carinfo,jdbcType=VARCHAR}
+  	</if>
+  	<if test="department != null and department != '全部,' and department!='null,' and department != '全部'">
+  		and Department =#{department,jdbcType=VARCHAR}
+  	</if>
+  	<if test="applyman != 'null' and applyman != '' and applyman != null ">
+  		and (ApplyUserName LIKE CONCAT(CONCAT('%',#{applyman,jdbcType=VARCHAR}),'%') or ApplyMan LIKE CONCAT(CONCAT('%',#{applyman,jdbcType=VARCHAR}),'%'))
+  	</if>
+  	<if test='starttime != "null" and starttime != "" '>
+  		and ApplyTime <![CDATA[ >= ]]> #{starttime,jdbcType = VARCHAR}
+  	</if>
+  	<if test='endtime != "null" and endtime != "" ' >
+  		and ApplyTime <![CDATA[ <= ]]> #{endtime,jdbcType = VARCHAR}
+  	</if>
+  	
+  </select>
+</mapper>

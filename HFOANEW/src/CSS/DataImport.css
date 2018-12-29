@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+.mainbc
+{
+	padding:30px 30px 30px 30px;
+	height:auto;
+	weight:100%;
+}
+.pro
+{
+	width:400px;
+	display:none;
+}
+
